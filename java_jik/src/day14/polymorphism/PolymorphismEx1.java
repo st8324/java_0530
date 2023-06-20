@@ -1,4 +1,4 @@
-package day14.Polymorphism;
+package day14.polymorphism;
 
 public class PolymorphismEx1 {
 
