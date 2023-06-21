@@ -1,5 +1,8 @@
 package day15.practice.shop.vo;
 
+import lombok.Data;
+
+@Data
 public class Customer {
 
 	//CID00001

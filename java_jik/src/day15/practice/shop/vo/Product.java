@@ -20,6 +20,14 @@ public class Product {
 		this.category = category;
 	}
 	
+	public Product(Product product) {
+		this.name = product.name;
+		this.modelName = product.modelName;
+		this.price = product.price;
+		this.amount = product.amount;
+		this.category = product.category;
+	}
+
 	//메서드
 	/**제품 입고 기능 => 현재 수량에 주어진 수량을 누적*/
 	public void store(int amount) {
