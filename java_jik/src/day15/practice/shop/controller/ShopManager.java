@@ -2,6 +2,7 @@ package day15.practice.shop.controller;
 
 import java.util.Scanner;
 
+import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product;
 
 public class ShopManager {
@@ -70,7 +71,10 @@ public class ShopManager {
 
 	private void registerCustomer() {
 		// TODO Auto-generated method stub
-		
+		Customer customer = new Customer("홍길동", "010-1234-5678");
+		customer.print();
+		customer = new Customer("임꺽정", "010-1111-5555");
+		customer.print();
 	}
 
 	private void printSales() {
@@ -78,9 +82,25 @@ public class ShopManager {
 		
 	}
 
+	//제품을 검색해서 조회하는 메서드
 	private void printProduct() {
-		// TODO Auto-generated method stub
+		//검색할 제품을 입력
+		System.out.print("제품명 : ");
+		sc.nextLine();//엔터. 이전 입력에서 엔터를 쳤기 때문에 엔터 제거
+		String name = sc.nextLine();
 		
+		//입력한 검색어 맞는 제품을 출력
+		//등록된 제품들 중에 검색어와 일치하는 제품이 어디있는지 확인
+		int index = indexOf(name);
+		
+		//제품이 있으면 제품 정보를 출력
+		if(index >= 0) {
+			list[index].print();
+			return;
+		}
+		
+		//없으면 없는 제품이라고 출력
+		System.out.println("없는 제품!");
 	}
 
 	private void store() {
