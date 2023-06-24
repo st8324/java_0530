@@ -10,6 +10,13 @@ public class Beverage {
 	private int price;
 	private int amount;
 	
+	public void store(int amount) {
+		if(amount < 0) {
+			return;
+		}
+		this.amount += amount;
+	}
+	
 	/*
 	public Beverage(String name, int price, int amount){
 		this.name = name;

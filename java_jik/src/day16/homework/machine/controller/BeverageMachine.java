@@ -7,16 +7,21 @@ import day16.homework.machine.vo.Beverage;
 public class BeverageMachine {
 
 	private Scanner sc = new Scanner(System.in);
+	//음료수 종류 
 	private Beverage list[] = new Beverage[3];
 	
 	private int money;//자판기에 있는 금액
 	
+	//음료수별 번지를 상수로 지정 
 	private final static int SPRITE = 0;
 	private final static int COKE = 1;
 	private final static int FANTA = 2;
+	
+	//프로그램 종료 번호
 	private final static int EXIT = 4;
 	
 	public BeverageMachine() {
+		//생성자를 이용한 자판기 가격 및 수량 설정
 		list[COKE] = new Beverage("콜라", 1200, 10);
 		list[SPRITE] = new Beverage("사이다", 1100, 10);
 		list[FANTA] = new Beverage("환타", 1000, 10);
@@ -54,8 +59,9 @@ public class BeverageMachine {
 		}
 		
 	}
-
+	//제품 입고 
 	private void insertBeverage() {
+		
 		System.out.println("1. 사이다");
 		System.out.println("2. 콜라");
 		System.out.println("3. 환타");
@@ -63,6 +69,7 @@ public class BeverageMachine {
 		int selectBeverage = sc.nextInt() - 1;
 		System.out.print("수량 : ");
 		int amount = sc.nextInt();
+		//콜라, 사이다, 환타를 입력하면 입고, 아니면 알림메세지 출력.
 		switch (selectBeverage) {
 		case COKE:
 		case SPRITE:
@@ -80,12 +87,13 @@ public class BeverageMachine {
 			System.out.println("수량 오류!");
 			return;
 		}
-		int remainAmount = list[selectBeverage].getAmount();
-		list[selectBeverage].setAmount(remainAmount+amount);
+		//선택한 음료수를 입고
+		list[selectBeverage].store(amount);;
 		System.out.println("입고 완료!");
 		
 	}
 
+	//음료 선택
 	private void selectBeverage() {
 		System.out.println("1. 사이다 : " + list[SPRITE].getPrice());
 		System.out.println("2. 콜라  : " + list[COKE].getPrice());
@@ -103,10 +111,10 @@ public class BeverageMachine {
 			return;
 		}
 	}
-
+	//음료 배출
 	private void generate(int beverage) {
 		int amount = list[beverage].getAmount();
-		if(amount<0) {
+		if(amount<=0) {
 			System.out.println("제고 없음!");
 			return;
 		}
@@ -115,7 +123,7 @@ public class BeverageMachine {
 			System.out.println("금액 부족!");
 			return;
 		}
-		
+		//음료수 배출 시 수량 1 감소 
 		list[beverage].setAmount(amount-1);
 		this.money -= money;
 		
@@ -123,6 +131,7 @@ public class BeverageMachine {
 		System.out.println("거스름돈 : " + this.money);
 		this.money = 0;
 	}
+	//선택한 음료(정수)에 따른 음료수명(문자열)을 알려주는 메서드
 	private String getBeverage(int beverage) {
 		switch(beverage) {
 		case SPRITE: return "사이다";
