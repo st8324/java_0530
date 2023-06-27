@@ -42,24 +42,23 @@ public class VocabularyNote {
 		wordList.add(new Word(word));
 	}
 	
-	/**단어와 뜻이 주어지면 없는 단어이면 새로 단어를 추가하고 1을 리턴,
-	 * 있는 단어이면 뜻만 새로 추가하는 -1을 리턴하고
-	 * 추가가 실패하면 0을 리턴하는 메서드(단어와 뜻을 넘겨주는 경우)
+	/**단어와 뜻이 주어지면 없는 단어이면 새로 단어를 추가하고 true을 리턴,
+	 * 있는 단어이면 뜻만 새로 추가하는 false을 리턴
 	 * 매개변수 : 단어와 뜻 => String title, String meaning 
-	 * 리턴타입 : -1(뜻추가), 1(단어추가) => int
+	 * 리턴타입 : 단어추가하면 true, 뜻 추가하면 false
 	 * 메서드명 : insert
 	 */
-	public int insert(String title, String meaning) {
+	public boolean insert(String title, String meaning) {
 		int index = wordList.indexOf(new Word(title));
 		//없는 단어이면 새 단어로 추가
 		if(index == -1) {
 			//단어와 뜻을 이용해 단어 객체를 생성한 후 단어장에 추가
 			wordList.add(new Word(title, meaning));
-			return 1;
+			return true;
 		}
 		//있는 단어이면 뜻을 추가.
 		wordList.get(index).addMeaning(meaning);
-		return -1;
+		return false;
 	}
 	/**단어가 주어지면 단어장에서 삭제하고 삭제 여부를 알려주는 메서드
 	 * 매개변수 : 삭제할 단어 => String title
