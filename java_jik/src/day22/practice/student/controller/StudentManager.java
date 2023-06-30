@@ -1,13 +1,12 @@
-package day22.practice.controller;
+package day22.practice.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
 
-import day22.practice.vo.Student;
+import day22.practice.student.vo.Student;
 
-public class StudentManager2 implements Program{
+public class StudentManager implements Program{
 
 	private List<Student> list = Arrays.asList(
 			new Student(1,1,1,"Hong"),
@@ -43,25 +42,26 @@ public class StudentManager2 implements Program{
 
 	@Override
 	public void runMenu(int menu) {
+		int grade=1, classNum=1, num=1;
 		switch(menu) {
 		case 1:
-			print(s->true);
+			printAll();
 			break;
 		case 2:
 			//검색할 학년 입력
 			System.out.print("grade : ");
-			final int grade1 = sc.nextInt();
-			print(s->s.getGrade() == grade1);
+			grade = sc.nextInt();
+			printGrade(grade);
 			break;
 		case 3:
 			//검색할 학년, 반, 번호 입력
 			System.out.print("grade : ");
-			final int grade2 = sc.nextInt();
+			grade = sc.nextInt();
 			System.out.print("class : ");
-			final int classNum2 = sc.nextInt();
+			classNum = sc.nextInt();
 			System.out.print("number: ");
-			final int num2 = sc.nextInt();
-			print(s->s.equals(new Student(grade2,classNum2, num2, "")));
+			num = sc.nextInt();
+			printSearch(grade, classNum, num);
 			break;
 		case 4:
 			break;
@@ -70,20 +70,26 @@ public class StudentManager2 implements Program{
 		
 	}
 
-	private void print(Predicate<Student> p) {
+	private void printSearch(int grade, int classNum, int num) {
 		for(Student tmp : list) {
-			if(p.test(tmp)) {
+			if(tmp.equals(new Student(grade, classNum, num, ""))) {
 				System.out.println(tmp);
 			}
 		}
 	}
 
+	private void printGrade(int grade) {
+		for(Student tmp : list) {
+			if(tmp.getGrade() == grade) {
+				System.out.println(tmp);
+			}
+		}
+	}
+
+	private void printAll() {
+		for(Student tmp : list) {
+			System.out.println(tmp);
+		}
+	}
+
 }
-
-
-
-
-
-
-
-
