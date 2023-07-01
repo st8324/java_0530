@@ -1,4 +1,4 @@
-package homework.day23.phone.controller;
+package homework.phone.day23.controller;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
-import homework.day23.phone.vo.PhoneBook;
+import homework.phone.day23.vo.PhoneBook;
 
 
 public class PhoneManager implements Program {

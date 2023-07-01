@@ -1,4 +1,4 @@
-package homework.day23.phone.vo;
+package homework.phone.day23.vo;
 
 import java.io.Serializable;
 import java.util.ArrayList;

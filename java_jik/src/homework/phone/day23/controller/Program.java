@@ -1,4 +1,4 @@
-package homework.day23.phone.controller;
+package homework.phone.day23.controller;
 
 public interface Program {
 	void printMenu();

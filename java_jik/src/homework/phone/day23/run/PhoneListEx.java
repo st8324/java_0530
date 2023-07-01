@@ -1,6 +1,6 @@
-package homework.day23.phone.run;
+package homework.phone.day23.run;
 
-import homework.day23.phone.controller.PhoneManager;
+import homework.phone.day23.controller.PhoneManager;
 
 public class PhoneListEx {
 
