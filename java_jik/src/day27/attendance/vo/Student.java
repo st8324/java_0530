@@ -1,12 +1,14 @@
 package day27.attendance.vo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import lombok.Data;
 
 @Data
-public class Student {
+public class Student implements Serializable {
 
+	private static final long serialVersionUID = 107837677974301860L;
 	private String num; //학번
 	private String name; //이름
 	

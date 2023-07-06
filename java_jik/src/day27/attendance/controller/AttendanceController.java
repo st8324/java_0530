@@ -1,11 +1,19 @@
 package day27.attendance.controller;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import day26.library.vo.LoanBrowsing;
 import day27.attendance.vo.Attendance;
 import day27.attendance.vo.AttendanceBook;
 import day27.attendance.vo.Student;
@@ -19,6 +27,8 @@ public class AttendanceController {
 	
 	public void run() {
 		int menu;
+		String fileName = "src/day27/attendance/attendancebook.txt";
+		load(fileName);
 		do {
 			System.out.println("=======================");
 			printMenu();
@@ -28,6 +38,7 @@ public class AttendanceController {
 			runMenu(menu);
 			System.out.println("=======================");
 		}while(menu != 4);
+		save(fileName);
 	}
 	
 	private void printMenu() {
@@ -38,7 +49,6 @@ public class AttendanceController {
 		System.out.println("4. 프로그램 종료");
 		System.out.print("메뉴 선택 : ");
 	}
-	
 	private void runMenu(int menu) {
 		switch(menu) {
 		case 1:
@@ -55,9 +65,6 @@ public class AttendanceController {
 		default:
 		}
 	}
-
-	
-
 	private void insertStudent() {
 		//정보(학번, 이름) 입력
 		System.out.print("학번 : ");
@@ -81,7 +88,6 @@ public class AttendanceController {
 			System.out.println("학생 정보 추가 실패!");
 		}
 	}
-	
 	private void attendanceCheck() {
 		//날짜 입력
 		System.out.print("날짜(yyyy-MM-dd) : ");
@@ -125,10 +131,31 @@ public class AttendanceController {
 			}
 		}
 	}
-
 	private void printAttendance() {
 		//출석부에 있는 모든 출석 정보를 확인
 		book.printAttendance();
+	}
+	void load(String fileName) {
+		try(ObjectInputStream ois 
+			= new ObjectInputStream(new FileInputStream(fileName))){
+			book = (AttendanceBook)ois.readObject();
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("AttendanceBook 클래스를 찾을 수 없습니다.");
+		} 
+	}
+	void save(String fileName) {
+		try(FileOutputStream fos = new FileOutputStream(fileName);
+			ObjectOutputStream oos = new ObjectOutputStream(fos)){
+			oos.writeObject(book);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
 
