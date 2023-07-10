@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>form태그 예제</title>
+</head>
+<body>
+	<!-- 
+		form
+		- 서버로 데이터를 전송하기 위한 태그
+		- 속성
+			- method 
+				- get : 기본값, URL에 데이터를 실어서 보내는 방식, 데이터가 노출, 게시글
+				- post: Http request에 데이터를 실어서 보내느 방식, 데이터가 노출되지 X, 로그인, 회원가입, 첨부파일
+			- action
+				- 데이터를 보낼 페이지
+			- enctype
+				- 데이터를 보내는 방식
+				- multipart/form-data : 첨부파일을 서버에 전송할 때 사용
+		input
+		- 데이터를 입력받는 태그
+		- 속성
+			- name
+				- 서버에 데이터를 보낼 때 보내는 값의 변수 이름을 지정하는 속성
+				- 서버로 데이터를 보내려면 받드시 name을 지정
+			- placeholder
+				- 입력해야 하는 값에 대한 정보를 미리 보여주는 문자열
+				- 클릭해서 문자열을 입력하면 안보이고, 문자열이 다 지워지고나면 다시 보임
+			- type
+				- type에 따라 다양한 input 태그를 생성할 수 있다.
+				- text (중요)
+					- 한줄을 입력받을 때 사용. 
+					- 검색창, 로그인 아이디창 등에 사용
+				- password (중요)
+					- 비밀번호를 입력받을 때 사용. 
+					- 입력을 하면 ***으로 표시
+				- hidden (중요)
+					- 화면에서는 안 보이지만 서버에는 전송해야할 데이터가 있을 때 사용. 
+				  - value를 반드시 사용
+				- button 
+					- 버튼을 생성할 때 사용. 
+					- button태그로 대체가 가능(type="button"). 
+					- 자체로는 기능이 없고 스크립트를 이용해서 기능을 추가
+				- submit 
+					- 서버로 데이터를 전송하는 버튼을 생성할 때 사용. 
+					- button태그로 대체가 가능 (type="submit")
+				- reset 
+					- 같은 form태그에 있는 모든 데이터들을 지울 때 사용. 
+					- button태그로 대체가 가능 (type="reset")
+				- file (중요)
+					- 첨부파일을 선택할 때 사용
+					- accept 속성을 이용하여 첨부파일 종류를 제한할 수도 있음
+					- form태그에 enctype을 multipart/form-data로 설정해야 보낼 수 있음
+				- image
+					- 이미지를 가져올 때 사용
+					- img 태그로 대체 가능
+						- 차이점은 hover했을 때 커서가 pointer 표시
+						- 차이점은 이미지를 클릭하면 클릭한 위치가 상대좌표로 url에 전송(x,y)
+				- checkbox (중요)
+					- 다중 선택해야 하는 경우 사용
+					- 약관 동의 
+					- 같은 항목이면 name을 같게 지정
+					- value값을 미리 지정해야 함
+					- checked 속성을 이용하여 초기값을 선택할 수 있다.
+				- radio (중요)
+					- 반드시 한가지만 선택해야 하는 경우 사용
+					- 라이센스 동의
+					- value값을 미리 지정해야 함.
+					- 같은 항목이면 name을 같게 지정 => 여러개 중 하나만 선택
+					- checked 속성을 이용하여 초기값을 선택할 수 있다.
+					
+	 -->
+	<form action="">
+		<input type="text" name="fruit" placeholder="과일을 입력하세요."> <br>
+		<input type="password" name="pw" placeholder="비번을 입력하세요."> <br>
+		<input type="hidden" name="name" value="홍길동"> <br>
+		<input type="button" value="일반버튼"> <br>
+		<input type="reset" value="리셋버튼"> <br>
+		<input type="file" name="img" accept=".jpg"> <br>
+		<input type="image" src="../img/강아지.jpg" alt="강아지 이미지" height="100">
+		<img src="../img/강아지.jpg" alt="강아지 이미지" height="100"> <br>
+		취미를 선택하세요.(다중 선택 가능) <br>
+		<input type="checkbox" name="hobby" value="독서"> 독서
+		<input type="checkbox" name="hobby" value="운동"> 운동
+		<input type="checkbox" name="hobby" value="게임"> 게임 <br>
+		라이센스에 동의하십니까? <br>
+		<input type="radio" name="agree" value="O"> 동의합니다. <br>
+		<input type="radio" name="agree" value="X" checked> 동의하지 않습니다. <br>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>
