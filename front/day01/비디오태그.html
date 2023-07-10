@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>비디오 태그 예제</title>
+</head>
+<body>
+	<!-- 
+		video 
+		- 영상을 재생하는 태그
+		- 속성
+			- src : 영상 경로
+			- autoplay : 자동 재생 여부
+			- loop : 반복 여부
+			- controls : 재생 도구를 보여줄지 말지
+			- width, height : 너비, 높이
+			- poster : 영상 재생 전 이미지
+			- preload : 영상을 모두 불러올지를 지정
+				- auto : 모두 다운
+				- metadata : 기본 정보만 가져옴
+				- none : 미리 다운로드 하지 않음
+	 -->
+	<video src="../video/sample.mp4" 
+		autoplay
+		loop
+		controls
+		width="1000"
+		height="500"
+		poster="../img/강아지.jpg"
+		preload="auto"></video>
+</body>
+</html>
