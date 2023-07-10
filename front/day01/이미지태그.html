@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이미지 태그 예제</title>
+</head>
+<body>
+	<!-- 
+		img
+		- 이미지를 추가할 때 사용하는 태그
+		- 속성으로 src 필수, alt는 웹표준에 맞추려면 필수, width/heignt는 너비/높이
+		- src에는 절대 경로와 상대 경로를 이용하여 가져옴.
+			- 상대 경로 : 파일을 기준으로 이미지가 어디에 있는지 탐색 해서가져옴
+			- 절대 경로 : 서버의 최상위 폴더를 기준으로 이미지가 어디에 있는지 탐색 해서 가져옴
+			- 서버의 최상위 경로는 open folder를 이용하여 열 때마다 달라질 수 있음
+		- width, heigth 속성
+			- 너비, 높이
+			- 기본값은 auto, 둘다 값을 설정하지 않으면 원본 이미지크기로 설정
+			- 한 쪽만 값을 설정하면 설정한 값에 맞게 비율에 맞춰 나머지 속성값을 결정
+				- height="200"으로 width를 설정하지 않으면 width는 원본 크기를 비율에 맞춰
+				  높이만 200으로 줄였을 때 너비를 자동으로 계산
+	 -->
+	<!-- 상대 경로를 이용하는 경우 -->
+	<img src="../img/강아지.jpg" alt="강아지 이미지" height="200">
+	<img src="../img/강아지.jpg" alt="강아지 이미지" height="200" width="100">
+	<br>
+	<!-- 절대 경로를 이용하는 경우 : /으로 시작하면 최상위 폴더를 기준으로 탐색 -->
+	<img src="/img/강아지.jpg" alt="강아지 이미지" height="200">
+</body>
+</html>
