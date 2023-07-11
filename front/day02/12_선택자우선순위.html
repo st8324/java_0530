@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자 우선순위 예제</title>
+	<style>
+		/* 
+		- 같은 요소에 같은 스타일을 여러번 적용할 때 누가 최종적으로
+		  적용될것인가를 정하는게 선택자 우선순위
+		태그 : 1점
+		클래스 : 10점
+		아이디 : 100점
+		- 점수가 높을수록 우선순위가 높다
+		- 점수가 같은 경우 마지막에 있는 요소가 적용
+		!important > style 속성 > 아이디선택자 > 클래스 > 태그 > 전체
+		*/
+		p{ color: red !important;}
+		.item{color: blue;}
+		.item-title{color:green;}
+		body .item{ color: pink;}
+		#title{ color: yellow;}
+	</style>
+</head>
+<body>
+	<p class="item item-title" id="title" style="color: gray;">
+		안녕하세요.
+	</p>
+</body>
+</html>
