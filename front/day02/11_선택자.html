@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* 전체 선택자 */
+		*{}
+		/* nav태그를 선택하는 선택자를 써보세요. */
+		nav{}
+		/* 아이디가 menu인 요소를 선택하는 선택자를 써보세요. 
+			a태그 싱커를 이용할 때 href에 입력하는 내용을 참고 */
+		#menu{}
+		/* 클래스가 menu-item인 요소를 선택하는 선택자를 써보세요. */
+		.menu-item{}
+		/* input태그 중에서 type이 password인 요소들를 선택하는 선택자 */
+		input[type=password]{}
+		/* type이 password인 요소들을 선택하는 선택자 */
+		[type=password]{}
+		/* 
+		class속성에 first라는 단어가 있는 요소들을 선택(단어 앞뒤로 공백)
+		class="first"	O
+		class="first-item" X
+		class="item first" O
+		class="first item" O
+		*/
+		[class~=first]{}
+		.first{}
+		/* 
+		class속성에 first-xxx이 들어가는 요소들을 선택 
+		class="first"	X
+		class="first-item" O
+		class="item first" X
+		class="first item" X
+		*/
+		[class|=first]{}
+		/* 
+		class가 first로 시작하는 요소들을 선택
+		class="first"	O
+		class="first-item" O
+		class="item first" X
+		class="first item" O
+		*/
+		[class^=first]{}
+		/* 
+		class가 item으로 끝나는 요소들을 선택 
+		class="first"	X
+		class="first-item" O
+		class="item first" X 
+		class="first item" O
+		*/
+		[class$=item]{}
+		/* 
+		class에 first가 포함된 요소들을 선택. first가 들어가기만하면됨 
+		class="first"	O
+		class="first-item" O
+		class="item first" O
+		class="first item" O
+		*/
+		[class*=first]{}
+		/* 
+		아이디가 menu인 요소의 자손 요소 중 a태그를 찾는 선택자
+		*/
+		#menu a{}
+		/* 
+		아이디가 menu인 요소의 자식 중 클래스명이 menu-item인 요소를 찾는 선택자
+		*/
+		#menu > .menu-item{}
+		/* 
+		클래스명이 first인 요소 뒤에 있는 클래스명이 menu-item인 모든 요소를 찾는 선택자
+		<li class="menu-item first">를 제외한 나머지 .menu-item요소들
+		*/
+		.first~.menu-item{} /*선택된 요소가 2개, 메뉴2, 메뉴3*/
+		/* 
+		클래스명이 first인 요소 다음에 클래스명이 menu-item인 요소를 찾는 선택자
+		 */
+		.first+.menu-item{} /*선택된 요소가 1개, 메뉴2*/
+		/* 
+		메뉴1에 마우스를 올렸을 때 선택자
+		*/
+		.first:hover{}
+		.first-link:hover{}
+		/* checked 상태인 checkbox를 찾는 선택자 */
+		input[type=checkbox]:checked{}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul id="menu">
+				<li class="menu-item first">
+					<a href="#" class="first-link">메뉴1</a>
+				</li>
+				<li class="menu-item">
+					<a href="#">메뉴2</a>
+				</li>
+				<li class="menu-item">
+					<a href="#">메뉴3</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<input type="text"> <br>
+		<input type="password"> <br>
+		<input type="password"> <br>
+		<input type="checkbox" name="checkbox">
+	</section>
+</body>
+</html>
