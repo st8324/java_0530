@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 스타일 예제</title>
+	<style>
+		ul{
+			list-style-type: circle;
+			/* 
+			inside : 컨텐츠안으로 마커를 배치
+			outside : 컨텐츠 밖에 마커를 배치(기본값)
+			 */
+			list-style-position: inside;
+			list-style: circle inside;
+		}
+		ol{
+			list-style-type: lower-roman;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li>메뉴1-1</li>
+		<li>메뉴1-2</li>
+	</ul>
+	<ol>
+		<li>메뉴2-1</li>
+		<li>메뉴2-2</li>
+	</ol>
+</body>
+</html>
