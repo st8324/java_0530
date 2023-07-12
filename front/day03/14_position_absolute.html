@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>position:absolute예제</title>
+	<style>
+		/* 
+		position : absolute
+		- 요소들 간의 위치와 상관없이 페이지에서 지정된 위치에 고정
+		- top,left,rigth,bottom 속성과 같이 사용
+		- display속성이 의미가 없어짐
+		- 조상 요소에 position:absolute나 postion:relative가 없으면 브라우저를 기준으로 위치를 배치
+		  (고정 배치는 X => fixed가 아님)
+		- 있으면 가장 가까운 조상요소를 기준으로 배치
+		*/
+		body{ height: 1000px;}
+		.box{ width: 100px; height: 100px; margin-top: 10px; background-color: yellow;}
+		.box2{
+			position: absolute; top: 20px; left: 300px;
+		}
+		.inner-box{
+			width: 100px; height: 100px; background-color: red; position: absolute;
+			top: 0; right: 0;
+		}
+		.box4{
+			position: relative; width: 500px; height: 500px; background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">1</div>
+	<a class="box box2">2</a>
+	<div class="box box3">3</div>
+	<div class="box4">
+		<div class="inner-box"></div>
+	</div>
+</body>
+</html>

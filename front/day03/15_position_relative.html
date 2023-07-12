@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>postion:relative예제</title>
+	<style>
+		/* 
+		position : relative 
+		- 요소의 원래 위치에서 지정된 방향으로 이동. 다른 요소는 영향이 없음
+		- 자손요소들 중에 postion: absolute가 적용된 요소의 기준점이 됨
+		*/
+		.box{ 
+			width: 100px; height: 100px; border: 1px solid black;
+			margin-right: 30px; display: inline-block;
+			font-size: 30px; text-align: center; line-height: 100px; position: relative;
+		}
+		.box1{ top: 50px;}
+		.box2{ left: -20px;}
+		.box3{ bottom: 20px;}
+		.box4{ right: -30px;}
+		.box5{ left: 20px; top: 30px;}
+	</style>
+</head>
+<body>
+	<div class="box box1">H</div>
+	<div class="box box2">E</div>
+	<div class="box box3">L</div>
+	<div class="box box4">L</div>
+	<div class="box box5">O</div>
+</body>
+</html>
