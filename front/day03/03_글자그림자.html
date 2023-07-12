@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>글자 그림자</title>
+	<style>
+		[class^=shadow]{
+			line-height: 30px; font-size: 20px; font-weight: bold;
+		}
+		.shadow1{
+			text-shadow: 3px 3px 1px red;
+		}
+		.shadow2{
+			color: white; text-shadow: 0 0 1px black;
+		}
+		.shadow3{
+			color: white; text-shadow: 1px 1px black;
+		}
+		.shadow4{
+			color: #fff; 
+			text-shadow: 0 0 1px black, 2px 2px 3px gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="shadow1">Hello</div>
+	<div class="shadow2">Hello</div>
+	<div class="shadow3">Hello</div>
+	<div class="shadow4">Hello</div>
+</body>
+</html>

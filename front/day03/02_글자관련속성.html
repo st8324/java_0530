@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>글자 관련 속성</title>
+	<style>
+		/* 
+		색상 표현 방법
+		1. 지정된 이름 
+		 - red, blue와 같이 지정된 이름을 이용
+		2. 색상 코드를 이용
+		 - #rrggbb의 형태로 16진수로 된 코드를 이용
+		3. rgb(r, g, b) 함수를 이용
+		 - r,g,b는 0~255의 정수
+		4. rgba(r,g,b,투명도) 함수를 이용
+		 - rgb에 투명도가 추가. 투명도는 0~1사이의 실수. 1이 불투명. 0이 투명
+		5. hsl(), hsla() 함수를 이용
+		 - 색상, 채도, 며도를 이용하는 방법
+		*/
+		body{
+			font-family: 'Courier New', Courier, monospace;
+		}
+		.first{
+			font-family: 'Times New Roman', Times, serif;
+			color: red;
+			text-decoration: underline;
+		}
+		.second{
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			color: rgb(255,0,0);
+		}
+		.third{
+			font-size: 20px;
+			color: #ff0000;
+		}
+		.fourth{
+			font-weight: bold; font-style: italic;
+			color: rgba(255,0,0,0.5);
+		}
+		.fifth{
+			/* font-variant: small-caps; font-weight: 100; */
+			font : normal normal normal 20px/30px serif;
+			font : 20px/30px serif;
+		}
+	</style>
+</head>
+<body>
+	<div class="first">안녕하세요.</div>
+	<div class="second">안녕하세요.</div>
+	<div class="third">안녕하세요.</div>
+	<div class="fourth">안녕하세요.</div>
+	<div class="fifth">Hello.</div>
+</body>
+</html>
