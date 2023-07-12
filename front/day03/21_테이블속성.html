@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>table 속성 예제</title>
+	<style>
+		table, tr, td, th{
+			border: 1px solid black;
+			border-collapse: collapse;
+			border-width: 1px 0;
+		}
+		.title{
+			width: 150px;
+			text-align: center;
+			height: 50px;
+		}
+		.name{
+			width: 130px;
+		}
+		.score{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<colgroup>
+			<col class="title">
+			<col class="name">
+			<col class="score">
+		</colgroup>
+		<tr>
+			<th class="title">과목</th>
+			<th class="name">이름</th>
+			<th class="socre">점수</th>
+		</tr>
+		<tr>
+			<td class="title">HTML</td>
+			<td class="name">홍길동</td>
+			<td class="socre">100</td>
+		</tr>
+		<tr>
+			<td class="title">HTML</td>
+			<td class="name">임꺽정</td>
+			<td class="socre">90</td>
+		</tr>
+	</table>
+</body>
+</html>
