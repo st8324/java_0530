@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선습 연습 예제</title>
+	<style>
+		/* 요소를 선택하기 위해 클래스나 아이디를 추가해도 됨. */
+		/* 메뉴1이 쓰인 요소를 선택하기 위한 선택자 */
+		.first-item{}
+		/* 모든 메뉴를 선택하기 위한 선택자 */
+		.menu a{}
+		.menu>li>a{}
+		.menu-link{}
+		ul{
+			/* A; */
+		}
+		li{
+			/* A; */
+		}
+		/* ul선택자와 li선택자를 같이 묶어서 A 스타일을 적용 */
+		ul, li{
+			/* A; */
+		}
+		/* 
+		한 요소를 여러 선택자로 표현하는 경우 선택자를 붙여서 표시 
+		- 순서가 중요
+		*/
+		ul.menu{
+
+		}
+		.menuul{
+
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="menu">
+				<li class="menu-item">
+					<a href="#" class="first-item menu-link">메뉴1</a>
+				</li>
+				<li>
+					<a href="#" class="menu-link">메뉴2</a>
+				</li>
+				<li>
+					<a href="#" class="menu-link">메뉴3</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<ul>
+			<li class="menu">
+				<a href="#">링크1</a>
+			</li>
+			<li class="menu"></li>
+		</ul>
+	</main>
+	<div class="box"></div>
+	<div id="id"></div>
+	<div class="box"></div>
+</body>
+</html>
