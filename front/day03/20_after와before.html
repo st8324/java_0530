@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>::after와 ::before 예제</title>
+	<style>
+		/* 
+		선택자::after 
+		- 요소 뒤에 요소를 만들어서 추가 
+		선택자::before
+		- 요소 앞에 요소를 만들어서 추가
+		::after,::before
+		- content : 요소안에 들어가는 문자열
+		- display나 position을 이용
+		- 선택이 안됨
+		*/
+		#name::before{
+			content : '안녕하세요. '; display: inline;
+			color: red;
+		}
+		#name::after{
+			content: ''; display: inline-block; width: 5px; background-color: red;
+			height: 5px; border-radius: 50%; vertical-align: 3px; margin-left: 3px;
+		}
+	</style>
+</head>
+<body>
+	<span id="name">홍길동</span>
+</body>
+</html>
