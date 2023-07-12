@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>float 예제</title>
+	<style>
+		/* 
+		float
+		- float 속성을 적용하면 다른 요소들과 따로 놈.
+		 */
+		.box{
+			width: 100px; height: 100px; background-color: yellow;
+			float: left;
+			/* display: inline-block; */
+		}
+		.box2{ height: 50px; float: right;}
+		/* float요소가 적용된 부모 요소에 ::after를 추가하여 아래 코드를 추가 */
+		.container::after{
+			clear: both; content: ''; display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+		<!-- <div style="clear: both;"></div> -->
+	</div>
+	<p>안녕하세요. 제 이름은 홍길동입니다.</p>
+</body>
+</html>
