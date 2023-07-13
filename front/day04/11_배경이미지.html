@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배경이미지</title>
+	<style>
+		.box{
+			height: 1000px; background-image: url(../img/강아지.jpg);
+			background-repeat: no-repeat;
+			background-size: 860px 1000px;
+			background-position: 0px 0px;
+			padding: 30px;
+			background-origin: content-box;
+			background-attachment: fixed;
+			background: url(../img/강아지.jpg) no-repeat fixed 0px 0px content-box content-box
+				860px 1000px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
