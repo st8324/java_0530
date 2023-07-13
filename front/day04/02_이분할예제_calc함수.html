@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이분할 예제</title>
+	<style>
+		/* 
+		calc함수
+		- 다양한 단위의 값들을 계산해주는 함수
+		- 연산자 앞뒤로는 공백을 추가
+		*/
+		.container{
+			width: calc(100% - 2 * 10px); border: 3px solid red; padding: 10px;
+		}
+		.container::after{
+			content: ''; display: block; clear: both;
+		}
+		.box{
+			width: calc((100% - 10px) / 2); 
+			height: calc(500px - 2 * 10px); 
+			background-color: yellow; float: left;
+		}
+		.box2{
+			background-color: blue; float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+	</div>
+</body>
+</html>

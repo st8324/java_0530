@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>삼분할 예제</title>
+	<style>
+		.container{
+			width: 500px; height: 500px; padding: 10px; padding-right: 0;
+			box-sizing: border-box; background-color: red;
+		}
+		.box{
+			float: left; 
+			width: calc(100% / 3); height: 100%; padding-right: 10px;
+			box-sizing: border-box;
+		}
+		.inner-box{
+			background-color: yellow;
+			width: 100%; height: 100%;
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1">
+			<div class="inner-box"></div>
+		</div>
+		<div class="box box2">
+			<div class="inner-box"></div>
+		</div>
+		<div class="box box3">
+			<div class="inner-box"></div>
+		</div>
+	</div>
+</body>
+</html>

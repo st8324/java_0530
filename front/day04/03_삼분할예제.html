@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>삼분할 예제</title>
+	<style>
+		.container{
+			width: 500px; height: 500px; padding: 10px;
+			box-sizing: border-box; background-color: red;
+		}
+		.box{
+			float: left; background-color: yellow;
+			width: calc((100% - 2 * 10px) / 3); height: 100%;
+		}
+		.box+.box{
+			margin-left: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+	</div>
+</body>
+</html>
