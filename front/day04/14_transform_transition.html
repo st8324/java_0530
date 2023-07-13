@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transform 예제</title>
+	<style>
+		/* 
+		transform 변형 함수들
+		translate
+		- 요소를 이동시키는 함수
+		scale
+		- 요소를 확대/축소 시키는 함수
+		rotate
+		- 요소를 회전시키는 함수
+		- 단위가 deg
+		skew
+		- 요소를 비트는 함수
+
+
+		transition
+		- 값이 변경됐을 때 감지하여 자연스럽게 변경되게 하는 속성
+		- transition-property : 변경이 됨을 가지할 속성명
+		- transition-duration : 변경 시간
+		- transition-timing-function : 변경되는 속도를 표현한 함수
+		- transition-delay : 변경을 시작하기전 대기 시간
+		- transtion : property duration timeing-function delay순으로 축약한 속성
+		- 시간은 초는 s, 밀리세컨드는 ms로 표기
+		*/
+		.box{
+			width: 100px; height: 100px; margin-top: 50px;
+			background: red; font-size: 20px; color: #fff;
+			text-align: center; line-height: 100px;
+			transition-property: transform;
+			transition-duration: 1s;
+			transition-timing-function: ease-in;
+			transition-delay: .3s;
+			transition: transform 1s ease-in .3s ;
+		}
+		.box1:hover{
+			transform: translateX(30px);
+		}
+		.box2:hover{
+			transform: translateY(30px);
+		}
+		.box3:hover{
+			transform: translate(30px, 30px);
+		}
+		.box4:hover{
+			transform: scaleX(1.5);
+		}
+		.box5:hover{
+			transform: scaleY(1.5);
+		}
+		.box6:hover{
+			transform: scale(1.5);
+		}
+		.box7:hover{
+			transform: rotate(90deg);
+		}
+		.box8:hover{
+			transform: rotateX(45deg);
+		}
+		.box9:hover{
+			transform: rotateY(45deg);
+		}
+		.box10:hover{
+			transform: rotateZ(45deg);
+		}
+		.box11:hover{
+			transform: skewX(45deg);
+		}
+		.box12:hover{
+			transform: skewY(45deg);
+		}
+		.box13:hover{
+			transform: skew(10deg, 10deg);
+		}
+		.box14:hover{
+			transform: rotate(45deg);
+			transform-origin: 100px 0;
+		}
+		body{
+			perspective: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">x축 이동</div>
+	<div class="box box2">y축 이동</div>
+	<div class="box box3">x,y축 이동</div>
+	<div class="box box4">가로 확대</div>
+	<div class="box box5">세로 확대</div>
+	<div class="box box6">가,세 확대</div>
+	<div class="box box7">회전</div>
+	<div class="box box8">x축 회전</div>
+	<div class="box box9">y축회전</div>
+	<div class="box box10">z축회전</div>
+	<div class="box box11">x축 비틈</div>
+	<div class="box box12">y축 비틈</div>
+	<div class="box box13">x,y축비틈</div>
+	<div class="box box14">좌상 회전</div>
+</body>
+</html>

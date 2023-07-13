@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>transition과 transform 예제</title>
+	<style>
+		.link{
+			text-decoration: none; font-size: 30px; color: black;
+			font-weight: bold; position: relative;
+		}
+		.link::after{
+			content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+			background-color: #ff5656;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: bottom right;
+		}
+		.link:hover::after{
+			transform: scale(1);
+			transform-origin: bottom left;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" class="link">홍길동</a>
+</body>
+</html>
