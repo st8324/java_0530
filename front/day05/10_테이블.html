@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테이블 예제</title>
+	<style>
+		table{
+			width: 500px; border-collapse: collapse;
+		}
+		th,td{
+			border: 1px solid black;
+			border-width: 1px 0; line-height: 50px; font-size: 20px;
+			text-align: center;
+		}
+		a{ text-decoration: none; color: black;}
+		tr>th:nth-child(1){		width: 50px;		}
+		tr>th:nth-child(2){		width: 270px;		}
+		tr>th:nth-child(3){		width: 100px;		}
+		tr>th:nth-child(4){		width: 80px;		}
+		tr>td:nth-child(2){	text-align: left;}
+		tbody>tr:nth-child(2n){ background-color: orange; }
+		tbody>tr:nth-child(2n+1){ background-color: gainsboro;}
+		tbody>tr:hover{ background-color: yellow;}
+		/* tr:first-child:hover{ background-color: transparent;} */
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2</td>
+				<td><a href="#">환영인사</a></td>
+				<td>홍길동</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="#">공지사항</a></td>
+				<td>관리자</td>
+				<td>10</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
