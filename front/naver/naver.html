@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Naver</title>
 	<style>
-		*{ padding: 0; margin: 0; color: #101010;}
+		*{ padding: 0; margin: 0; color: #101010;
+			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif
+		}
 		a{ text-decoration: none;}
 
 		body{
@@ -53,6 +55,7 @@
 			/* 좌우 가운데 정렬 */
 			left: 50%; transform: translateX(-50%);
 			border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음*/
+			border-color: #a3691b;
 			border-radius: 33px; top: 64px;
 		
 		}
@@ -95,7 +98,36 @@
 			background-position: -364px -106px;
 			width: 25px; height: 25px; content: ''; display: block;
 		}
+		/* 가상 키보드와 자동완성버튼 */
+		#box_search .box-btns{
+			position: absolute; top: 0; right: 61px; bottom: 0;
+			width: 56px; 
+		}
+		#box_search .box-btns .btn-kbd{
+			padding: 21px 3px; cursor: pointer; border: 0; outline: 0;
+			background-color: transparent;
+		}
+		#box_search .box-btns .btn-kbd::before{
+			background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px;
+			background-position: -50px -270px;
+			width: 24px; height: 16px; content: ''; display: block;
+		}
+		#box_search .box-btns .btn-kbd:hover::before{
+			background-position: -270px -234px;
+		}
 
+		#box_search .box-btns .btn-autocomplete{
+			padding: 26px 6px; cursor: pointer; border: 0; outline: 0;
+			background-color: transparent; position: absolute;
+			right: 1px; top: 0;
+		}
+		#box_search .box-btns .btn-autocomplete::before{
+			background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px;
+			background-position: -412px -352px;
+			width: 10px; height: 6px; content: ''; display: block;
+		}
 
 		/* 컨텐츠 영역 */
 		#container{
@@ -160,6 +192,14 @@
 					</button>
 				</fieldset>
 			</form>
+			<div class="box-btns">
+				<button class="btn-kbd">
+					<span class="blind">입력도구</span>
+				</button>
+				<button class="btn-autocomplete">
+					<span class="blind">자동완성/최근검색어펼치기</span>
+				</button>
+			</div>
 		</div>
 		<!-- 검색창 끝 -->
 	</header>
