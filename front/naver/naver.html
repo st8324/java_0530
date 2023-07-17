@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Naver</title>
+	<style>
+		*{ padding: 0; margin: 0; color: #101010;}
+		a{ text-decoration: none;}
+
+		body{
+			min-width: 1340px;
+		}
+
+		/* 헤더 영역(검객창, 메뉴 등)*/
+		header{
+			width: 1280px; 
+			margin: 0 auto;/* 박스 가운데 정렬 */
+			position: relative;
+			padding: 64px 0 42px;
+			
+			/* 아래는 나중에 삭제할 속성  */
+			background-color: yellow;
+			height: 200px;
+		}
+		/* 햄버거 메뉴 */
+		#ham_menu{
+			position: absolute; top: 18px; left: -10px;
+			
+		}
+		#ham_menu .btn-ham{
+			padding: 10px; cursor: pointer;
+			background-color: transparent; border: 0; outline: 0;
+		}
+		#ham_menu .btn-ham::after{
+			content: ''; display: block; background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px; /* 원래 이미지 사이즈는 844px 810px*/
+			background-position: -335px -284px;
+			width: 26px; height: 26px;
+			/* hover했을 때 회색 타원 아래로 햄버거 메뉴가 깔리는데 그 문제를 해결하기 위해 
+			position : relative 사용
+			*/
+			position: relative;
+		}
+		#ham_menu .btn-ham:hover::before{
+			content: ''; display: block; position: absolute; top: 1px; left: 1px;
+			width: 44px; height: 44px;	border-radius: 50%; 
+			background-color: #f5f7f8;
+		}
+		/* 검색창 영역 */
+		#box_search{
+			width: 706px; position: absolute;
+			/* 좌우 가운데 정렬 */
+			left: 50%; transform: translateX(-50%);
+			border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음*/
+			border-radius: 33px; top: 64px;
+			background-color: pink;
+			height: 50px;
+		}
+
+
+		/* 컨텐츠 영역 */
+		#container{
+			width : 1280px;
+			margin: 0 auto;/* 박스 가운데 정렬 */
+			
+			/* 아래는 나중에 삭제할 속성  */
+			background-color: red;
+			height: 500px;
+		}
+
+		/* 푸터 영역(회사 정보) */
+		footer{
+			min-width: 1280px; /* 최소 너비로, 브라우저 작을때는 1280px, 클때는 100%*/
+			background-color: #f5f6f7;
+			
+			/* 아래는 나중에 삭제할 속성  */
+			height: 300px;
+		}
+
+		/* 공통 */
+		.blind{
+			position: absolute; width: 1px; height: 1px; margin: -1px;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="ham_menu">
+			<button class="btn-ham">
+				<!-- 
+					웹 표준은 웹접근성이 좋아야 함. 
+					=> 시력이 불편한 분들이 리더기를 통해 사이트를 방문해도 사이트를 이용할 수 있게 하기 
+					   위해 아이콘, 이미지 등에도 안보이게 글자를 추가
+				-->
+				<span class="blind">확장 영역</span>
+			</button>
+		</div>
+		<!-- 햄거버 메뉴 끝 -->
+		<div id="box_search">
+
+		</div>
+		<!-- 검색창 끝 -->
+	</header>
+	<div id="container"></div>
+	<footer></footer>
+</body>
+</html>
