@@ -54,8 +54,46 @@
 			left: 50%; transform: translateX(-50%);
 			border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음*/
 			border-radius: 33px; top: 64px;
-			background-color: pink;
-			height: 50px;
+		
+		}
+		#box_search .box-logo{
+			float: left; width: 80px;
+		}
+		#box_search .box-logo .link-logo{
+			display: block; padding-left: 10px; margin-right: 12px;
+		}
+		#box_search .box-logo .link-logo>.img-link-logo{
+			width: 58px; height: 58px; display: block;
+		}
+
+		#box_search .box-search-input{
+			float: right; width: 623px;
+		}
+
+		/* 검색창 */
+		#box_search .box-search-input .input-search{
+			padding: 17px 0; width: 480px; float: left;
+			height: 58px; border: 0; outline: 0; 
+			box-sizing: border-box; 
+			line-height: 24px; font-weight: bold; font-size: 24px; color: #000;
+		}
+		#box_search .box-search-input .input-search::placeholder{
+			color: #f5f6f7;
+		}
+		/* 검색버튼 */
+		#box_search .box-search-input .btn-search{
+			padding: 17px 27px 16px 10px; cursor: pointer;
+			position: absolute; top: 0; right: 0;
+			border: 0; outline: 0; background-color: transparent;
+		}
+		#box_search .box-search-input .btn-search .icon-search{
+			background-color: #a3691b; display: block;
+		}
+		#box_search .box-search-input .btn-search .icon-search::before{
+			background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px;
+			background-position: -364px -106px;
+			width: 25px; height: 25px; content: ''; display: block;
 		}
 
 
@@ -79,9 +117,15 @@
 		}
 
 		/* 공통 */
+		fieldset{
+			border: 0;
+		}
 		.blind{
 			position: absolute; width: 1px; height: 1px; margin: -1px;
 			overflow: hidden;
+		}
+		.clearfix::after{
+			content: ''; clear: both; display: block;
 		}
 	</style>
 </head>
@@ -98,8 +142,24 @@
 			</button>
 		</div>
 		<!-- 햄거버 메뉴 끝 -->
-		<div id="box_search">
-
+		<div id="box_search" class="clearfix">
+			<div class="box-logo">
+				<a href="#" class="link-logo">
+					<img src="../img/naver_7_17_logo.png" alt="로고" class="img-link-logo" width="58px" height="58px">
+				</a>
+			</div>
+			<form class="box-search-input">
+				<fieldset>
+					<legend class="blind">검색</legend>
+					<div class="box-input clearfix">
+						<input type="text" class="input-search" placeholder="검색어를 입력해 주세요.">
+					</div>
+					<button class="btn-search">
+						<span class="icon-search"></span>
+						<span class="blind">검색</span>
+					</button>
+				</fieldset>
+			</form>
 		</div>
 		<!-- 검색창 끝 -->
 	</header>
