@@ -13,6 +13,9 @@
 		body{
 			min-width: 1340px;
 		}
+		ul,ol{list-style: none;}
+
+
 
 		/* 헤더 영역(검객창, 메뉴 등)*/
 		header{
@@ -128,6 +131,78 @@
 			background-position: -412px -352px;
 			width: 10px; height: 6px; content: ''; display: block;
 		}
+		
+		/* 메뉴 영역 */
+		.shortcut-area{
+			width: 676px; margin: 72px auto 0;
+		}
+		.shortcut-area>.shortcut-list>.shortcut-item{
+			float: left;
+		}
+		.shortcut-area>.shortcut-list>.shortcut-item+.shortcut-item{
+			margin-left: 4px;
+		}
+		.shortcut-area>.shortcut-list .link-service{
+			position: relative; display: block; width: 64px;
+		}
+		.shortcut-area>.shortcut-list .link-service span{
+			display: block; position: relative;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service{
+			width: 48px; height: 48px; margin: 0 auto;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service::before{
+			background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px;
+			background-position: 0px -128px;
+			width: 54px; height: 54px; content: ''; display: block;
+			position: absolute; top: -2px; left: -3px;
+		}
+		.shortcut-area>.shortcut-list .link-service:hover .icon-service::before{
+			background-position: -142px 0px; top: -3px; left: -5px;
+			width: 58px; height: 58px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service::after{
+			background-image: url(../img/naver_icon.png);
+			background-size: 422px 405px;
+			width: 44px; height: 44px; content: ''; display: block;
+			position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+			margin: auto;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.mail::after{
+			background-position: -250px -90px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.cafe::after{
+			background-position: -250px 0px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.blog::after{
+			background-position: -201px -98px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.shopping::after{
+			background-position: -90px -209px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.news::after{
+			background-position: -0px -209px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.stock::after{
+			background-position: -180px -209px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.real::after{
+			background-position: -45px -209px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.map::after{
+			background-position: -201px 0px; width: 48px; height: 48px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.webtoon::after{
+			background-position: -225px -209px;
+		}
+		.shortcut-area>.shortcut-list .link-service .icon-service.type-more::after{
+			background-position: -250px -135px;
+		}
+		.shortcut-area>.shortcut-list .link-service .name-service{
+			font-size: 14px; line-height: 20px; margin-top: 7px;
+			text-align: center;
+		}
 
 		/* 컨텐츠 영역 */
 		#container{
@@ -202,6 +277,71 @@
 			</div>
 		</div>
 		<!-- 검색창 끝 -->
+		<div class="shortcut-area">
+			<ul class="shortcut-list clearfix">
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service mail"></span>
+						<span class="name-service">메일</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service cafe"></span>
+						<span class="name-service">카페</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service blog"></span>
+						<span class="name-service">블로그</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service shopping"></span>
+						<span class="name-service">쇼핑</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service news"></span>
+						<span class="name-service">뉴스</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service stock"></span>
+						<span class="name-service">증권</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service real"></span>
+						<span class="name-service">부동산</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service map"></span>
+						<span class="name-service">지도</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service webtoon"></span>
+						<span class="name-service">웹툰</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service type-more"></span>
+						<span class="blind">바로가기 펼침</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 메뉴 끝 -->
 	</header>
 	<div id="container"></div>
 	<footer></footer>
