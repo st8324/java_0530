@@ -4,237 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Naver</title>
-	<style>
-		*{ padding: 0; margin: 0; color: #101010;
-			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif
-		}
-		a{ text-decoration: none;}
-
-		body{
-			min-width: 1340px;
-		}
-		ul,ol{list-style: none;}
-
-
-
-		/* 헤더 영역(검객창, 메뉴 등)*/
-		header{
-			width: 1280px; 
-			margin: 0 auto;/* 박스 가운데 정렬 */
-			position: relative;
-			padding: 64px 0 42px;
-			
-			/* 아래는 나중에 삭제할 속성  */
-			background-color: yellow;
-			height: 200px;
-		}
-		/* 햄버거 메뉴 */
-		#ham_menu{
-			position: absolute; top: 18px; left: -10px;
-			
-		}
-		#ham_menu .btn-ham{
-			padding: 10px; cursor: pointer;
-			background-color: transparent; border: 0; outline: 0;
-		}
-		#ham_menu .btn-ham::after{
-			content: ''; display: block; background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px; /* 원래 이미지 사이즈는 844px 810px*/
-			background-position: -335px -284px;
-			width: 26px; height: 26px;
-			/* hover했을 때 회색 타원 아래로 햄버거 메뉴가 깔리는데 그 문제를 해결하기 위해 
-			position : relative 사용
-			*/
-			position: relative;
-		}
-		#ham_menu .btn-ham:hover::before{
-			content: ''; display: block; position: absolute; top: 1px; left: 1px;
-			width: 44px; height: 44px;	border-radius: 50%; 
-			background-color: #f5f7f8;
-		}
-		/* 검색창 영역 */
-		#box_search{
-			width: 706px; position: absolute;
-			/* 좌우 가운데 정렬 */
-			left: 50%; transform: translateX(-50%);
-			border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음*/
-			border-color: #a3691b;
-			border-radius: 33px; top: 64px;
-		
-		}
-		#box_search .box-logo{
-			float: left; width: 80px;
-		}
-		#box_search .box-logo .link-logo{
-			display: block; padding-left: 10px; margin-right: 12px;
-		}
-		#box_search .box-logo .link-logo>.img-link-logo{
-			width: 58px; height: 58px; display: block;
-		}
-
-		#box_search .box-search-input{
-			float: right; width: 623px;
-		}
-
-		/* 검색창 */
-		#box_search .box-search-input .input-search{
-			padding: 17px 0; width: 480px; float: left;
-			height: 58px; border: 0; outline: 0; 
-			box-sizing: border-box; 
-			line-height: 24px; font-weight: bold; font-size: 24px; color: #000;
-		}
-		#box_search .box-search-input .input-search::placeholder{
-			color: #f5f6f7;
-		}
-		/* 검색버튼 */
-		#box_search .box-search-input .btn-search{
-			padding: 17px 27px 16px 10px; cursor: pointer;
-			position: absolute; top: 0; right: 0;
-			border: 0; outline: 0; background-color: transparent;
-		}
-		#box_search .box-search-input .btn-search .icon-search{
-			background-color: #a3691b; display: block;
-		}
-		#box_search .box-search-input .btn-search .icon-search::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -364px -106px;
-			width: 25px; height: 25px; content: ''; display: block;
-		}
-		/* 가상 키보드와 자동완성버튼 */
-		#box_search .box-btns{
-			position: absolute; top: 0; right: 61px; bottom: 0;
-			width: 56px; 
-		}
-		#box_search .box-btns .btn-kbd{
-			padding: 21px 3px; cursor: pointer; border: 0; outline: 0;
-			background-color: transparent;
-		}
-		#box_search .box-btns .btn-kbd::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -50px -270px;
-			width: 24px; height: 16px; content: ''; display: block;
-		}
-		#box_search .box-btns .btn-kbd:hover::before{
-			background-position: -270px -234px;
-		}
-
-		#box_search .box-btns .btn-autocomplete{
-			padding: 26px 6px; cursor: pointer; border: 0; outline: 0;
-			background-color: transparent; position: absolute;
-			right: 1px; top: 0;
-		}
-		#box_search .box-btns .btn-autocomplete::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: -412px -352px;
-			width: 10px; height: 6px; content: ''; display: block;
-		}
-		
-		/* 메뉴 영역 */
-		.shortcut-area{
-			width: 676px; margin: 72px auto 0;
-		}
-		.shortcut-area>.shortcut-list>.shortcut-item{
-			float: left;
-		}
-		.shortcut-area>.shortcut-list>.shortcut-item+.shortcut-item{
-			margin-left: 4px;
-		}
-		.shortcut-area>.shortcut-list .link-service{
-			position: relative; display: block; width: 64px;
-		}
-		.shortcut-area>.shortcut-list .link-service span{
-			display: block; position: relative;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service{
-			width: 48px; height: 48px; margin: 0 auto;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service::before{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			background-position: 0px -128px;
-			width: 54px; height: 54px; content: ''; display: block;
-			position: absolute; top: -2px; left: -3px;
-		}
-		.shortcut-area>.shortcut-list .link-service:hover .icon-service::before{
-			background-position: -142px 0px; top: -3px; left: -5px;
-			width: 58px; height: 58px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service::after{
-			background-image: url(../img/naver_icon.png);
-			background-size: 422px 405px;
-			width: 44px; height: 44px; content: ''; display: block;
-			position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-			margin: auto;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.mail::after{
-			background-position: -250px -90px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.cafe::after{
-			background-position: -250px 0px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.blog::after{
-			background-position: -201px -98px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.shopping::after{
-			background-position: -90px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.news::after{
-			background-position: -0px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.stock::after{
-			background-position: -180px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.real::after{
-			background-position: -45px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.map::after{
-			background-position: -201px 0px; width: 48px; height: 48px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.webtoon::after{
-			background-position: -225px -209px;
-		}
-		.shortcut-area>.shortcut-list .link-service .icon-service.type-more::after{
-			background-position: -250px -135px;
-		}
-		.shortcut-area>.shortcut-list .link-service .name-service{
-			font-size: 14px; line-height: 20px; margin-top: 7px;
-			text-align: center;
-		}
-
-		/* 컨텐츠 영역 */
-		#container{
-			width : 1280px;
-			margin: 0 auto;/* 박스 가운데 정렬 */
-			
-			/* 아래는 나중에 삭제할 속성  */
-			background-color: red;
-			height: 500px;
-		}
-
-		/* 푸터 영역(회사 정보) */
-		footer{
-			min-width: 1280px; /* 최소 너비로, 브라우저 작을때는 1280px, 클때는 100%*/
-			background-color: #f5f6f7;
-			
-			/* 아래는 나중에 삭제할 속성  */
-			height: 300px;
-		}
-
-		/* 공통 */
-		fieldset{
-			border: 0;
-		}
-		.blind{
-			position: absolute; width: 1px; height: 1px; margin: -1px;
-			overflow: hidden;
-		}
-		.clearfix::after{
-			content: ''; clear: both; display: block;
-		}
-	</style>
+	<link rel="stylesheet" href="naver.css">
+	
 </head>
 <body>
 	<header>
@@ -342,8 +113,27 @@
 			</ul>
 		</div>
 		<!-- 메뉴 끝 -->
+		<div class="box-pay">
+			<a href="#" class="link-pay">
+				<span class="blind">페이로 바로가기</span>
+			</a>
+		</div>
+		<!-- 네이버 페이 끝-->
+		<div class="box-notify">
+			<button class="btn-notify">
+				<span class="blind">알림</span>
+			</button>
+		</div>
+		<!-- 알림 끝 -->
 	</header>
-	<div id="container"></div>
+	<div id="container">
+		<div class="box-left"></div>
+		<!-- 컨텐츠 왼쪽 박스 끝 -->
+		<div class="box-right"></div>
+		<!-- 컨텐츠 오른쪽 박스 끝 -->
+	</div>
+	<!-- 컨텐츠 끝 -->
 	<footer></footer>
+	<!-- 푸터 끝 -->
 </body>
 </html>
