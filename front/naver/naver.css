@@ -9,7 +9,9 @@ body{
 	min-width: 1340px;
 }
 ul,ol{list-style: none;}
-
+html{ 
+	font-size: 10.5px; line-height: 10.5px;
+}
 
 
 /* 헤더 영역(검객창, 메뉴 등)*/
@@ -18,6 +20,7 @@ header{
 	margin: 0 auto;/* 박스 가운데 정렬 */
 	position: relative;
 	padding: 64px 0 42px;
+	height: 156px;
 }
 /* 햄버거 메뉴 */
 #ham_menu{
@@ -241,9 +244,176 @@ header{
 	width : 1280px;
 	margin: 0 auto;/* 박스 가운데 정렬 */
 	
-	/* 아래는 나중에 삭제할 속성  */
-	background-color: red;
+}
+/* 컨텐츠 영역 공통 */
+#container>.box-left>div,
+#container>.box-right>div{
+	box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0,0,0,.04);
+	border-radius: 8px;
+}
+/* 왼쪽과 오른쪽 각 2번째부터 위 여백을 추가 */
+#container>.box-left>div+div,
+#container>.box-right>div+div{
+	margin-top: 16px;
+}
+/* 컨텐츠 왼쪽 영역 */
+#container .box-left{
+	float: left; width: 830px;
+
 	height: 500px;
+}
+/* 1번째 왼쪽 컨텐츠 : 배너 광고 */
+#container .box-left .box-banner{
+	height: 130px;
+}
+#container .box-left .box-banner iframe{
+	width: 100%; height: 130px; 
+	background-color: gray; border-radius: 8px;
+}
+/* 2번째 왼쪽 컨텐츠 : 뉴스 스탠드 */
+#container .box-left .box-newsstand .box-newsstand-body{
+	padding: 18px 20px;
+}
+
+#container .box-left .box-newsstand .box-newsstand-body .tab-list{
+	font-size: 1.4rem; line-height: 1.7rem;
+	letter-spacing: -.4px;
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item{
+	float: left; position: relative;
+	font-size: 1.6rem; line-height: 23px;
+	font-weight: 800;
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item+.tab-item{
+	padding-left: 26px; 
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item+.tab-item::before{
+	content: ''; display: block; position: absolute; 
+	width: 1px; height: 15px;
+	background-color: #d3d5d7; 
+	transform: skew(-15deg); 
+	top: 4px; left: 13px;
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item .btn-press::before{
+	content: ''; display: inline-block; 
+	width: 4px; height: 4px;
+	background-color: #d3d5d7; 
+	border-radius: 50%; 
+	margin: 9px 7px 0;
+	vertical-align: top;
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item>a{
+	color: rgba(8,8,8,.5);
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item>a[aria-selected=true]{
+	color: #080808;
+}
+#container .box-left .box-newsstand .box-newsstand-body .tab-item>a:hover{
+	text-decoration: underline;
+}
+#container .box-left .box-newsstand .box-header-sub{
+	margin-top: 17px; padding: 12px 20px; background-color: #f5f7f8;
+	border-radius: 4px; line-height: 26px; font-size: 1.4rem;
+	letter-spacing: -.4px;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-left{
+	float: left;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .icon-triangle-down{
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px; display: inline-block;
+	background-position: -412px -366px;
+	width: 9px; height: 6px; 
+	margin: 10px 0 0 5px; vertical-align: top;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .box-news,
+#container .box-left .box-newsstand .box-header-sub .box-sub-right .link-news-home{
+	padding-left: 25px; position: relative;
+}
+/* | */
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .box-news::before,
+#container .box-left .box-newsstand .box-header-sub .box-sub-right .link-news-home::before{
+	content: ''; position: absolute; top: 7px; left: 12px; 
+	width: 1px; height: 12px; background-color: #d3d5d7;
+}
+/* 가운데 점 */
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .btn-media::after{
+	content: ''; display: inline-block; 
+	width: 3px; height: 3px;
+	background-color: hsl(210, 5%, 84%); 
+	border-radius: 50%; 
+	margin: 12px 6px 0;
+	vertical-align: top;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .link-news{
+	display: block; max-width: 380px; 
+	/* 말줄임... */
+	overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+}
+
+#container .box-left .box-newsstand .box-header-sub .box-sub-right{
+	float: right; line-height: 26px;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-right>a{
+	display: inline-block;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-right>a:last-child{
+	font-weight: bold;
+}
+#container .box-left .box-newsstand .box-header-sub .box-sub-left .news-list{
+	height: 26px; overflow: hidden;
+}
+
+#container .box-left .box-newsstand .box-newsstand-page{
+	padding: 10px 0 11px; 
+	border-top: 1px solid #ebebeb;
+}
+
+
+/* 컨텐츠 오른쪽 영역 */
+#container .box-right{
+	float: right; width: 420px;
+
+}
+/* 오른쪽 1번째 컨텐츠 : 로그인 박스 */
+#container .box-right>.box-account{
+	padding: 21px 20px 18px;
+	letter-spacing: -.4px;
+	font-size: 1.4rem;
+}
+#container .box-right>.box-account .box-title{
+	text-align: center; line-height: 20px;
+}
+#container .box-right>.box-account .link-login{
+	display: block; margin-top: 13px; padding: 17px 0;
+	line-height: 20px; border: 1px solid rgba(0,0,0,.06);
+	background-color: #03c75a; border-radius: 4px; color: #fff;
+	text-align: center; 
+}
+#container .box-right>.box-account .link-login:hover{
+	background-color: #17b75e;
+}
+#container .box-right>.box-account .icon-login{
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px;
+	background-position: -120px -166px;
+	width: 72px; height: 14px; 
+	/* 로그인 글자와 옆에 나란히 있으면서 크기를 조정해야 되기 때문에 display:inline-block */
+	display: inline-block;
+	margin: 3px 8px 0 0;
+	vertical-align: top;
+}
+#container .box-right>.box-account .box-links{
+	margin-top: 16px; font-size: 1.3rem; text-align: center; line-height: 20px;
+}
+#container .box-right>.box-account .box-links>a{
+	display: inline-block; color: #606060;
+}
+/* | 를 표시 */
+#container .box-right>.box-account .box-links>a+a::before{
+	content: ''; display: inline-block; 
+	width: 1px; height: 12px; background-color: #d3d5d7;
+	margin: 4px 12px 0; vertical-align: top;
 }
 
 /* 푸터 영역(회사 정보) */
@@ -265,4 +435,16 @@ fieldset{
 }
 .clearfix::after{
 	content: ''; clear: both; display: block;
+}
+.hover:hover{
+	text-decoration: underline;
+}
+.float-left{
+	float: left;
+}
+.float-right{
+	float: right;
+}
+.position-relative{
+	position: relative;
 }
