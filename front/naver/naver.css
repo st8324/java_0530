@@ -1,16 +1,16 @@
 @charset "utf-8";
 
-*{ padding: 0; margin: 0; color: #101010;
+*{ padding: 0; margin: 0; 
 	font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif
 }
-a{ text-decoration: none;}
+a{ text-decoration: none; color: #101010;}
 
 body{
 	min-width: 1340px;
 }
 ul,ol{list-style: none;}
 html{ 
-	font-size: 10.5px; line-height: 10.5px;
+	font-size: 10.5px; line-height: 10.5px; color: #101010; letter-spacing: -.4px;
 }
 
 
@@ -259,8 +259,6 @@ header{
 /* 컨텐츠 왼쪽 영역 */
 #container .box-left{
 	float: left; width: 830px;
-
-	height: 500px;
 }
 /* 1번째 왼쪽 컨텐츠 : 배너 광고 */
 #container .box-left .box-banner{
@@ -444,9 +442,74 @@ header{
 #container .box-left .box-newsstand .box-newsstand-page{
 	padding: 10px 0 11px; 
 	border-top: 1px solid #ebebeb;
+	text-align: center; position: relative;
+	line-height: 34px;
 }
-
-
+#container .box-left .box-newsstand .box-newsstand-page .box-page{
+	display: inline-block;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-btns{
+	position: absolute; top: 0; right: 0; bottom: 0;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev,
+#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-next{
+	float: left; width: 36px; height: 36px; 
+	border: 1px solid #dadcdf; border-radius: 50%;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,.06); position: relative;
+	background-color: #fff; cursor: pointer;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev::before,
+#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-next::before{
+	content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+	margin: auto;
+	width: 10px; height: 12px;
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px; 
+	background-position: -412px -39px;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev{
+	transform: rotate(180deg);
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page>button:hover{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+	background-color: #fbfbfc;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page>button:hover::before{
+	background-position: -412px -26px;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title{
+	min-width: 156px; padding: 0 16px;
+	font-size: 1.3rem; font-weight: 600;
+	line-height: 35px; box-sizing: border-box;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .text-point{
+	color: #3a67ea;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .text-more,
+#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .page-current{
+	color: #606060;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .page-max{
+	color: rgba(96,96,96,.5);
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-btns>button{
+	padding: 18px 20px 18px 9px; float: left;
+	background-color: #fff; border: 0; outline: 0; cursor: pointer;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-btns>button::before{
+	content: ''; 
+	width: 20px; height: 20px;
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px; 
+	background-position: -191px -368px;
+	display: block;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-btns>.btn-thumb::before{
+	background-position: -296px -368px;
+}
+#container .box-left .box-newsstand .box-newsstand-page .box-btns>.btn-list{
+	padding: 18px 9px 18px 20px;
+}
 /* 컨텐츠 오른쪽 영역 */
 #container .box-right{
 	float: right; width: 420px;
