@@ -438,28 +438,28 @@ header{
 #container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(8){
 	left: 657px;
 }
-
-#container .box-left .box-newsstand .box-newsstand-page{
+/* 왼쪽 박스 페이지 */
+#container .box-left .page-container{
 	padding: 10px 0 11px; 
 	border-top: 1px solid #ebebeb;
 	text-align: center; position: relative;
-	line-height: 34px;
+	line-height: 0px;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page{
+#container .box-left .page-container .box-page{
 	display: inline-block;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-btns{
+#container .box-left .page-container .box-btns{
 	position: absolute; top: 0; right: 0; bottom: 0;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev,
-#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-next{
+#container .box-left .page-container .box-page .btn-prev,
+#container .box-left .page-container .box-page .btn-next{
 	float: left; width: 36px; height: 36px; 
 	border: 1px solid #dadcdf; border-radius: 50%;
 	box-shadow: 0 1px 2px 0 rgba(0,0,0,.06); position: relative;
 	background-color: #fff; cursor: pointer;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev::before,
-#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-next::before{
+#container .box-left .page-container .box-page .btn-prev::before,
+#container .box-left .page-container .box-page .btn-next::before{
 	content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
 	margin: auto;
 	width: 10px; height: 12px;
@@ -467,48 +467,83 @@ header{
 	background-size: 422px 405px; 
 	background-position: -412px -39px;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .btn-prev{
+#container .box-left .page-container .box-page .btn-prev{
 	transform: rotate(180deg);
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page>button:hover{
+#container .box-left .page-container .box-page>button:hover{
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 	background-color: #fbfbfc;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page>button:hover::before{
+#container .box-left .page-container .box-page>button:hover::before{
 	background-position: -412px -26px;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title{
+#container .box-left .page-container .box-page .box-title{
 	min-width: 156px; padding: 0 16px;
 	font-size: 1.3rem; font-weight: 600;
 	line-height: 35px; box-sizing: border-box;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .text-point{
+#container .box-left .page-container .box-page .box-title .text-point{
 	color: #3a67ea;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .text-more,
-#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .page-current{
+#container .box-left .page-container .box-page .box-title .text-more,
+#container .box-left .page-container .box-page .box-title .page-current{
 	color: #606060;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-page .box-title .page-max{
+#container .box-left .page-container .box-page .box-title .page-max{
 	color: rgba(96,96,96,.5);
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-btns>button{
+#container .box-left .page-container .box-btns>button{
 	padding: 18px 20px 18px 9px; float: left;
-	background-color: #fff; border: 0; outline: 0; cursor: pointer;
+	background-color: transparent; border: 0; outline: 0; cursor: pointer;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-btns>button::before{
+#container .box-left .page-container .box-btns>button::before{
 	content: ''; 
 	width: 20px; height: 20px;
 	background-image: url(../img/naver_icon.png);
 	background-size: 422px 405px; 
-	background-position: -191px -368px;
+	/* background-position: -191px -368px; */
 	display: block;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-btns>.btn-thumb::before{
+#container .box-left .page-container .box-btns>.btn-thumb::before{
 	background-position: -296px -368px;
 }
-#container .box-left .box-newsstand .box-newsstand-page .box-btns>.btn-list{
+#container .box-left .page-container .box-btns>.btn-thumb:hover::before{
+	background-position: -275px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-thumb[aria-checked=true]::before{
+	background-position: -391px 0px;
+}
+#container .box-left .page-container .box-btns>.btn-thumb[aria-checked=true]:hover::before{
+	background-position: -359px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-list{
 	padding: 18px 9px 18px 20px;
+}
+#container .box-left .page-container .box-btns>.btn-list::before{
+	background-position: -107px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-list:hover::before{
+	background-position: -86px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-list[aria-checked=true]::before{
+	background-position: -191px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-list[aria-checked=true]:hover::before{
+	background-position: -170px -368px;
+}
+#container .box-left .page-container .box-btns>.btn-list{
+	padding: 18px 9px 18px 20px;
+}
+
+/* 3번재 컨텐츠 영역 */
+#container .box-left .box-shopping .box-shopping-body{
+	padding: 19px 20px 0;
+}
+#container .box-left .box-shopping .box-shopping-page{
+	border-top: 1px solid #ebebeb;
+}
+#container .box-left .page-container.box-shopping-page .box-page .box-title .text-point{
+	color: #9858f5;
 }
 /* 컨텐츠 오른쪽 영역 */
 #container .box-right{
