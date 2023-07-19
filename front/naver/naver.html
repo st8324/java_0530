@@ -445,5 +445,17 @@
 	<!-- 컨텐츠 끝 -->
 	<footer></footer>
 	<!-- 푸터 끝 -->
+	<script>
+		//뉴스스탠드, 언론사편집, 엔터, 스포츠, 경제를 클릭하면 굵은 글씨가 되는 코드
+		const tabListButton = document.querySelectorAll('#box_left2 .tab-list [class^=btn-]');
+
+		tabListButton.forEach(item=>{
+			item.addEventListener('click',()=>{
+				tabListButton.forEach((item2)=>item2.setAttribute('aria-selected','false'));
+				item.setAttribute('aria-selected','true')
+			});	
+		})
+
+	</script>
 </body>
 </html>
