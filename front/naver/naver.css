@@ -363,6 +363,83 @@ header{
 #container .box-left .box-newsstand .box-header-sub .box-sub-left .news-list{
 	height: 26px; overflow: hidden;
 }
+#container .box-left .box-newsstand .box-main{
+	margin-top: 18px; position: relative;
+}
+#container .box-left .box-newsstand .box-main .list-contents{
+	border: 1px solid #ebebeb; height: 222px; overflow: hidden;
+	border-radius: 4px;
+	/* 
+	형제중 position:absolute가 있을 때 형제 요소 위로 올려야 하는 경우 
+	요소에 position : relative를 추가 
+	 */
+	position: relative;
+}
+#container .box-left .box-newsstand .box-main .item-contents{
+	width: 16.66%; height: 56px; float: left;
+	position: relative;
+}
+#container .box-left .box-newsstand .box-main .link-contents{
+	display: block; padding: 18px 0; text-align: center;
+}
+#container .box-left .box-newsstand .box-main .box-contents-hover{
+	position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+	background-color: #2868f2;
+	text-align: center;
+	padding: 13px 0; display: none;
+}
+#container .box-left .box-newsstand .box-main .item-contents:hover .box-contents-hover{
+	display: block;
+}
+#container .box-left .box-newsstand .box-main .box-contents-hover .btn-subs,
+#container .box-left .box-newsstand .box-main .box-contents-hover .link-news-view{
+	font-size: 1.3rem; font-weight: 400; line-height: 30px; color: #fff;
+	letter-spacing: -.4px;
+}
+#container .box-left .box-newsstand .box-main .box-contents-hover .link-news-view::before{
+	width: 1px; height: 12px; display: inline-block; content: '';
+	margin: 9px 10px 0; background-color: rgba(255,255,255,0.3);
+	vertical-align: top;
+}
+#container .box-left .box-newsstand .box-main .box-contents-hover a:hover{
+	font-weight: bold; text-decoration: underline;
+}
+
+#container .box-left .box-newsstand .box-main .box-border{
+	position: absolute; top: 0; bottom: 0; left: 0; right: 0; 
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-right{
+	height: 1px; position: absolute; left: 0; right: 0; z-index: 1;
+	background-color: #ebebeb;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-right:nth-child(1){
+	top: 56px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-right:nth-child(2){
+	top: 113px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-right:nth-child(3){
+	top: 169px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom{
+	width: 1px; position: absolute; top: 0; bottom: 0;  z-index: 1;
+	background-color: #ebebeb;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(4){
+	left: 132px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(5){
+	left: 263px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(6){
+	left: 395px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(7){
+	left: 526px;
+}
+#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(8){
+	left: 657px;
+}
 
 #container .box-left .box-newsstand .box-newsstand-page{
 	padding: 10px 0 11px; 
