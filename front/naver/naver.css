@@ -560,6 +560,47 @@ header{
 	content: ''; position: absolute; top: 8px; right: 8px;
 	width: 3px; height: 3px; border-radius: 50%; background-color: #d3d5d7;
 }
+#container .box-left .body-container .box-header-sub .box-sub-left .img-today-pick{
+	height: 13px; line-height: 13px; padding-top: 4px;
+}
+#container .box-left .body-container .box-header-sub .box-sub-left .text-today-pick-desc{
+	color: #404040; font-weight: 500; margin-left: 8px; 
+	font-size: 1.4rem; line-height: 21px;
+}
+#container .box-left .body-container .box-header-sub .box-sub-left .text-today-pick-desc em{
+	font-style: normal; color: #9858f5;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right{
+	padding: 10px 0;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-page-num{
+	font-weight: 600; font-size: 1.3rem; color: #606060;
+	margin: 6px 9px 8px 0; line-height: 16px;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .page-max{
+	color : rgba(113,113,113,.6);
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right .btn-prev,
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right .btn-next{
+	width: 30px; height: 30px; background-color: #fff; border:1px solid rgba(211,213,215,.8);
+	outline: 0; cursor: pointer; border-radius: 4px 0 0 4px; position: relative;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right .btn-next{
+	border-left: 0; border-radius: 0 4px 4px 0;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right i[class^=icon]{
+	width: 10px; height: 12px; position: absolute; top: 0; bottom: 0; right: 0; left: 0;
+	margin: auto;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right i[class^=icon]::before{
+	content: ''; position: absolute; top: 50%; left: 50%;
+	width: 5px; height: 5px; border: 2px solid #80868c;
+	transform: translate(-50%, -50%) rotate(45deg);
+	border-width: 0 0 2px 2px; margin-left: 1px;
+}
+#container .box-left .box-shopping .body-container .box-header-sub .box-sub-right .btn-next i[class^=icon]::before{
+	border-width: 2px 2px 0 0; margin-left: -1px;
+}
 
 /* 컨텐츠 오른쪽 영역 */
 #container .box-right{
