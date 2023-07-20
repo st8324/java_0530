@@ -601,7 +601,98 @@ header{
 #container .box-left .box-shopping .body-container .box-header-sub .box-sub-right .btn-next i[class^=icon]::before{
 	border-width: 2px 2px 0 0; margin-left: -1px;
 }
+#container .box-left .box-shopping .body-container .box-main{
+	padding-bottom: 1px; height: calc(394px - 1px - 18px); /*높이에서 아래 패딩, 위 마진을 뺀 값이 컨텐츠 높이*/
+}
+#container .box-left .box-shopping .body-container .box-main-left{
+	width: 520px;
+}
+#container .box-left .box-shopping .body-container .box-main-left .item-shopping{
+	padding: 0 0 20px 20px;
+}
+#container .box-left .box-shopping .body-container .box-main-left .item-shopping:nth-child(4n+1){
+	padding-left: 0;
+}
+#container .box-left .box-shopping .body-container .box-main-left .link-shpping{
+	width: 115px;
+}
+#container .box-left .box-shopping .body-container .box-main-left .box-shopping-img{
+	display: block; height: 115px; overflow: hidden; border-radius: 4px; position: relative;
+	transition: transform .2s cubic-bezier(.165,.84,.44,1);
+}
+#container .box-left .box-shopping .body-container .box-main-left .link-shopping:hover .img-shopping{
+	transform: scale(1.03);
+}
+#container .box-left .box-shopping .body-container .box-main-left .box-shopping-img::after{
+	content: ''; position: absolute; top: 0; right: 0; left: 0; bottom: 0;
+	border-radius: inherit; border: 1px solid rgba(0,0,0,.06);
+	background-color: rgba(0,0,0,.03);
+}
+#container .box-left .box-shopping .body-container .box-main-left .link-shopping [class^=title-shopping]{
+	line-height: 20px; overflow: hidden; white-space: nowrap; letter-spacing: -.8px; font-size: 1.4rem;
+}
+#container .box-left .box-shopping .body-container .box-main-left .link-shopping .title-shopping-header{
+	margin-top: 10px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .box-mall{
+	padding: 10px 12px 5px; font-size: 1.4rem; background-color: rgba(245,248,251,.6); position: relative;
+}
+#container .box-left .box-shopping .body-container .box-main-right .box-mall::before{
+	content: ''; position: absolute; top: 0; bottom: 0; left: 0; right: 0; 
+	border: 1px solid rgba(0,0,0,.05); border-radius: inherit;
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall{
+	padding-bottom: 5px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-mall{
+	font-size: 14px; line-height: 20px; color: #404040;
+}
+#container .box-left .box-shopping .body-container .box-main-right .item-mall{
+	float: left; position: relative;
+}
+#container .box-left .box-shopping .body-container .box-main-right .item-mall.dot{
+	width: 3px; height: 3px; border-radius: 50%; background-color: #d3d5d7;
+	margin: 9px 0 0; 
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall:nth-child(1) .item-mall{
+	margin-left: 7px; margin-right: 7px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall:nth-child(2) .item-mall{
+	margin-left: 3px; margin-right: 3px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall:nth-child(3) .item-mall{
+	margin-left: 3px; margin-right: 3px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall .item-mall:first-child{
+	margin-left: 0;
+}
+#container .box-left .box-shopping .body-container .box-main-right .list-mall .item-mall:last-child{
+	margin-right: 0;
+}
 
+#container .box-left .box-shopping .body-container .box-main-right .box-menu{
+	padding: 9px 9px 8px; font-size: 1.4rem; background-color: rgba(245,248,251,.6); position: relative;
+	margin-top: 11px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .box-menu::before{
+	content: ''; position: absolute; top: 0; bottom: 0; left: 0; right: 0; 
+	border: 1px solid rgba(0,0,0,.05); border-radius: inherit;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-quick-menu{
+	display: block; text-align: center;
+}
+#container .box-left .box-shopping .body-container .box-main-right .img-quick-menu{
+	width: 32px; height: 32px; line-height: 32px; display: inline-block; position: relative;
+}
+#container .box-left .box-shopping .body-container .box-main-right .img-quick-menu::before{
+	content: ''; position: absolute; 
+	background-image: url(../img/naver_icon2.png); background-size: 122px 106px;
+	background-position: -34px 0;
+	top: 50%; left: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .text-quick-menu{
+	margin-top: 4px; font-size: 14px; line-height: 20px; color: #404040;
+}
 /* 컨텐츠 오른쪽 영역 */
 #container .box-right{
 	float: right; width: 420px;
