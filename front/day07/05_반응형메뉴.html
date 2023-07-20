@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 메뉴</title>
+	<style>
+		nav{
+			position: relative;
+			height: 56px;
+		}
+		.list-menu{
+			border: 3px solid black; list-style: none; padding: 0; margin: 0;
+		}
+		.list-menu::after{
+			content: ''; display: block; clear: both;
+		}
+		.item-menu{
+			float: left; width: 33.33%;
+		}
+		.item-menu+.item-menu{
+			border-left: 3px solid black; margin-left: -3px;
+		}
+		.link-menu{
+			display: block; height: 50px; text-align: center; line-height: 50px; font-size: 20px;
+			color: black; text-decoration: none;
+		}
+
+		.ham-menu{
+			width: 50px; height: 50px; border: 3px solid transparent;
+			position: absolute; top: 0; right: 0; cursor: pointer;
+			display: none;
+		}
+		.ham-menu .bar{
+			width: 100%; height: 5px; background-color: black; border-radius: 10px;
+			display: block; position: absolute;
+			
+		}
+		.ham-menu .bar:not(.bar-mid){
+			transition: transform .2s;
+		}
+		.ham-menu .bar.bar-top{	top: 0;}
+		.ham-menu .bar.bar-mid{	top: 50%; margin-top: -2px;		}
+		.ham-menu .bar.bar-bottom{	bottom: 0;		}
+		#ham:checked~.ham-menu .bar-top{
+			transform-origin: 0% 0%;
+			transform: rotate(40deg); width: calc(100% * 1.414);
+		}
+		#ham:checked~.ham-menu .bar-bottom{
+			transform-origin: 0% 100%;
+			transform: rotate(-40deg); width: calc(100% * 1.414);
+		}
+		#ham:checked~.ham-menu .bar-mid{
+			transform: scaleY(0);
+		}
+		#ham{
+			display: none;
+		}
+
+		@media screen and (max-width:900px) {
+			.list-menu{
+				display: none;
+				position: absolute; top: 56px; right: 0;
+			}
+			.item-menu{
+				width: 400px; float: none;
+			}
+			.item-menu+.item-menu{
+				border-left: 0; border-top: 3px solid black; margin-left: 0;
+			}
+			.ham-menu{
+				display: block;
+			}
+			#ham:checked~.list-menu{
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<input type="checkbox" id="ham">
+		<label class="ham-menu" for="ham">
+			<span class="bar bar-top"></span>
+			<span class="bar bar-mid"></span>
+			<span class="bar bar-bottom"></span>
+		</label>
+		<ul class="list-menu">
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴2</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>
