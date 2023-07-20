@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형</title>
+	<style>
+		/* 
+		- 큰 화면 스타일 적용 후, 작은 화면 스타일을 큰 화면 스타일 아래에 @media max-width를 
+		  이용하여 구현
+		- 작은 화면 스타일 적용 후, 큰 화면 스타일을 작은 화면 스타일 아래에 @media min-width를 
+		  이용하여 구현
+		 */
+		 /* 큰화면 > 작은 화면  */
+		/*
+		.box::after{
+			clear: both; display: block; content: '';
+		}
+		.inner-box{
+			float: left; width: 50%; height: 200px; background: yellow
+		}
+		.inner-box:nth-child(2){
+			background-color: blue;
+		}
+		@media screen and (max-width : 900px) {
+			.inner-box{
+				width: 100%;
+			}
+		}
+		*/
+		.box::after{
+			clear: both; display: block; content: '';
+		}
+		.inner-box{
+			float: left; width: 100%; height: 200px; background: yellow
+		}
+		.inner-box:nth-child(2){
+			background-color: blue;
+		}
+		@media screen and (min-width : 900px) {
+			.inner-box{
+				width: 50%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box"></div>
+		<div class="inner-box"></div>
+	</div>
+</body>
+</html>
