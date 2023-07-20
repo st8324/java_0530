@@ -133,7 +133,7 @@
 			</div>
 			<!-- 왼쪽 1번째 컨텐츠 끝 -->
 			<div class="box-newsstand" id="box_left2">
-				<div class="box-newsstand-body">
+				<div class="box-newsstand-body body-container">
 					<div class="box-header">
 						<ul class="tab-list clearfix">
 							<li class="tab-item">
@@ -409,7 +409,39 @@
 			</div>
 			<!-- 왼쪽 2번째 컨텐츠 끝 -->
 			<div class="box-shopping" id="box-left3">
-				<div class="box-shopping-body">1</div>
+				<div class="box-shopping-body body-container">
+					<div class="box-header">
+						<ul class="tab-list clearfix">
+							<li class="tab-item">
+								<a href="#" class="btn-shopping" aria-selected="true">쇼핑</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-mans">맨즈</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-oneplus">원쁠딜</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-live">쇼핑라이브</a>
+							</li>
+						</ul>
+					</div>
+					<div class="box-header-sub clearfix">
+						<div class="box-sub-left">
+							<div class="box-shop float-left">
+								<span class="text-today-pick float-left">오늘의 혜택</span>
+								<a href="#" class="link-mall hover float-left">연합뉴스</a>
+							</div>
+						</div>
+						<div class="box-sub-right">
+							<a href="#" class="link-news-stand">뉴스스탠드</a>
+							<a href="#" class="link-news-home position-relative">뉴스홈</a>
+						</div>
+					</div>
+					<div class="box-main">
+						
+					</div>
+				</div>
 				<div class="box-shopping-page page-container">
 					<div class="box-page">
 						<button class="btn-prev"><span class="blind">이전 버튼</span></button>
@@ -450,7 +482,8 @@
 		const tabListButton = document.querySelectorAll('#box_left2 .tab-list [class^=btn-]');
 
 		tabListButton.forEach(item=>{
-			item.addEventListener('click',()=>{
+			item.addEventListener('click',(e)=>{
+				e.preventDefault();
 				tabListButton.forEach((item2)=>item2.setAttribute('aria-selected','false'));
 				item.setAttribute('aria-selected','true')
 			});	
