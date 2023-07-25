@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자료형</title>
+</head>
+<body>
+	<script>
+		/*
+		숫자형(number) 
+		- 정수
+		- 실수
+		- Infinity(무한대)
+		- NaN(Not a Number) : 숫자가 아닌 값
+		문자형
+		- 문자열
+			- '' : 작은 따옴표
+			- "" : 큰따옴표
+			- `` : 역따옴표(백틱)
+			  - ${변수명}을 통해 변수값을 넣어 줄 수 있다.
+		논리형
+		- true 또는 false
+		null 값
+		- 오로지 null 값만 포함하는 별도의 자료형
+		- 비어 있음을 의미
+		undefined 값
+		- 값이 할당되지 않은 상태(초기화가 안된 상태)
+		객체(Object)
+		- 속성과 함수들로 구성
+		심볼
+		- 고유한 식별자를 만들 때 사용
+		typeof
+		- typeof 변수명  : 연산자
+		- typeof(변수명) : 함수
+		- 변수의 자료형을 알려주는 연산자/함수
+		*/
+		let age = 20;
+		//제 나이는 20살입니다.
+		let str1 = '제 나이는 ' + age + '살입니다.';
+		let str2 = "제 나이는 " + age + "살입니다.";
+		let str3 = `제 나이는 ${age}살입니다.`;
+		console.log(str1);
+		console.log(str2);
+		console.log(str3);
+
+		console.log(typeof 1.23); //number
+		console.log(typeof NaN);	//number
+		let num1;
+		console.log(typeof num1);	//undefined
+		console.log(typeof true);	//boolean
+		console.log(typeof 'num1'); //string
+		console.log(typeof Symbol("id"));//symbol
+		console.log(typeof Math); //Math라는 내장 객체//object
+		console.log(typeof null);	//null도 object
+		console.log(typeof {});	//{}는 객체 object
+		console.log(typeof []); //[]은 배열 object
+		console.log(typeof console.log); //console.log는 함수. function
+	</script>
+</body>
+</html>
