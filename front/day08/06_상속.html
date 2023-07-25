@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스타일 상속</title>
+	<style>
+		html{
+			font-size: 10.5px;
+			line-height: 18px;
+			font-weight: bold;
+		}
+		/* 
+			- 요소에 스타일을 적용하면 해당 요소의 자손 요소들에게 자동으로 상속이 됨.
+			- 자손 요소에 동일한 스타일을 적용하고 있으면 상속된 값이 반영되지 않음.
+		*/
+		body{ color: red;}
+		p{color: blue; font-size: 30px;}
+
+	</style>
+</head>
+<body>
+	<p>안녕하세요.</p>
+	<!-- 
+		body 태그에서 적용한 빨간 글자가 a태그에도 상속이 되지만,
+		a태그는 기본 태그 스타일로 글자색을 지정하기 때문에 덮어쓰기 되서 빨간글자가 적용되지 않음.
+
+	 -->
+	<a href="#">링크</a>
+</body>
+</html>
