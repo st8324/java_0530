@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형변환</title>
+</head>
+<body>
+	<script>
+		/* 
+		prompt()나 input태그를 통해 입력받은 값은 항상 문자열이다.
+		
+		문자형으로 변환
+		- String(값);
+		- "" + 값;
+
+		숫자형으로 변환
+		- Number(값)
+		- parseInt(값)/parseFloat(값)
+		- 값과 결과
+			- undefined : NaN
+			- null : 0
+			- true/false : 1/0
+			- string : 처음, 끝 공백 제거 후 남은 문자열이 없다면, 있다면 숫자를 읽어옴. 
+			  변환 실패하면 NaN
+		
+		논리형으로 변환
+		- Boolean(값)
+		- false : 숫자 0, 빈문자열'', null, undefined, NaN
+		- true  : 그 외. 문자열"0"
+		*/
+		let str = '3.14';
+		let pi = Number(str);
+		console.log(`${pi} : ${typeof pi}`);
+		let b = Boolean(null);
+		console.log(`${b} : ${typeof b}`);
+	</script>
+</body>
+</html>
