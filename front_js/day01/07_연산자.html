@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연산자</title>
+</head>
+<body>
+	<script>
+		/* 
+		산술연산자
+		- +, -, *, /, %, **(거듭제곱)
+		- 정수 연산 정수 => 숫자
+		  - 1 / 2 => 0.5
+		- 정수로된 문자열들은 +를 제외하고 연산할 때 숫자형으로 형변환이 되서 계산이 됨
+		  - '1'/'2' => 0.5
+		- 거듭제곱
+		  - 2 ** 3 => 2의 3제곱 => 8
+		*/
+		console.log(1/2);
+		console.log('1'/'2');
+		console.log(2 + 2 + '2');//42문자열
+		/* 
+		부호 연산자 +
+		- 숫자에는 영향이 없음
+		- 숫자가 아닌 값은 숫자형으로 변환
+		  - +true : 1
+			- +"" : 0
+			- +null : 0
+		*/
+		console.log(`+null : ${+null}`);
+		console.log(`+true : ${+true}`);
+		console.log(`+'' : ${+''}`);
+		console.log(`+'123' : ${+'123'}`);
+	</script>
+</body>
+</html>

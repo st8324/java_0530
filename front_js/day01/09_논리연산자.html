@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>논리연산자</title>
+</head>
+<body>
+	<script>
+		/* 
+		js에서 참은 true와 0이 아닌 수
+		*/
+		let num = 20;
+		console.log(`num > 0 && num && num == 0 : ${num > 0 && num && num == 0}`);
+		console.log(`0 || num>= 20 : ${0 || num >= 20 }`);
+
+		// || 연산자를 이용한 변수 초기값 설정
+		let firstName = '길동';
+		let lastName = '';
+		let nickName = '';
+		//이름이 있으면 이름을, 성이 있으면 성을, 닉네임이 있으면 닉네임을, 셋다 없으면 익명을 naem에
+		//저장하는 코드
+		let name = firstName || lastName || nickName || '익명';
+		console.log(`name : ${name}`);
+
+		//나이가 19세이상이면 운전 가능을, 아니면 false를 저장하는 코드
+		let age = 10;
+		let res;
+		/*
+		if(age >= 19){
+			res = '운전 가능';
+		}else{
+			res = false;
+		}*/
+		res = age >= 19 && '운전가능';
+		console.log(`${age}살은 운전 가능? : ${res}`);
+	</script>
+</body>
+</html>

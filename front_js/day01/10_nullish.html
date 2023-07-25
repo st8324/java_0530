@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>nullish 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		병합 연산자 ??
+		a ?? b
+		- a가 null이 아니고 a가 undefined도 아니면 a
+		- 그 외이면 b
+		*/
+		let firstName = null;
+		let lastName = null;
+		let nickName = null;
+		// let name = firstName || lastName || nickName || '익명';
+		let name = firstName ?? lastName ?? nickName ?? '익명';
+		console.log(name);
+	</script>
+</body>
+</html>

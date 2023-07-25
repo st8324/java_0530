@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>비교연산자</title>
+</head>
+<body>
+	
+	<script>
+		/* 
+		비교연산자
+		- <, <=, >, >=, ==, !=, ===, !==
+		- == : 값만 같으면 됨
+		- === : 값도 같고 자료형도 같음
+		- != : 값만 다르면 됨
+		- !== : 값 또는 자료형이 다름
+		- 문자열도 비교 가능
+		  - 문자열을 한글자씩 비교.
+			- 같으면 다음 글자, 다르면 사전순으로 앞인지 뒤인지 판별
+		*/
+		console.log(`'1' == 1 : ${'1' == 1}`);
+		console.log(`'1' === 1 : ${'1' === 1}`);
+		console.log(`'1' != 1 : ${'1' != 1}`);
+		console.log(`'1' !== 1 : ${'1' !== 1}`);
+
+		console.log(`'a' > 'b' : ${'a' > 'b'}`);
+		console.log(`'a' < 'b' : ${'a' < 'b'}`);
+		console.log(`'aabc' > 'abc' : ${'aabc' > 'abc'}`);
+	</script>
+</body>
+</html>
