@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>콜백 함수</title>
+</head>
+<body>
+	<script>
+		/* 
+		콜백함수 : 함수의 매개변수로 전달되는 함수 
+		- 함수 안에서 매개변수로 전달한 함수를 호출할 때
+		*/
+		/**question이 주어지고 확인을 선택하면 yes함수를 호출하고, 취소를 선택하면 no함수를 호출하는
+		 * 함수
+		 * @param {string} question 질문 내용
+		 * @param {function} yes 확인을 했을 때 실행할 함수
+		 * @param {function} no 취소 했을 때 실행할 함수
+		*/
+		function ask(question, yes, no){
+			if(confirm(question)){
+				yes();
+			}else{
+				no();
+			}
+		}
+		function yes(){
+			alert('술과 담배 구매 가능');
+		}
+		function no(){
+			alert('술과 담배 구매 불가능');
+		}
+		//ask('성인입니까?', yes, no);
+
+		ask('성인입니까?', function(){
+			alert('술과 담배 구매 가능');
+		}, function(){
+			alert('술과 담배 구매 불가능');
+		});
+	</script>
+</body>
+</html>
