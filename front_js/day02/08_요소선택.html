@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 선택</title>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div id="box"></div>
+	<input type="text" name="" id="">
+	
+	<script>
+		/* 
+		document.getElementById('아이디명A');
+		- 아이디명이 아이디명A인 요소를 선택
+		- 하나 있거나 없거나
+		document.getElementsByClassName('클래스명');
+		- 클래스명이 일치하는 요소들을 선택
+		document.getElementsByTagName('태그명');
+		- 태그명이 일치하는 요소들을 선택
+
+		document.getElementxxx은 요소가 뒤늦게 추가되도 자동으로 반영이 됨
+		document.querySelectorAll은 함수가 실행되는 시점에 잇는 요소들만 찾음
+		=> 뒤늦게 추가된 요소는 자동으로 반영이 안됨
+
+
+		document.querySelector('선택자');
+		- 선택자와 일치하는 첫번째 요소를 선택
+		document.querySelectorAll('선택자');
+		- 선택자와 일치하는 모든 요소를 선택 
+		*/
+		let elId = document.getElementById('box');
+		let elbox = document.getElementsByClassName('box');
+		let eltag = document.getElementsByTagName('div');
+		let elquery = document.querySelector('.box');
+		let elqueryAll = document.querySelectorAll('.box');
+		/*
+		요소에 스타일 적용 방법
+		객체명.style.속성명 = 속성값;
+		예시> 아이디가 box인 요소의 배경색을 빨강으로
+		*/
+		elId.style.backgroundColor = 'red';
+		elId.style.height = '100px';
+		
+		for(i=0; i<elbox.length; i++){
+			elbox[i].style.backgroundColor = 'blue';
+			elbox[i].style.height = '100px';
+			elbox[i].style.width = '100px';
+			elbox[i].style.border = '3px solid gray';
+		}
+		elqueryAll.forEach((item)=>{
+			item.style.borderRadius = '50%';
+		});
+	</script>
+	<div class="box"></div>
+</body>
+</html>
