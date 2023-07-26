@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전체선택 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="all"> 전체선택 <br>
+	<input type="checkbox" name="check"> 항목1 <br>
+	<input type="checkbox" name="check"> 항목2 <br>
+	<input type="checkbox" name="check"> 항목3 <br>
+
+	<script>
+		$('[name=all]').click(function(){
+			//전체선택의 checked 값을 가져옴
+			let checked = $(this).prop('checked');
+			//전체 선택의 checked 값으로 나머지 체크박스를 변경
+			$('[name=check]').prop('checked', checked);
+		});
+	</script>
+</body>
+</html>
