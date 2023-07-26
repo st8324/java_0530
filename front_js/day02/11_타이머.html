@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>시계</title>
+	<style>
+		#box{
+			width: 400px; margin: 50px auto; border: solid 3px red;
+			text-align: center; line-height: 50px; height: 50px;
+			font-size: 30px; font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button class="btn-start">start</button>
+	<button class="btn-stop">stop</button>
+	<script>
+		// box에 시계가 동작되도록 코드를 작성하세요.
+		// 1초마다 동작(테스트를 위해 0.1초마다 동작)
+		box.innerText = '00:00:00';
+		let h = 0, m = 0, s = 0;
+		let intervalId = null;
+
+		let btnStart = document.querySelector('.btn-start');
+		btnStart.addEventListener('click',()=>{
+			intervalId = start();
+		});
+
+		let btnStop = document.querySelector('.btn-stop');
+		btnStop.addEventListener('click', ()=>{
+			stop(intervalId);
+		});
+
+		function start(){
+			return setInterval(function(){
+					s++;
+					if(s == 60){
+						m++;
+						s = 0;
+					}
+					if(m == 60){
+						h++;
+						m = 0;
+					}
+					box.innerText = getTime(h, m, s);
+				}, 1000);
+		}
+		function stop(id){
+			clearInterval(id);
+		}
+		function getTime(h, m, s){
+			return ''+fillZero(h) + ':' + fillZero(m) + ':' + fillZero(s);
+		}
+		function fillZero(num){
+			return num < 10 ? '0'+num : num;
+		}
+	</script>
+</body>
+</html>
