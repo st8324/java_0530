@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery 요소 선택</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			background-color: red; height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn1">show()</button>
+	<button class="btn2">hide()</button>
+	<button class="btn3">toggle()</button>
+	<div class="box"></div>
+	<script>
+		/* 
+		요소 선택
+		- $('선택자')
+		이벤트 등록
+		$('선택자').이벤트명(function(){
+			//구현
+		});
+		$('선택자').on('이벤트명', function(){
+			//구현
+		});
+		$(document).on('이벤트명', '선택자', function(){
+
+		});
+		*/
+		$('.btn1').click(function(){
+			$('.box').show();
+		});
+		$('.btn2').on('click', function(){
+			$('.box').hide();
+		});
+		$(document).on('click','.btn3',function(){
+			$('.box').toggle();
+		});
+	</script>
+</body>
+</html>
