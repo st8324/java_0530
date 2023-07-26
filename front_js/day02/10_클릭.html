@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지</title>
+	<style>
+		.btn-prev,
+		.btn-next{
+			width: 30px; height: 30px; background-color: #fff; 
+			border: 1px solid black; cursor: pointer;
+		}
+		.box-page{
+			display: flex; justify-content: center;
+		}
+		.box-page-num{
+			padding: 0 5px; line-height: 32px; font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-page">
+		<button class="btn-prev"><</button>
+		<div class="box-page-num">
+			<span class="page-current">1</span>
+			<span class="page-max">/ 6</span>
+		</div>
+		<button class="btn-next" onclick="next();">></button>
+	</div>
+	<script>
+		let currentPage = 1;
+		const MAX_PAGE = 6;
+		let btnPrev = document.querySelector('.btn-prev');
+		let btnNext = document.querySelector('.btn-next');
+		let pageCurrent = document.querySelector('.page-current');
+
+		btnPrev.onclick = ()=>{
+			currentPage = --currentPage == 0 ? MAX_PAGE : currentPage;
+			pageCurrent.innerText = currentPage;
+		}
+		
+		function next(){
+			currentPage = ++currentPage >MAX_PAGE ? 1 : currentPage;
+			pageCurrent.innerText = currentPage;
+		}
+	</script>
+</body>
+</html>
