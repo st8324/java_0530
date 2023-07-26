@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>윈도우 객체</title>
+</head>
+<body>
+	<script>
+		/* 
+		window.open(url, name, specs, replace);
+		- url : 열 새창의 url, 비워두면 about:blank가 보임
+		- name : 새창의 이름 또는 열 창의 속성. 
+		  이름으로 지정한 경우 같은 이름을 가진 윈도우를 1번 열 수 있다.
+		- specs : 새로 여는 윈도우창 옵션들, "속성=값,속성=값"
+		- replace : 히스토리 목록에 새 항목을 만들지 현재 항목을 대체할지 설정. 
+		  true 현재 히스토리를 대체. false면 히스토리에 새 항목을 만듬
+		*/
+		//let childWindow = window.open('01_배열.html', 'childWindow');
+		/* 
+		setTimeout(함수, 시간);
+		- 지정된 시간이 되면 함수를 실행(1번)
+		- 시간 : 지정된 시간, 기본 단위는 ms
+		clearTimeout(id) : id와 일치하는 setTimeout() 함수 종료
+		*/
+		setTimeout(function(){
+			alert('1초');
+		}, 1000);
+		/* 
+		setInterval(함수, 시간);
+		- 지정된 시간마다 함수를 실행(여러번)
+		- id값을 리턴 => 나중에 중지시킬 수 있음
+		clearInterval(id) : id와 일치하는 setInterval() 함수 종료
+		*/
+		let id = setInterval(function(){
+			console.log('hi');
+		},1000);
+		//테스트할 때 개발자 도구 콘솔창에서 hi가 계속 찍히는걸 확인 후 이 코드를 
+		//콘솔창에 입력 후 엔터를 치면 hi가 더이상 출력되지 않음
+		//clearInterval(id); 
+	</script>
+</body>
+</html>

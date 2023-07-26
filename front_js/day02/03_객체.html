@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		객체는 속성과 메서드로 구성
+		*/
+		var student = {
+			name : '홍길동',
+			'kor': 100,
+			toString : function(){
+				return this.name + ' : ' + this.kor;
+			}
+		};
+		console.log(student.toString());
+		
+		function Student(name, kor){
+			return {
+				name : name,
+				kor  : kor,
+				toString : function(){
+					return this.name + ' : ' + this.kor;
+				}
+			}
+		}
+
+		let std1 = Student('홍길동', 100);
+		let std2 = Student('임꺽정', 90);
+		console.log(std1.toString());
+		console.log(std2.toString());
+		console.log(std1.name);
+		console.log(std1['name']);
+	</script>
+</body>
+</html>
