@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열 예제</title>
+</head>
+<body>
+	<script>
+		// 전역변수 : 이 문서와 연결된 모든 문서에 사용 가능한 변수
+		var num = 10;
+		function test(){
+			var num2 = 20;
+			console.log(num2);
+		}
+		test();
+		//코드 시작
+		var num;
+		function test(){
+			var num2;
+			num2 = 20;
+			console.log(num2);
+		}
+		num = 10;
+		test();
+
+		var arr = [];
+		/*
+		push(값) : 배열 마지막에 요소를 추가
+		pop() : 배열 마지막 요소를 제거 후 반환
+		unshift(값) : 배열 맨 앞 요소를 추가
+		shift() : 배열 맨 앞 요소를 제거 후 반환
+		*/
+		arr.push(1);
+		arr.push('2');
+		arr.push(3.0);
+		console.log(arr);
+		var data = arr.pop();
+		console.log(data);
+		console.log(arr);
+		arr.unshift('A');
+		arr.unshift('B');
+		console.log(arr);
+		console.log(arr.shift());
+		console.log(arr);
+		console.log(`arr.indexOf('1') : ${arr.indexOf('1')}`);
+		console.log(`arr.indexOf(1) : ${arr.indexOf(1)}`);
+		/* 
+		slice(start, end)
+		- 배열에서 start번지부터 end-1번지까지 요소를 잘라낸 부분 배열을 생성
+		- 원본 배열은 수정되지 않음
+		splice(start, delCount, elements)
+		- 배열에서 start번지부터 delCount개수만큼 제거한 후 제거된 부분에 elements를 추가
+		*/
+		var arr2 = arr.slice(0,2);
+		console.log(arr);
+		console.log(arr2);
+		arr.splice(0,2,1,2,3);//0번지부터 2개를 제거 후, 제거된 곳에 1,2,3을 추가
+		console.log(arr);
+		var str = arr.join('-');
+		console.log(str);
+		console.log('-----');
+		for(i = 0; i<arr.length; i++){
+			console.log(arr[i]);
+		}
+		console.log('-----');
+		//번지를 하나씩 꺼내서 index에 저장하여 활용
+		//for in문은 배열보단 객체에서 많이 사용
+		for(index in arr){
+			console.log(arr[index]);
+		}
+		console.log('-----');
+		//배열/객체에서 하나 꺼낸 값을 가져와서 활용
+		for(value of arr){
+			console.log(value);
+		}
+	</script>
+</body>
+</html>
