@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>attr(), prop()</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="fruit" value="apple" checked> 사과 <br>
+	<button class="btn">클릭</button>
+	<button class="btn-checked">체크</button>
+	<script>
+		/*
+		속성 정보를 가져오고 설정하는 attr(), prop()
+		prop() : 각 태그의 표준 속성만 가져오거나 설정할 수 있다.
+		attr() : 각 태그의 속성을 가져오거나 설정할 수 있다.(표준 여부 상관없이)
+		prop(속성명) : 해당 속성의 값을 가져옴
+		prop(속성명, 값) : 해당 속성의 값을 변경
+
+		- 주의사항 : 같은 속성을 prop()와 attr()로 가져올 때 값이 다를 수 있다.
+		*/
+		$('.btn').click(function(){
+			let checked1 = $('[name=fruit]').prop('checked');
+			let checked2 = $('[name=fruit]').attr('checked');
+			console.log(`prop('checked') : ${checked1}`);
+			console.log(`attr('checked') : ${checked2}`);
+		});
+		$('.btn-checked').click(function(){
+			$('[name=fruit]').prop('checked', true);
+		});
+		$('[name=fruit]').click(function(){
+			//this는 이벤트가 발생한 요소
+			let value = $(this).val();
+			console.log(value);
+		});
+	</script>
+</body>
+</html>
