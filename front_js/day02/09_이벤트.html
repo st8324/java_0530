@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트</title>
+</head>
+<body>
+	<button onclick="alert('버튼1 클릭');">버튼1</button> 
+	<button id="btn">버튼2</button>
+	<script>
+		/* 
+		이벤트 적용 방법
+		1. 요소의 이벤트 속성을 추가해서 적용
+		
+		<element on이벤트명="스크립트코드">
+
+		2. 스크트립트로 이벤트를 추가해서 적용
+		<script>
+			요소.on이벤트명 = function(){
+				//구현;
+			}
+		</ script>
+		*/
+		let btn2 = document.getElementById('btn');
+		btn2.onclick = function(){
+			alert('버튼2 클릭');
+		};
+	</script>
+</body>
+</html>
