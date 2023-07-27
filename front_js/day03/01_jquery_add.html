@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn btn-append">append</button>
+	<button class="btn btn-prepend">prepend</button>
+	<button class="btn btn-after">after</button>
+	<button class="btn btn-before">before</button>
+	<button class="btn btn-html">html</button>
+	<ul class="list">
+		<li class="item">리스트1</li>
+		<li class="item">리스트2</li>
+		<li class="item">리스트3</li>
+		<li class="item">리스트4</li>
+	</ul>
+	<div class="box">
+		<a href="#">링크</a>
+	</div>
+	<script>
+		/* 
+		$('선택자').append('html코드')
+		- 선택자의 마지막 자식요소 다음에 html코드를 추가
+		$('선택자').after('html코드')
+		- 선택자 다음에 html코드를 추가
+		$('선택자').prepend('html코드')
+		- 선택자의 첫번째 자식요소 앞에 html코드를 추가
+		$('선택자').before('html코드')
+		- 선택자 앞에 html코드를 추가
+		$('선택자').html('html코드')
+		- 선택자 안에 html코드를 추가
+		$('선택자').appendTo('A')
+		- 선택자를 A의 마지막 자식 요소 다음에 추가
+		*/
+		let appendNum = 1;
+		$('.btn-append').click(function(){
+			//$('.list').append(`<li>append${appendNum++}</li>`);
+			$(`<li>append${appendNum++}</li>`).appendTo('.list');
+		});
+		let prependNum = 1;
+		$('.btn-prepend').click(function(){
+			$('.list').prepend(`<li>prepend${prependNum++}</li>`);
+		});
+		let afterNum = 1;
+		$('.btn-after').click(function(){
+			$('.list').after(`<p>after ${afterNum++}</p>`);
+		});
+		let beforeNum = 1;
+		$('.btn-before').click(function(){
+			$('.list').before(`<p>before ${beforeNum++}</p>`);
+		});
+		let htmlNum = 1;
+		$('.btn-html').click(function(){
+			$('.box').html(`<p>안녕하세요.${htmlNum++}</p>`);
+		});
+	</script>
+</body>
+</html>
