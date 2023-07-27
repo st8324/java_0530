@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클래스 추가/제거</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{height: 300px; background-color: yellow;}
+		.bg-red{background-color: red;}
+	</style>
+</head>
+<body>
+	<button class="btn-add">클래스 추가</button>
+	<button class="btn-remove">클래스 제거</button>
+	<button class="btn-toggle">클래스 토글</button>
+	<div class="box"></div>
+	<script>
+		/* 
+		addClass('클래스명')
+		 - 클래스를 추가
+		removeClass('클래스명')
+		 - 클래스를 제거
+		toggleClass('클래스명')
+		 - 클래스가 있으면 제거 없으면 추가
+		css(속성, 값)
+		 - css를 인라인으로 적용
+		css({
+			속성 : 값, 속성 : 값
+		})
+		*/
+		$('.btn-add').click(function(){
+			$('.box').addClass('bg-red');
+		});
+		$('.btn-remove').click(function(){
+			$('.box').removeClass('bg-red');
+		});
+		$('.btn-toggle').click(function(){
+			$('.box').toggleClass('bg-red');
+		});
+		$('.box').css('border','1px solid black');
+		$('.box').css({
+			'border-radius':'50%',
+			'border-color' : 'red'
+		});
+	</script>
+</body>
+</html>
