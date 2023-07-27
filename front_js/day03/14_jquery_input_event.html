@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>입력 관련 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<form>
+		<input type="text" id="id" name="id">
+		<button>전송</button>
+	</form>
+	<script>
+		/* 
+		change() 
+		- input태그의 내용이 변경됐을 때 발생하는 이벤트
+		- 내용을 입력중일 때 발생하지 않음.
+		- 내용을 변경하고, focus가 해제될때 발생/엔터를 쳤을 때 발생
+		*/
+		$('#id').change(function(){
+			console.log('내용이 변경됐습니다.');
+		});
+		/*
+		select()
+		- 내용을 선택했을 때 발생하는 이벤트
+		*/
+		$('#id').select(function(){
+			console.log('내용이 선택됐습니다.');
+		});
+		/*
+		submit()
+		- 서버에 내용을 전송할 때 발생하는 이벤트
+		- return값이 false이면 서버에 전송을 하지 않음
+		- 회원가입 시 유효성 체크할 때 많이 사용
+		*/
+		$('form').submit(function(){
+			console.log('서버에 전송하지 않습니다.');
+			return false;
+		});
+	</script>
+</body>
+</html>

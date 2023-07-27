@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>키 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text">
+	<script>
+		/* 
+		keydown : 모든 키 중에서 키가 눌렸을 때 발생하는 이벤트
+		keypress : 영문, 숫자(특수문자)가 눌렸을 때 발생하는 이벤트(한글, 특수키(알트, 컨트롤) 발생X)
+		keyup : 모든 키를 눌렀다가 땠을 때 발생하는 이벤트
+		*/
+		$('input').keyup(function(e){
+			//눌린 키의 값
+			console.log(e.keyCode);
+		});
+		$('input').keydown(function(){
+			// console.log('down');
+		});
+		$('input').keypress(function(){
+			// console.log('press');
+		});
+	</script>
+</body>
+</html>

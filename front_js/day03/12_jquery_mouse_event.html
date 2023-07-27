@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 200px; background-color: yellow; padding: 30px;
+			border: 3px solid black;
+		}
+		.bg-blue{
+			background: blue;
+		}
+		.inner-box{
+			height: 100%; background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3">
+		<div class="inner-box"></div>
+	</div>
+	<div class="box box4">
+		<div class="inner-box"></div>
+	</div>
+	<script>
+		//.box에 마우스를 hover하면 배경색이 파란색으로 변경
+		/* 
+		$('선택자').hover(함수1, 함수2);
+		- 함수1은 필수. 요소에 들어올때 동작될 기능
+		- 함수2는 요소에서 나갈때 동작될 기능.
+		- 함수1만 있는 경우 들어올때 나갈때 모두 함수1이 실행
+		- mouseenter 이벤트 + mouseleave 이벤트
+		*/
+		$('.box1').hover(function(){
+			$(this).css('background', 'blue');
+		}, function(){
+			$(this).css('background', 'yellow');
+		});
+
+		$('.box2').hover(function(){
+			$(this).toggleClass('bg-blue');
+		});
+		/* 
+		mouseover, mouseout vs mouseenter, mouseleave
+		mouseover : 자식 요소에 마우스를 올려도 이벤트를 새로 발생
+		mouseenter : 자식요소에 마우스를 올리면 mouseenter이벤트가 유지
+		*/
+		let count1 = 0;
+		$('.box3').mouseover(function(){
+			count1++;
+			$(this).children().text(count1);
+		});
+		let count2 = 0;
+		$('.box4').mouseenter(function(){
+			count2++;
+			$(this).children().text(count2);
+		});
+	</script>
+</body>
+</html>
