@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>조상탐색</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.list{
+			padding: 10px; border: 3px solid black;
+		}
+		.item{
+			padding: 10px; border: 3px solid black;
+		}
+		.link{
+			padding: 10px; border: 3px solid black; display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul class="list">
+		<li class="item">
+			<a href="#" class="link">메뉴1</a>
+		</li>
+		<li class="item">
+			<a href="#" class="link">메뉴2</a>
+		</li>
+		<li class="item">
+			<a href="#" class="link">메뉴3</a>
+		</li>
+	</ul>
+	<script>
+		/* 
+		children()
+		- 자식 요소들
+		children('선택자')
+		- 자식 요소들 중 선택자와 일치하는 자식요소
+		find('*')
+		- 자손 요소들
+		find('선택자')
+		- 선택자와 일치하는 자손 요소들
+		*/
+		$('.list').children().css('border-color','red');
+		$('.list').find('*').css('border-radius','10px');
+		$('.list').find('a').css('background','yellow');
+	</script>
+</body>
+</html>

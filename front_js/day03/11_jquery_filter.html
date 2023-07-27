@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>filter 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li class="item">2</li>
+		<li class="center">3</li>
+		<li class="item">4</li>
+		<li>5</li>
+	</ul>
+	<label >
+		<input type="checkbox" name="fruit"> 사과
+	</label>
+	<script>
+		/* 
+		first() : 첫번재 요소
+		last() : 마지막 요소
+		eq(n) : n+1번째 요소
+		filter('선택자') : 선택자를 만족하는 요소
+		not('선택자') : 선택자를 만족하지 않은 요소
+		is('선택자') : 결과값이 참또는 거짓. 요소들이 선택자를 만족하면 true, 만족하지 않으면 false
+		 - is(':checked'), is(':animated')
+		*/
+		$('li').first().css('color', 'red');
+		$('li').last().css('background', 'yellow');
+		$('li').eq(2).css('font-weight','bold');
+		$('li').filter('.item').css('font-size','30px');
+		$('li').not('.item').css('border','1px solid black');
+		
+		$('[name=fruit]').click(function(){
+			if($(this).is(':checked')){
+				$(this).parent().css('background', 'yellow');
+			}else{
+				$(this).parent().css('background', 'white');
+			}
+		});
+	</script>
+</body>
+</html>

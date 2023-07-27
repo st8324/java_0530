@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형제 탐색 예제</title>
+	<script src="../js/jquery.min.js"></script>
+
+</head>
+<body>
+	<ul class="list">
+		<li class="item first">
+			<a href="#" class="link">메뉴1</a>
+		</li>
+		<li class="item">
+			<a href="#" class="link">메뉴2</a>
+		</li>
+		<li class="item center">
+			<a href="#" class="link">메뉴3</a>
+		</li>
+		<li class="item">
+			<a href="#" class="link">메뉴4</a>
+		</li>
+		<li class="item last">
+			<a href="#" class="link">메뉴5</a>
+		</li>
+	</ul>
+	<script>
+		/* 
+		siblings()
+		- 모든 형제 요소들
+		siblings('선택자')
+		- 선택자와 일치하는 형제 요소들
+		prev()
+		- 이전 형제 요소
+		prevAll()
+		- 이전 모든 형제 요소들
+		prevUntil('선택자')
+		- 이전 형제 요소들 중 선택자 전까지 형제 요소들
+		next()
+		- 다음 형제 요소
+		nextAll()
+		- 다음 모든 형제 요소들
+		nextUntil('선택자')
+		- 다음 형제 요소들 중 선택자 전까지 형제 요소들
+		*/
+		$('.center').siblings().css('font-size', '30px');
+		$('.center').next().css('background','yellow');
+		$('.center').prev().css('background','pink');
+		$('.center').nextAll().css('border','1px solid red');
+		$('.center').prevAll().css('border','1px solid blue');
+		$('.center').nextUntil('.last').css('padding-left', '20px');
+		$('.center').prevUntil('.first').css('font-weight', 'bold');
+	</script>
+</body>
+</html>
