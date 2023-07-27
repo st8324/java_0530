@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭메뉴</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		*{ margin: 0; padding: 0;}
+		.list-menu{
+			list-style: none; border: 3px solid black;
+			display: flex;
+		}
+		.item-menu{
+			width: 100%;
+		}
+		.item-menu+.item-menu{
+			border-left: 3px solid black;
+		}
+		.item-menu:nth-child(1).active{ background-color: red; color: #fff;}
+		.item-menu:nth-child(2).active{ background-color: blue; color: #fff;}
+		.item-menu:nth-child(3).active{ background-color: yellow; color: #fff;}
+		.link-menu{
+			display: block; text-align: center; height: 50px; line-height: 50px;
+			font-size: 25px; font-weight: bold; color: inherit;
+			text-decoration: none; cursor: pointer;
+		}
+		.list-box{
+			margin-top: 20px;
+		}
+		.item-box{
+			height: 300px; display: none;
+		}
+		.box1{ background: red;}
+		.box2{ background: blue;}
+		.box3{ background: yellow;}
+		.box-page{
+			display: flex; justify-content: space-between;
+		}
+		.btn-prev,.btn-next{
+			width: 50px; height: 50px; border: 3px solid black;
+			text-align: center; line-height: 50px; text-decoration: none;
+			color: black;
+		}
+		.box-page-num{
+			line-height: 56px; font-size: 24px; font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+	<ul class="list-menu">
+		<li class="item-menu" data-target=".box1">
+			<a href="#" class="link-menu">메뉴1</a>
+		</li>
+		<li class="item-menu" data-target=".box2">
+			<a href="#" class="link-menu">메뉴2</a>
+		</li>
+		<li class="item-menu" data-target=".box3">
+			<a href="#" class="link-menu">메뉴3</a>
+		</li>
+	</ul>
+	<div class="box-page">
+		<a href="#" class="btn-prev"><</a>
+		<div class="box-page-num">
+			<span class="page-current">1</span>
+			<span class="page-max">/ 3</span>
+		</div>
+		<a href="#" class="btn-next">></a>
+	</div>
+	<ul class="list-box">
+		<li class="item-box box1"></li>
+		<li class="item-box box2"></li>
+		<li class="item-box box3"></li>
+	</ul>
+	<script>
+		$('.item-menu').click(function(){
+			//박스
+			let target = $(this).attr('data-target');
+			$('.item-box').hide();
+			$(target).show();
+			//메뉴
+			$('.item-menu').removeClass('active');
+			$(this).addClass('active');
+			//페이지 번호 변경
+			/* 
+			index() : 요소가 몇번재 요소인지를 알려줌. 0부터 시작
+			*/
+			page = $(this).index() + 1;
+			drawPage(page);
+		});
+		let page = 1;
+		const MAX_PAGE = $('.item-menu').length;
+		$('.item-menu').eq(page-1).click();
+
+		$('.btn-prev').click(function(){
+			page = --page == 0 ? MAX_PAGE : page;
+			$('.item-menu').eq(page-1).click();
+			drawPage(page);
+		});
+		$('.btn-next').click(function(){
+			page = ++page > MAX_PAGE ? 1 : page;
+			$('.item-menu').eq(page-1).click();
+			drawPage(page);
+		});
+
+		function drawPage(page){
+			$('.page-current').text(page);
+		}
+	</script>
+</body>
+</html>

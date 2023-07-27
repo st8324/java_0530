@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>라디오 박스 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			padding: 20px; width: 200px; height: 50px; border: 3px solid black;
+			line-height: 50px; font-size: 20px; text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<label>
+		<input type="radio" name="fruit" value="사과">사과
+	</label>
+	<label>
+		<input type="radio" name="fruit" value="오렌지">오렌지
+	</label>
+	<label>
+		<input type="radio" name="fruit" value="바나나">바나나
+	</label>
+	<script>
+		$('[name=fruit]').click(function(){
+			let text = $(this).val();
+			$('.box').text(text);
+		});
+	</script>
+</body>
+</html>
