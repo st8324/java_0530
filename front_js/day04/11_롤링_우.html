@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 50px; border: 3px solid black; 
+			width: 500px;
+			overflow: hidden;
+		}
+		.list{
+			list-style: none; margin: 0; padding: 0;
+			width: 300%; 
+		}
+		.list::after{
+			clear: both; content: ''; display: block;
+		}
+		.item{
+			height: 50px; background-color: yellow; width: 33.33%; float: left;
+		}
+		.bg-pink{ background: pink;}
+		.bg-orange{ background: orange;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item bg-pink">2</li>
+			<li class="item bg-orange">3</li>
+		</ul>
+	</div>
+	<script>
+		$('.box').hover(function(){
+			//롤링을 멈춤
+			clearInterval(id);
+		}, function(){
+			//롤링을 시작
+			id = rolling();
+		});
+
+		let id = rolling();
+
+		function rolling(){
+			return setInterval(()=>{
+				if($('.item').is(':animated')){
+					return;
+				}
+				let width = $('.item').width();
+				$('.item')
+					.last()
+					.detach()
+					.prependTo('.list')
+					.css('margin-left',`-${width}px`)
+					.animate({'margin-left':0},1200);
+			}, 1500);
+		}
+	</script>
+</body>
+</html>
