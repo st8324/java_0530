@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<script src="../js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.js"></script>
+	<style>
+		[class^=error]{
+			color: red; margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>회원가입</h1>	
+		<form action="">
+			<div class="form-group">
+				<input type="text" class="form-control" name="id" placeholder="아이디">
+			</div>
+			<label class="error" id="error-id"></label>
+			<div class="form-group">
+				<input type="password" class="form-control" name="pw" placeholder="비번" id="password">
+			</div>
+			<label class="error" id="error-pw"></label>
+			<div class="form-group">
+				<input type="password" class="form-control" name="pw2" placeholder="비번확인">
+			</div>
+			<label class="error" id="error-pw2"></label>
+			<div class="form-group">
+				<input type="text" class="form-control" name="email" placeholder="이메일">
+			</div>
+			<label class="error" id="error-email"></label>
+			<button class="btn btn-outline-success col-12">회원가입</button>
+		</form>
+	</div>
+	<script>
+		
+		let option = {
+			// relues : 유효성 판변을 위한 규칙, 최소길이, 최대길이, 정규표현식, 값비교(비번), 이메일
+			rules : {
+				/* name : {}*/
+				id : {
+					required : true,
+					regex : /^\w{8,13}$/
+				},
+				pw : {
+					required : true,
+					regex : /^[a-zA-Z0-9!@#$]{8,20}$/
+				}, 
+				pw2 : {
+					required : true,
+					equalTo : password
+				}, 
+				email : {
+					required : true,
+					email : true
+				}
+			},
+			messages : {
+				id : {
+					required : '아이디는 필수항목입니다.',
+					regex : '아이디는 영문,숫자를 포함하며 8~13자이어야 합니다.'
+				},
+				pw : {
+					required : '비번은 필수항목입니다.',
+					regex : '비번은 영문,숫자, !@#$를 포함하며 8~20자이어야 합니다.'
+				}, 
+				pw2 : {
+					required : '비번확인은 필수항목입니다.',
+					equalTo : '비밀번호와 일치하지 않습니다.'
+				}, 
+				email : {
+					required : '이메일은 필수항목입니다.',
+					email : '이메일 형식에 맞지 않습니다.'
+				}
+			}
+		};
+		$("form").validate(option);
+
+		$.validator.addMethod(
+			"regex",
+			function(value, element, regexp) {
+				var re = new RegExp(regexp);
+				return this.optional(element) || re.test(value);
+			},
+			"Please check your input."
+		);
+	</script>
+</body>
+</html>
