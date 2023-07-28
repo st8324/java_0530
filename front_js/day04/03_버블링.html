@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버블링</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		ul{list-style: none; padding: 0; margin: 0;}
+		.list-menu{
+			height: 50px; border: 2px solid black;
+		}
+		.item-menu{position: relative;}
+		.link-menu{
+			display: block; height: 50px; text-align: center; line-height: 50px;
+		}
+		.list-sub{
+			border: 2px solid black; position: absolute; left: -2px; right: -2px;
+			display: none;
+		}
+		.link-sub{
+			height: 50px; display: block; text-align: center; line-height: 50px;
+		}
+		.item-sub+.item-sub{ border-top: 2px solid black;}
+	</style>
+</head>
+<body>
+	<ul class="list-menu">
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴1</a>
+			<ul class="list-sub">
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴1-1</a>
+				</li>
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴1-2</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<script>
+		$('.item-menu').click(function(){
+			$(this).children('.list-sub').toggle();
+		});
+		/* 
+		버블링을 막아주는 메서드 : stopPropagation()
+		*/
+		$('.link-sub').click(function(e){
+			e.stopPropagation();
+			alert($(this).text() + '클릭');
+		})
+	</script>
+</body>
+</html>
