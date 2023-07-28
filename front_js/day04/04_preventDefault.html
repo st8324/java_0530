@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>preventDefault</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div style="height: 1000px;"></div>
+	<a href="#">링크</a>
+	<script>
+		$('a').click(function(e){
+			//태그의 기본 기능을 막아줌
+			e.preventDefault();
+		});
+	</script>
+</body>
+</html>
