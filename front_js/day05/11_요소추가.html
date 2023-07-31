@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn-question">질문 추가</button>
+	<div class="box">
+		<div class="inner-box">
+			<input type="text" class="input" placeholder="질문"> <br>
+			<textarea placeholder="답변"" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	<button class="btn-add-question">질문 등록</button>
+	<script>
+		$('.btn-question').click(function(){
+			let element = 
+			`<div class="inner-box">
+				<input type="text" class="input" placeholder="질문"> <br>
+				<textarea placeholder="답변"" cols="30" rows="10"></textarea>
+			</div>`;
+			$('.box').append(element);
+		});
+	</script>
+</body>
+</html>
