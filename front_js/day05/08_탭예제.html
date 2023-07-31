@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 200px; background-color: blue; display: none;
+		}
+		.box2{
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn btn1" data-target=".box1">박스1</button>
+	<button class="btn btn2" data-target=".box2">박스2</button>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+	</div>
+	<script>
+		//방법1. data-target을 이용
+		/*
+		$('.btn').click(function(){
+			//let target = $(this).attr('data-target');
+			let target = $(this).data('target');
+			$('.box').hide();
+			$(target).show();
+		})*/
+		//버튼 순서와 박스 순서가 같다는 성질 이용
+		$('.btn').click(function(){
+			let index = $(this).index();
+			//$('.box').hide();
+			//$('.box').eq(index).show();
+			$('.box') //모든 박스를
+				.hide()	//감추고
+				.eq(index)	//index+1번재 박스를
+				.show();	//보여줌
+		});
+	</script>
+</body>
+</html>

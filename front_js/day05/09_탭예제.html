@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 200px; background-color: blue; display: none;
+		}
+		.box2{
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<select name="box">
+		<option value="">선택안함</option>
+		<option value=".box1">박스1</option>
+		<option value=".box2">박스2</option>
+	</select>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+	</div>
+	<script>
+		//방법1. value를 이용
+		$('[name=box]').click(function(){
+			let value = $(this).val();
+			$('.box').hide();
+			$(value).show();
+		})
+	</script>
+</body>
+</html>

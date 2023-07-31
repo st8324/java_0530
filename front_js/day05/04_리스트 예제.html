@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn btn1">항목1 클릭</button>
+	<button class="btn btn2">항목2 클릭</button>
+	<button class="btn btn3">항목3 클릭</button>
+	<br>
+	<button class="btn-prev">이전</button>
+	<button class="btn-next">다음</button>
+	<script>
+		let num = 0;
+		$('.btn').click(function(){
+			$('li').css('background-color', 'white');
+			//눌린 버튼이 .btn 중 몇번째인지 가져옴
+			let index = $(this).index()-1;
+			num = index;
+			$('li').eq(index).css('background-color','yellow');
+		});
+
+		//방법1. 전역변수를 이용한 방법
+		$('.btn-prev').click(()=>{
+			--num;
+			if(num < 0){
+				num = $('li').length - 1;
+			}
+			$('.btn').eq(num).click();
+		});
+		$('.btn-next').click(()=>{
+			++num;
+			if(num == $('li').length){
+				num = 0;
+			}
+			$('.btn').eq(num).click();
+		});
+
+	</script>
+</body>
+</html>

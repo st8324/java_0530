@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.bg-yellow{ background-color: yellow;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn btn1">항목1 클릭</button>
+	<button class="btn btn2">항목2 클릭</button>
+	<button class="btn btn3">항목3 클릭</button>
+	<br>
+	<button class="btn-prev">이전</button>
+	<button class="btn-next">다음</button>
+	<script>
+		let num = 0;
+		$('.btn').click(function(){
+			$('li').removeClass('bg-yellow');
+			//눌린 버튼이 .btn 중 몇번째인지 가져옴
+			let index = $(this).index()-1;
+			num = index;
+			$('li').eq(index).addClass('bg-yellow');
+		});
+
+		//방법2. 앞 요소/뒤 요소가 있는지 없는지 확인해서 이동
+		$('.btn-prev').click(()=>{
+			//앞 요소의 길이가 0이 아니라면 => 앞 요소가 있다
+			let index;
+			if($('.bg-yellow').prev().length !=0){
+				index = $('.bg-yellow').prev().index();
+			}else{
+				index = $('li').length - 1;
+			}
+			$('.btn').eq(index).click();
+		});
+		$('.btn-next').click(()=>{
+			let index;
+			if($('.bg-yellow').next().length !=0){
+				index = $('.bg-yellow').next().index();
+			}else{
+				index = 0;
+			}
+			$('.btn').eq(index).click();
+		});
+
+	</script>
+</body>
+</html>
