@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>첨부파일 미리보기</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="file" name="file" onchange="readUrl(this)">
+	<div class="box-thumbnail">
+		<img src="" alt="미리보기" id="preview" height="100" width="auto">
+	</div>
+	<script>
+		function readUrl(input){
+			//input태그가 첨부파일이고, 첨부파일이 선택되면
+			if(input.files && input.files[0]){
+				let reader = new FileReader();
+				reader.onload = function(e){
+					document.getElementById('preview').src = e.target.result;
+				}
+				reader.readAsDataURL(input.files[0]);
+			} 
+			//첨부파일이 선택되지 않으면
+			else{
+				document.getElementById('preview').src = '';
+			}
+		}
+	</script>
+</body>
+</html>
