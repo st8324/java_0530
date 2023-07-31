@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn btn1">항목1 클릭</button>
+	<button class="btn btn2">항목2 클릭</button>
+	<button class="btn btn3">항목3 클릭</button>
+	<script>
+		/*
+		$('.btn1').click(()=>{
+			$('li').css('background-color', 'white');
+			$('li').eq(0).css('background-color','yellow');
+		});
+		$('.btn2').click(()=>{
+			$('li').css('background-color', 'white');
+			$('li').eq(1).css('background-color','yellow');
+		});
+		$('.btn3').click(()=>{
+			$('li').css('background-color', 'white');
+			$('li').eq(2).css('background-color','yellow');
+		});
+		*/
+		$('.btn').click(function(){
+			$('li').css('background-color', 'white');
+			//눌린 버튼이 .btn 중 몇번째인지 가져옴
+			let index = $(this).index()-1;
+			$('li').eq(index).css('background-color','yellow');
+		});
+	</script>
+</body>
+</html>
