@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>썸네일 미리보기</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.input-file{ display: none; }
+		.img-thumbnail{ cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="box-thumbnail-input">
+		<input type="file" name="file" class="input-file input-select" onchange="readUrl(this)">
+	</div>
+	<div class="box-thumbnail">
+		<img src="img_add.png" alt="미리보기" class="img-thumbnail img-select" height="100" width="auto">
+	</div>
+	<script>
+		//이미지를 클릭하면 input태그가 클릭되게하는 이벤트 등록
+		$(document).on('click','.img-thumbnail',function(){
+			//이미지 태그가 몇번째 요소인지
+			let index = $(this).index();
+			//클릭된 이미지와 순서가 같은 input태그 클릭
+			$('.input-file').eq(index).click();
+		});
+
+		function readUrl(input){
+			//파일이 선택/취소된 input요소가 몇번째 확인
+			let index = $(input).index();
+
+			let $selectInput = $(input);	//선택된 input태그 요소
+			let $selectImg = $('.img-thumbnail').eq(index);//선택된 input태그와 세트인 img태그 요소
+
+			//input태그가 첨부파일이고, 첨부파일이 선택되면
+			if(input.files && input.files[0]){
+				let reader = new FileReader();
+				reader.onload = function(e){
+					$selectImg.prop('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+				
+				//새요소를 추가하지 않는 경우 : 현재 바뀐 첨부파일이 +가 아닌 요소일 때 
+				if(!$selectImg.hasClass('img-select')){
+					return;
+				}
+
+				//새 요소(input태그와 img태그) 추가하는 부분
+				$selectImg.removeClass('img-select');
+				$selectInput.removeClass('input-select');
+				//선택된 이미지가 3개보다 작은 경우
+				if($('.img-thumbnail').length < 3){
+					$('.box-thumbnail-input').append(`<input type="file" name="file" class="input-file input-select" onchange="readUrl(this)">`);
+					$('.box-thumbnail').append(`<img src="img_add.png" alt="미리보기" class="img-thumbnail img-select" height="100" width="auto">`);
+				}
+			} 
+			//첨부파일이 선택되지 않으면
+			else{
+				//+를 눌러서 첨부파일 선택할 때 취소하는 경우
+				if($selectImg.hasClass('img-select')){
+					$selectImg.prop('src', 'img_add.png');
+					return;
+				}
+				//+앞에 이미지를 클릭하여 첨부파일을 열어서 취소하는 경우
+				$selectImg.remove();
+				$selectInput.remove();
+				if($('.img-select').length == 0){
+					$('.box-thumbnail-input').append(`<input type="file" name="file" class="input-file input-select" onchange="readUrl(this)">`);
+					$('.box-thumbnail').append(`<img src="img_add.png" alt="미리보기" class="img-thumbnail img-select" height="100" width="auto">`);
+				}
+			}
+		}
+	</script>
+</body>
+</html>
