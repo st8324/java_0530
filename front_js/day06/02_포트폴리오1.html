@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>포트폴리오1</title>
+	<style>
+		.form-group{
+			margin-bottom: 10px;
+			width: 450px;
+		}
+		.form-group::after{
+			clear: both; content: ''; display: block;
+		}
+		.form-group label{
+			width: 150px; text-align: center; 
+			float: left;
+		}
+		.form-group .form-control{
+			width: 300px; float: left; box-sizing: border-box;
+		}
+		.label-content{ line-height: 150px;}
+		.text-center{ text-align: center;}
+		.table td,
+		.table th,
+		.table{ border : 1px solid black}
+		.table{
+			width: 100%;
+		}
+		.table thead,
+		.table tfoot{
+			background-color: rgb(255,160,122);
+			color: #fff;
+		}
+		.table tbody{
+			background-color: rgb(255,255,224);
+		}
+		.table tbody td:nth-child(3){ width: 70px;}
+	</style>
+</head>
+<body>
+	<h1>포트폴리오 문제</h1>
+	<hr>
+	<form action="insert.no" method="post">
+		<fieldset>
+			<legend>공지사항 작성하기</legend>
+			<div class="form-group">
+				<label>제목</label>
+				<input type="text" class="form-control" name="title">
+			</div>
+			<div class="form-group">
+				<label class="label-content">내용</label>
+				<textarea name="content" cols="30" rows="10" class="form-control"></textarea>
+			</div>
+			<div class="form-group">
+				<label>첨부파일</label>
+				<input type="file" class="form-control" name="uploadFile">
+			</div>
+			<div class="form-group text-center">
+				<button>작성하기</button>
+			</div>
+		</fieldset>
+	</form>
+	<hr>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th colspan="2">제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>9</td>
+				<td>공지사항 제목 9</td>
+				<td><a href="#"><button>바로가기</button></a></td>
+				<td>user01</td>
+				<td>2021-03-29</td>
+				<td>34</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<th colspan="4">전체공지사항개수</th>
+			<th colspan="2">1개</th>
+		</tfoot>
+	</table>
+</body>
+</html>
