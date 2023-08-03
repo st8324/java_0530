@@ -155,4 +155,14 @@ select * from student limit 4,2;
 SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 -- 각 과별 학생수를 조회 
 select major as 학과, count(num) as 학생수 from student group by major;
-
+-- 과목별 수강 학생수를 과목코드, 수강생수로 조회하는 쿼리 
+select subject_code as 과목코드, count(*) as 수강생수 from course group by subject_code;
+-- 과목별 수강생 수가 4명 이상인 과목의 과목코드를 조회하는 쿼리 
+select 
+	subject_code as 과목코드, count(*) as 수강생수 
+from 
+	course 
+group by 
+	subject_code
+having
+	수강생수 >= 4;
