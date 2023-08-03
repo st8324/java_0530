@@ -37,4 +37,13 @@ FROM
     student
 WHERE
     major = '컴퓨터공학과';
+-- 컴퓨터공학과가 아닌 학생들을 조회하는 쿼리 
+select * from student where major <> '컴퓨터공학과';
+select * from student where major != '컴퓨터공학과';
+-- 학번이 2023135001인 학생이 듣는 수강정보를 조회하는 쿼리 
+select * from course where student_num = '2023135001';
+-- 학점이 3학점인 과목의 과목명을 조회하는 쿼리 
+select title from subject where point = 3;
+-- 이름이 3자인 학생 정보를 조회하는 쿼리
+select * from student where name like '___';
 
