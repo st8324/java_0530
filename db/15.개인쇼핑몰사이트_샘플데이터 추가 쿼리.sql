@@ -13,3 +13,19 @@ INSERT INTO MEMBER(ME_ID, ME_PW, ME_PHONE, ME_ADDR, ME_ADDR_DETAIL, ME_POST, ME_
 
 -- 제품코드가 ABC001, 제품명이 KH무선마우스, 제품설명이 KH무선마우스입니다., 가격이 15000원
 -- 종류가 무선 / 유선인 제품을 등록하는 쿼리를 작성 
+-- PRODUCT 테이블과 OPTION테이블에 데이터를 추가 
+INSERT INTO PRODUCT VALUES('ABC001','KH무선마우스','KH무선마우스입니다.', 150000);
+INSERT INTO `OPTION`(OP_NAME, OP_PR_CODE) VALUES('무선', 'ABC001'),('유선','ABC001');
+
+-- 제품 코드가 ABC001인 제품의 제품 정보와 옵션을 조회하는 쿼리 
+SELECT 
+    *
+FROM
+    PRODUCT
+        JOIN
+    `OPTION` ON PR_CODE = OP_PR_CODE
+WHERE
+    PR_CODE = 'ABC001';
+
+
+
