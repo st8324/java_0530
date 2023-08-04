@@ -92,7 +92,7 @@ DROP TABLE IF EXISTS `basket`;
 CREATE TABLE `basket` (
 	`ba_num`	int	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`ba_amount`	int	NOT NULL DEFAULT 1,
-	`ba_or_num`	int	NOT NULL,
+	`ba_me_id`	varchar(15)	NOT NULL,
 	`ba_op_num`	int	NOT NULL
 );
 
@@ -162,11 +162,11 @@ REFERENCES `option` (
 	`op_num`
 );
 
-ALTER TABLE `basket` ADD CONSTRAINT `FK_order_TO_basket_1` FOREIGN KEY (
-	`ba_or_num`
+ALTER TABLE `basket` ADD CONSTRAINT `FK_member_TO_basket_1` FOREIGN KEY (
+	`ba_me_id`
 )
-REFERENCES `order` (
-	`or_num`
+REFERENCES `member` (
+	`me_id`
 );
 
 ALTER TABLE `basket` ADD CONSTRAINT `FK_option_TO_basket_1` FOREIGN KEY (
