@@ -152,6 +152,26 @@ SET
     OP_AMOUNT = OP_AMOUNT - 3
 WHERE
     OP_PR_CODE = 'ABC002' AND OP_NAME = '기계식';
+-- abc123회원이 제품을 받고 구매 확정을 눌렀을 때 쿼리 
+-- 주문에 구매확정으로 수정
+UPDATE `ORDER` SET OR_STATE = '구매 확정' WHERE OR_NUM = 1;
+-- 포인트 내역에 적립 내용을 추가
+INSERT INTO POINT(PO_CONTENT, PO_AMOUNT, PO_ME_ID)
+	VALUES('제품 구매에 의한 적립', 3000, 'abc123');
+-- 회원 정보에 포인트를 누적 
+UPDATE MEMBER SET ME_POINT = ME_POINT + 3000 WHERE ME_ID = 'abc123';
+
+-- abc123회원이 구매 확정한 ABC001제품 중 무선인 제품에 '좋은 마우스입니다.'라고 리뷰를 등록했을 때 쿼리
+INSERT INTO REVIEW(RE_CONTENT, RE_THUMB, RE_OP_NUM, RE_ME_ID)
+VALUES('좋은 마우스입니다.', NULL, 1, 'abc123');
+
+
+
+
+
+
+
+
 
 
 
