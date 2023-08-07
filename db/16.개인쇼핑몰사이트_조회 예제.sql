@@ -111,3 +111,75 @@ FROM
 		JOIN 
 	`OPTION` ON PR_CODE = OP_PR_CODE 
 GROUP BY PR_CODE;
+
+-- 제품별 판매량(반품, 환불을 제외한)을 조회하는 쿼리(제품명, 판매량)
+SELECT
+	PR_NAME AS 제품명,
+	SUM(OL_AMOUNT) AS 판매량
+FROM
+    PRODUCT
+JOIN
+	`OPTION`
+ON
+	OP_PR_CODE = PR_CODE
+LEFT JOIN
+	ORDER_LIST
+ON
+	OL_OP_NUM = OP_NUM
+LEFT JOIN
+	`ORDER` 
+ON 
+	OR_NUM = OL_OR_NUM
+WHERE
+	OR_STATE IS NULL OR OR_STATE NOT IN('반품','환불')
+GROUP BY PR_CODE;
+-- 제품 옵션별 판매량(반품, 환불을 제외한)을 조회하는 쿼리(제품명, 옵션명, 판매량)
+SELECT
+	PR_NAME AS 제품명,
+    OP_NAME AS 옵션명,
+	IFNULL(SUM(OL_AMOUNT),0) AS 판매량
+FROM
+    PRODUCT
+JOIN
+	`OPTION`
+ON
+	OP_PR_CODE = PR_CODE
+LEFT JOIN
+	ORDER_LIST
+ON
+	OL_OP_NUM = OP_NUM
+LEFT JOIN
+	`ORDER` 
+ON 
+	OR_NUM = OL_OR_NUM
+WHERE
+	OR_STATE IS NULL OR OR_STATE NOT IN('반품','환불')
+GROUP BY OP_NUM;
+
+-- 제품 옵션별 판매량(반품, 환불을 제외한)을 조회하는 쿼리(제품명, 옵션명, 판매량, 총판매금액)
+SELECT
+	PR_NAME AS 제품명,
+    OP_NAME AS 옵션명,
+	IFNULL(SUM(OL_AMOUNT),0) AS 판매량,
+    PR_PRICE * IFNULL(SUM(OL_AMOUNT),0) AS 총판매금액
+FROM
+    PRODUCT
+		JOIN
+	`OPTION` ON	OP_PR_CODE = PR_CODE
+		LEFT JOIN 
+	ORDER_LIST ON OL_OP_NUM = OP_NUM
+		LEFT JOIN 
+	`ORDER`ON OR_NUM = OL_OR_NUM
+WHERE
+	OR_STATE IS NULL OR OR_STATE NOT IN('반품','환불')
+GROUP BY OP_NUM;
+-- 옵션별 리뷰수를 조회하는 쿼리(제품명, 옵션명, 리뷰수)
+SELECT 
+   PR_NAME AS 제품명, OP_NAME AS 옵션명, COUNT(RE_NUM) AS 리뷰수
+FROM
+    REVIEW
+        RIGHT JOIN
+    `OPTION` ON RE_OP_NUM = OP_NUM
+        JOIN
+    product ON OP_PR_CODE = PR_CODE
+GROUP BY OP_NUM;
