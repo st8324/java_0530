@@ -123,7 +123,7 @@ CREATE TABLE `seat` (
 	`se_row`	char(1)	NOT NULL, --
 	`se_col`	varchar(2)	NOT NULL, --
 	`se_state`	varchar(10)	NOT NULL DEFAULT '일반', -- 일반/커플/스위트 
-	`sc_num`	int	NOT NULL
+	`se_sc_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `movie_schedule`;
@@ -289,7 +289,7 @@ REFERENCES `theater` (
 );
 
 ALTER TABLE `seat` ADD CONSTRAINT `FK_screen_TO_seat_1` FOREIGN KEY (
-	`sc_num`
+	`se_sc_num`
 )
 REFERENCES `screen` (
 	`sc_num`
