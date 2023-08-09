@@ -135,7 +135,7 @@ VALUES('1관 6층', 10, 1), ('2관(LCK관) 6층(LASER)', 14, 1);
 -- CGV강남 영화관 좌석을 등록 
 -- 1관 : A1, A2, A3, A4, B1, B2, B3, C1, C2, C3 
 -- 2관 : A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4, D1, D2
-INSERT INTO SEAT(SE_NAME, SE_ROW, SE_COL, SC_NUM)
+INSERT INTO SEAT(SE_NAME, SE_ROW, SE_COL, SE_SC_NUM)
 VALUES('A1', 'A', '1', 1),
 ('A2', 'A', '2', 1),
 ('A3', 'A', '3', 1),
