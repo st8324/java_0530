@@ -75,6 +75,53 @@ VALUES('오펜하이머_트레일러1.MP4', '트레일러'),
 INSERT INTO MOVIE_FILE(MF_FI_NUM, MF_MO_NUM)
 VALUES(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1);
 
+-- 영화 콘크리트 유토피아를 등록(위에서 했던 영화 오펜하이머와 같은 방식으로 진행)
+-- 트레일러는 2개, 스틸컷은 3개 
+-- 메인포스터를 등록 
+INSERT INTO FILE(FI_NAME, FI_STATE) VALUES('콘크리트 유토피아_메인포스터.JPG', '메인포스터');
+-- 영화 정보를 등록
+INSERT INTO MOVIE(MO_TITLE, MO_TITLE_ENG, MO_OPENING_DATE, MO_RUNNING_TIME,
+	MO_PLOT, MO_FI_NUM, MO_AG_NAME)
+    VALUES('콘크리트 유토피아', 'Concrete Utopia', '2023-08-09', 130,
+    '“아파트는 주민의 것”', 10, '15세관람가');
+
+-- 영화인 등록 
+INSERT INTO FILM_PERSON(FP_NAME, FP_THUMBNAIL, FP_BIRTHDAY, FP_CT_NAME)
+VALUES('엄태화', '엄태화.JPG', '1981-01-01', '한국'),
+('이병헌', '이병헌.JPG', '1970-07-12', '한국'),
+('박서준', '박서준.JPG', '1988-12-16', '한국'),
+('박보영', '박보영.JPG', '1990-02-12', '한국'),
+('김선영', '김선영.JPG', '1976-04-10', '한국'),
+('박지후', '박지후.JPG', '2003-11-07', '한국'),
+('김도윤', '김도윤.JPG', '1981-08-07', '한국');
+
+-- 역할 등록 
+INSERT INTO ROLE(RO_ROLE, RO_FP_NUM, RO_MO_NUM)
+VALUES('감독',11,2),('배우',12,2),('배우',13,2),('배우',14,2),('배우',15,2)
+	,('배우',16,2),('배우',17,2);
+
+-- 영화 장르 등록
+INSERT INTO MOVIE_GENRE(MG_GE_NAME, MG_MO_NUM) VALUES('드라마', 2);
+-- 영화 제작 국가 
+INSERT INTO COUNTRY_PRODUCTION(CP_CT_NAME, CP_MO_NUM) VALUES('한국',2);
+-- 트레일러/스틸컷 등록 
+INSERT INTO FILE(FI_NAME, FI_STATE)
+VALUES('콘크리트 유토피아_트레일러1.MP4', '트레일러'),
+('콘크리트 유토피아_트레일러2.MP4', '트레일러'),
+('콘크리트 유토피아_트레일러3.MP4', '트레일러'),
+('콘크리트 유토피아_스틸컷1.JPG', '스틸컷'),
+('콘크리트 유토피아_스틸컷2.JPG', '스틸컷');
+
+-- 영화 파일을 등록
+INSERT INTO MOVIE_FILE(MF_FI_NUM, MF_MO_NUM)
+VALUES(11,2),(12,2),(13,2),(14,2),(15,2);
+
+
+
+
+
+
+
 
 
 
