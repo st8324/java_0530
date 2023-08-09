@@ -14,7 +14,7 @@ CREATE TABLE `movie` (
 	`mo_running_time`	int	NOT NULL,
 	`mo_plot`	longtext	NOT NULL,
 	`mo_fi_num`	int	NOT NULL,
-	`mo_ag_num`	varchar(10)	NOT NULL,
+	`mo_ag_name`	varchar(10)	NOT NULL,
 	`mo_reservation_rate`	int	NOT NULL DEFAULT 0
 );
 
@@ -46,11 +46,11 @@ CREATE TABLE `country_production` (
 	`cp_mo_num`	int	NOT NULL
 );
 
-DROP TABLE IF EXISTS `film_persion`;
+DROP TABLE IF EXISTS `film_person`;
 
-CREATE TABLE `film_persion` (
+CREATE TABLE `film_person` (
 	`fp_num`	int	NOT NULL PRIMARY KEY AUTO_INCREMENT, --
-	`fp_name`	varchar(10)	NOT NULL, --
+	`fp_name`	varchar(50)	NOT NULL, --
 	`fp_thumbnail`	varchar(50)	NULL,
 	`fp_agency`	varchar(20)	NULL,
 	`fp_final_education`	varchar(20)	NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `movie_file` (
 DROP TABLE IF EXISTS `age`;
 
 CREATE TABLE `age` (
-	`ag_num`	varchar(10)	NOT NULL PRIMARY KEY --
+	`ag_name`	varchar(10)	NOT NULL PRIMARY KEY --
 );
 
 DROP TABLE IF EXISTS `theater`;
@@ -146,7 +146,8 @@ CREATE TABLE `member` (
 	`me_pw`	varchar(20)	NOT NULL,--
 	`me_name`	varchar(20)	NOT NULL,--
 	`me_phone`	varchar(15)	NOT NULL,--
-	`me_birthday`	date	NOT NULL--
+	`me_birthday`	date	NOT NULL,--
+    `me_authority` varchar(5) NOT NULL DEFAULT 'USER'
 );
 
 DROP TABLE IF EXISTS `reservation`;
@@ -204,10 +205,10 @@ REFERENCES `file` (
 );
 
 ALTER TABLE `movie` ADD CONSTRAINT `FK_age_TO_movie_1` FOREIGN KEY (
-	`mo_ag_num`
+	`mo_ag_name`
 )
 REFERENCES `age` (
-	`ag_num`
+	`ag_name`
 );
 
 ALTER TABLE `movie_genre` ADD CONSTRAINT `FK_genre_TO_movie_genre_1` FOREIGN KEY (
@@ -238,17 +239,17 @@ REFERENCES `movie` (
 	`mo_num`
 );
 
-ALTER TABLE `film_persion` ADD CONSTRAINT `FK_country_TO_film_persion_1` FOREIGN KEY (
+ALTER TABLE `film_person` ADD CONSTRAINT `FK_country_TO_film_person_1` FOREIGN KEY (
 	`fp_ct_name`
 )
 REFERENCES `country` (
 	`ct_name`
 );
 
-ALTER TABLE `role` ADD CONSTRAINT `FK_film_persion_TO_role_1` FOREIGN KEY (
+ALTER TABLE `role` ADD CONSTRAINT `FK_film_person_TO_role_1` FOREIGN KEY (
 	`ro_fp_num`
 )
-REFERENCES `film_persion` (
+REFERENCES `film_person` (
 	`fp_num`
 );
 
