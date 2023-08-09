@@ -135,7 +135,7 @@ CREATE TABLE `movie_schedule` (
 	`ms_date`	date	NOT NULL,--
 	`ms_start_time`	time	NOT NULL,--
 	`ms_end_time`	time	NOT NULL,--
-	`ms_possibe_seat`	int	NOT NULL,--
+	`ms_possible_seat`	int	NOT NULL,--
 	`ms_discount`	char(1)	NOT NULL DEFAULT 'N'--
 );
 
