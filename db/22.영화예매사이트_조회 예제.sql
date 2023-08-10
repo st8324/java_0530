@@ -184,8 +184,59 @@ SELECT * FROM (
 		GROUP BY RV_ME_ID
 		) AS A
 	) AS B
-WHERE 순위 <= 3
+WHERE 순위 <= 3;
 
 -- 영화인별로 배우로 참여한 영화 개수를 조회하는 쿼리 
+SELECT 
+    FP_NAME AS 영화인, IFNULL(COUNT(RO_NUM),0) AS '참여영화수(배우)'
+FROM
+    FILM_PERSON
+        LEFT JOIN
+    (SELECT 
+        *
+    FROM
+        ROLE
+    WHERE
+        RO_ROLE = '배우') AS ROLE2 ON RO_FP_NUM = FP_NUM
+GROUP BY FP_NUM;
+-- 각 스케쥬별 예약한 좌석 수를 조회하는 쿼리 
+SELECT 
+    MO_TITLE AS 영화,
+    MS_DATE AS 상영일,
+    MS_START_TIME AS 상영시간,
+    SC_TOTAL_SEAT - MS_POSSIBLE_SEAT AS 예약좌석수
+FROM
+    MOVIE_SCHEDULE
+        JOIN
+    SCREEN ON MS_SC_NUM = SC_NUM
+		JOIN
+	MOVIE ON MO_NUM = MS_MO_NUM;
+-- 영화관별 상영 영화 목록을 보여주는 쿼리 
+SELECT 
+    TH_NAME AS 영화관, MO_TITLE AS 영화
+FROM
+    MOVIE_SCHEDULE
+        JOIN
+    SCREEN ON MS_SC_NUM = SC_NUM -- 영화관과 연결을 위해 먼저 상영관과 연결 
+		JOIN
+	THEATER ON TH_NUM = SC_TH_NUM -- 영화관명을 조회하기 위해 영화관 연결 
+		JOIN
+	MOVIE ON MS_MO_NUM = MO_NUM -- 영화 제목을 조회가 위해 영화관 열결 
+WHERE 
+	NOW() < CONCAT(MS_DATE, ' ', MS_START_TIME)
+GROUP BY TH_NUM, MS_MO_NUM;
 
-
+-- 오펜하이머를 상영하는 영화관을 조회하는 쿼리 
+SELECT 
+    TH_NAME AS 영화관
+FROM
+    MOVIE_SCHEDULE
+        JOIN
+    SCREEN ON MS_SC_NUM = SC_NUM -- 영화관과 연결을 위해 먼저 상영관과 연결 
+		JOIN
+	THEATER ON TH_NUM = SC_TH_NUM -- 영화관명을 조회하기 위해 영화관 연결 
+		JOIN
+	MOVIE ON MS_MO_NUM = MO_NUM -- 영화 제목을 조회가 위해 영화관 열결 
+WHERE 
+	NOW() < CONCAT(MS_DATE, ' ', MS_START_TIME) AND MO_TITLE = '오펜하이머'
+GROUP BY TH_NUM, MS_MO_NUM;
