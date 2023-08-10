@@ -146,14 +146,14 @@ WHERE
     NOW() >= CONCAT(MS_DATE, ' ', MS_START_TIME)
 GROUP BY RV_ME_ID , MS_MO_NUM;
 
--- 회원들 중 금액 사용이 가장 많은 3명의 회원을 조회하는 쿼리 
+-- 회원들 중 금액 사용이 가장 많은 3명의 회원을 조회하는 쿼리
+-- 사용 금액이 같은 회원이 여러명인 경우 누구는 순위 포함되고 누구는 순위에 포함되지 않을 수 있음 
 SELECT 
     ME_ID AS 아이디,
-    IFNULL(SUM(CASE
-                WHEN NOW() >= CONCAT(MS_DATE, ' ', MS_START_TIME) THEN RV_PRICE
-                ELSE 0
-            END),
-            0) AS 누적금액
+    SUM(CASE
+			WHEN NOW() >= CONCAT(MS_DATE, ' ', MS_START_TIME) THEN RV_PRICE
+			ELSE 0
+		END)AS 누적금액
 FROM
     RESERVATION
         JOIN
@@ -163,18 +163,19 @@ FROM
 GROUP BY RV_ME_ID
 ORDER BY 누적금액 DESC
 LIMIT 3;
-
+-- 회원들 중 금액 사용이 가장 많은 3명의 회원을 조회하는 쿼리 
+-- 사용 금액이 같은 회원이 여러명인 경우 여러명 모두 등수에 포함되면 모두 받을 수 있다. 
 SELECT * FROM (
 	SELECT 
 		ME_ID AS 아이디,
 		누적금액,
 		RANK() OVER(ORDER BY 누적금액 DESC) AS 순위
 	FROM
-		(SELECT *, IFNULL(SUM(CASE
-					WHEN NOW() >= CONCAT(MS_DATE, ' ', MS_START_TIME) THEN RV_PRICE
-					ELSE 0
-				END),
-				0) AS 누적금액 FROM
+		(SELECT *, SUM(
+			CASE
+				WHEN NOW() >= CONCAT(MS_DATE, ' ', MS_START_TIME) THEN RV_PRICE
+				ELSE 0
+			END) AS 누적금액 FROM
 		RESERVATION
 			JOIN
 		MOVIE_SCHEDULE ON RV_MS_NUM = MS_NUM
@@ -185,5 +186,6 @@ SELECT * FROM (
 	) AS B
 WHERE 순위 <= 3
 
+-- 영화인별로 배우로 참여한 영화 개수를 조회하는 쿼리 
 
 
