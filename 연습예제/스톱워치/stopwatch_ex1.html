@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스톱워치1</title>
+	<style>
+		.box-show{
+			padding: 20px;
+			border: 1px solid black;
+			width: 500px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-show">00:00:00:00</div>
+	<input type="hidden" name="time" value="0" id="time">
+	<button class="btn-start-stop" onclick="startAndStop()">시작/스톱</button>
+	<button class="btn-reset" onclick="reset()">리셋</button>
+	<script src="time.js"></script>
+	<script>
+		let stopwatchId = null;
+		let timeInput = document.getElementById('time');
+		
+		function startAndStop(){
+			stopwatchId!=null?end():start();
+		}
+		
+		function reset(){
+			timeInput.value = '0';
+			end();
+			writeTime();
+		}
+		function start(){
+			stopwatchId = setInterval(()=>{
+				let time = parseInt(timeInput.value);
+				time+=10;
+				timeInput.value = time;
+				writeTime();
+			}, 10);
+		}
+		function end(){
+			clearInterval(stopwatchId);
+			stopwatchId = null;
+		}
+		function writeTime(){
+			let str = calculateTime(timeInput.value);
+			document.getElementsByClassName('box-show')[0].innerText =str;
+		}
+	</script>
+</body>
+</html>
