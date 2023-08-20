@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>오늘의 할일</title>
+</head>
+<body>
+	<input type="text" id="input" onchange="change(this)">
+	<h1>오늘의 할일</h1>
+	<ul id="listTodo"></ul>
+	<script>
+		let input = document.getElementById('input');
+		let listTodo = document.getElementById('listTodo');
+
+		function change(obj){
+			
+			let li = document.createElement('li');
+			let textNode = document.createTextNode(obj.value);
+			li.appendChild(textNode);
+			listTodo.appendChild(li);
+			obj.value = '';
+		}
+	</script>
+</body>
+</html>
