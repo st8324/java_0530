@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스톱워치3</title>
+	<style>
+		.box-show,.box-record{
+			padding: 20px;
+			border: 1px solid black;
+			width: 500px;
+			text-align: center;
+			line-height: 50px;
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-show">00:00:00:00</div>
+	<input type="hidden" name="time" value="0" id="time">
+	<button class="btn-start-stop" onclick="startAndStop()">시작/스톱</button>
+	<button class="btn-reset" onclick="reset()">리셋</button>
+	<div class="container-records">
+		<div class="box-record">00:00:00:00</div>
+		<div class="box-record">00:00:00:00</div>
+		<div class="box-record">00:00:00:00</div>
+	</div>
+	<script src="time.js"></script>
+	<script>
+		let stopwatchId = null;
+		let timeInput = document.getElementById('time');
+		
+		function startAndStop(){
+			stopwatchId!=null?record():start();
+		}
+		function record(){
+			let time = timeInput.value;
+			let recordBox = `<div class="box-record record">${calculateTime(time)}</div>`;
+			let containerRecords = document.querySelector('.container-records');
+			//새기록을 처음에 추가 
+			containerRecords.innerHTML = recordBox + containerRecords.innerHTML;
+			//기록이 3개 이하이면 
+			if(document.querySelectorAll('.record').length <= 3){
+				//마지막 요소 삭제
+				containerRecords.lastElementChild.remove()
+			}
+		}
+		function reset(){
+			timeInput.value = '0';
+			end();
+			writeTime();
+			//모든 기록을 삭제하고
+			document.querySelectorAll('.box-record').forEach(item=>item.remove())
+			//기본 기록을 추가 
+
+			let str = '';
+			for(i = 0; i<3; i++){
+				str += '<div class="box-record">00:00:00:00</div>';
+			}
+			document.querySelector('.container-records').innerHTML = str;
+		}
+		function start(){
+			stopwatchId = setInterval(()=>{
+				let time = parseInt(timeInput.value);
+				time+=10;
+				timeInput.value = time;
+				writeTime();
+			}, 10);
+		}
+		function end(){
+			clearInterval(stopwatchId);
+			stopwatchId = null;
+		}
+		function writeTime(){
+			let str = calculateTime(timeInput.value);
+			document.getElementsByClassName('box-show')[0].innerText =str;
+		}
+	</script>
+</body>
+</html>
