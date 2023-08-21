@@ -41,8 +41,18 @@ public class MemberController {
 	}
 
 	private void withdraw() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("아이디 		: ");
+		String id = sc.next();
+		System.out.print("비번    	: ");
+		String pw = sc.next();
 		
-		
+		MemberVO member = new MemberVO(id, pw);
+		if(memberService.withdraw(member)) {
+			System.out.println("[회원 탈퇴 성공]");
+		}else {
+			System.out.println("[회원 탈퇴 실패]");
+		}
 	}
 
 	private void signup() {

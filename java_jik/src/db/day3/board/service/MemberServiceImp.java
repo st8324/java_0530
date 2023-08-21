@@ -45,4 +45,20 @@ public class MemberServiceImp implements MemberService {
 		return false;
 	}
 
+	@Override
+	public boolean withdraw(MemberVO member) {
+		if(member == null || member.getMe_id() == null) {
+			return false;
+		}
+		//아이디를 이용하여 회원 정보를 가져옴
+		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		
+		//가져온 회원 정보의 비번과 입력받은 비번이 같으면 삭제, 다르면 삭제하지 않음 
+		if(dbMember != null && dbMember.getMe_pw().equals(member.getMe_pw())) {
+			memberDao.deleteMember(member.getMe_id());
+			return true;
+		}
+		return false;
+	}
+
 }

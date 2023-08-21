@@ -12,4 +12,11 @@
   <insert id="insertMember2">
   	insert into member(me_id, me_pw) values(#{me_id},#{me_pw})
   </insert>
+  <delete id="deleteMember">
+  	delete from member where me_id = #{me_id}
+  </delete>
+  <update id="updateBoardCount">
+  	update member set me_board_count = me_board_count + 1 where me_id = #{me_id}
+  </update>
+
 </mapper>

@@ -6,6 +6,8 @@ public interface MemberService {
 
 	boolean signup(MemberVO member);
 
+	boolean withdraw(MemberVO member);
+
 	
 
 }

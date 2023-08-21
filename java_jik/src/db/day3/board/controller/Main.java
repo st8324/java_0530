@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
 	private static MemberController memberController = new MemberController();
+	private static BoardController boardController = new BoardController();
 	
 	public static void main(String[] args) {
 		int menu;
@@ -15,7 +16,7 @@ public class Main {
 			menu = sc.nextInt();
 			runMenu(menu);
 			System.out.println("=================");
-		}while(menu != 3);
+		}while(menu != EXIT);
 
 	}
 
@@ -25,6 +26,7 @@ public class Main {
 			memberController.run();
 			break;
 		case 2:
+			boardController.run();
 			break;
 		case 3:
 			System.out.println("[프로그램 종료]");
