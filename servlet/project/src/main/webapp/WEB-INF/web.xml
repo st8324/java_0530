@@ -29,4 +29,14 @@
     <servlet-name>Singup</servlet-name>
     <url-pattern>/singup</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Withdraw</display-name>
+    <servlet-name>Withdraw</servlet-name>
+    <servlet-class>kr.kh.app.controller.Withdraw</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Withdraw</servlet-name>
+    <url-pattern>/withdraw</url-pattern>
+  </servlet-mapping>
 </web-app>

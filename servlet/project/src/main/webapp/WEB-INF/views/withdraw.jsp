@@ -7,22 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<form action="<%=request.getContextPath()%>/singup" method="post">
+	<h1>회원 탈퇴</h1>
+	<form action="<%=request.getContextPath()%>/withdraw" method="post">
 		<input type="text" name="id"> <br>
 		<input type="password" name="pw"> <br>
-		<button>회원가입</button>
+		<button>탈퇴하기</button>
 	</form>
 	<script>
 		<% 
-			Boolean result = (Boolean)request.getAttribute("signupOk");
+			Boolean result = (Boolean)request.getAttribute("withdrawOk");
 			if(result != null && result){
 		%>
-			alert('회원가입 성공!')
+			alert('회원탈퇴 성공!')
 		<%
 			}else if(result != null && !result){
 		%>
-			alert('회원가입 실패!')
+			alert('회원탈퇴 실패!')
 		<%
 			}
 		%>
