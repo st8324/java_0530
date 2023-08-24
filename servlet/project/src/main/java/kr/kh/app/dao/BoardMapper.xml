@@ -13,4 +13,7 @@
 	<select id="selectBoard" resultType="kr.kh.app.vo.BoardVO">
 		select * from board where bo_num = #{bo_num}
 	</select>
+	<delete id="deleteBoard">
+		delete from board where bo_num = #{bo_num}
+	</delete>
 </mapper>

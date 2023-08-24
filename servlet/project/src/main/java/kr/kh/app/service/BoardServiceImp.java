@@ -57,4 +57,9 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.selectBoard(bo_num);
 	}
 
+	@Override
+	public boolean deleteBoard(int bo_num) {
+		return boardDao.deleteBoard(bo_num) != 0;
+	}
+
 }

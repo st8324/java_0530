@@ -69,4 +69,14 @@
     <servlet-name>BoardDetail</servlet-name>
     <url-pattern>/board/detail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDelete</display-name>
+    <servlet-name>BoardDelete</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDelete</servlet-name>
+    <url-pattern>/board/delete</url-pattern>
+  </servlet-mapping>
 </web-app>

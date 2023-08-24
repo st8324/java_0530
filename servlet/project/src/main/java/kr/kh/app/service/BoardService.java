@@ -12,4 +12,6 @@ public interface BoardService {
 
 	BoardVO getBoard(int bo_num);
 
+	boolean deleteBoard(int bo_num);
+
 }
