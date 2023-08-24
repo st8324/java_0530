@@ -62,4 +62,12 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.deleteBoard(bo_num) != 0;
 	}
 
+	@Override
+	public boolean updateBoard(BoardVO board) {
+		if(board == null || board.getBo_title() == null) {
+			return false;
+		}
+		return boardDao.updateBoard(board) != 0;
+	}
+
 }
