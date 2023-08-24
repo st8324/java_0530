@@ -13,6 +13,7 @@
 		<input type="password" name="pw"> <br>
 		<button>탈퇴하기</button>
 	</form>
+	${withdraw }
 	<script>
 		<% 
 			Boolean result = (Boolean)request.getAttribute("withdrawOk");

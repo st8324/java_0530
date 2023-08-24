@@ -39,4 +39,24 @@
     <servlet-name>Withdraw</servlet-name>
     <url-pattern>/withdraw</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>List</display-name>
+    <servlet-name>List</servlet-name>
+    <servlet-class>kr.kh.app.controller.List</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>List</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardInsert</display-name>
+    <servlet-name>BoardInsert</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardInsert</servlet-name>
+    <url-pattern>/board/insert</url-pattern>
+  </servlet-mapping>
 </web-app>
