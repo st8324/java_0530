@@ -59,4 +59,14 @@
     <servlet-name>BoardInsert</servlet-name>
     <url-pattern>/board/insert</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDetail</display-name>
+    <servlet-name>BoardDetail</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDetail</servlet-name>
+    <url-pattern>/board/detail</url-pattern>
+  </servlet-mapping>
 </web-app>

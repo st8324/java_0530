@@ -13,8 +13,8 @@
 	<table>
 		<c:forEach items="${list}" var="board">
 			<tr>
-				<td>${board.bo_num }</td>
-				<td><a href="">${board.bo_title }</a></td>
+				<td>${board.bo_num}</td>
+				<td><a href="<c:url value='/board/detail?bo_num=${board.bo_num}'/>">${board.bo_title }</a></td>
 				<td>${board.bo_me_id}</td>
 			</tr>
 		</c:forEach>

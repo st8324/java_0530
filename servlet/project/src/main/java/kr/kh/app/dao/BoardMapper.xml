@@ -10,4 +10,7 @@
 	<select id="selectBoardList" resultType="kr.kh.app.vo.BoardVO">
 		select * from board
 	</select>
+	<select id="selectBoard" resultType="kr.kh.app.vo.BoardVO">
+		select * from board where bo_num = #{bo_num}
+	</select>
 </mapper>
