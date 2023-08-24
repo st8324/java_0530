@@ -6,4 +6,7 @@
 	<insert id="insertBoard">
 		insert into board(bo_title, bo_me_id) values(#{board.bo_title},#{board.bo_me_id})
 	</insert>
+	<select id="selectBoardList" resultType="kr.kh.app.vo.BoardVO">
+		select * from board
+	</select>
 </mapper>
