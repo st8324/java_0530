@@ -5,9 +5,14 @@
 <mapper namespace="kr.kh.app.dao.BoardDAO">
 	<cache/>
 	<select id="selectBoardList" resultType="kr.kh.app.vo.BoardVO">
-		select * from board order by bo_num desc
+		select * from board 
+		order by bo_num desc
+		limit #{cri.pageStart},#{cri.perPageNum}
 	</select>
 	<select id="selectBoard" resultType="kr.kh.app.vo.BoardVO">
 		select * from board where bo_num = #{bo_num}
+	</select>
+	<select id="selectBoardCount" resultType="int">
+		select count(*) from board
 	</select>
 </mapper>

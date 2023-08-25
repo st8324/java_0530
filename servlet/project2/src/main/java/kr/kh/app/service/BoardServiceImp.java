@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.BoardDAO;
+import kr.kh.app.pagination.Criteria;
 import kr.kh.app.vo.BoardVO;
 
 public class BoardServiceImp implements BoardService {
@@ -29,8 +30,8 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getBoardList() {
-		return boardDao.selectBoardList();
+	public List<BoardVO> getBoardList(Criteria cri) {
+		return boardDao.selectBoardList(cri);
 	}
 
 	@Override
@@ -39,6 +40,11 @@ public class BoardServiceImp implements BoardService {
 			return null;
 		}
 		return boardDao.selectBoard(bo_num);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return boardDao.selectBoardCount();
 	}
 	
 }
