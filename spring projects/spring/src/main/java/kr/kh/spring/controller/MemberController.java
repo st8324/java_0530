@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.spring.service.MemberService;
-import kr.kh.spring.service.MemberServiceImp;
+import kr.kh.spring.vo.MemberVO;
 
 @Controller
 public class MemberController {
@@ -22,8 +22,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public String signupPost() {
+	public String signupPost(MemberVO member, Model model) {
+		String msg = "회원 가입에 실패했습니다.";
+		String url = "/signup";
 		
-		return "member/signup";
+		if(memberService.signup(member)) {
+			msg = "회원 가입에 성공했습니다.";
+			url = "/";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		return "message";
 	}
 }
