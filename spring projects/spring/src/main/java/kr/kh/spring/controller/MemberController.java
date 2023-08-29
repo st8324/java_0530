@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.service.MemberServiceImp;
 
 @Controller
 public class MemberController {
@@ -16,8 +17,13 @@ public class MemberController {
 	
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public String signup() {
-		int count = memberService.count();
-		System.out.println(count);
+		
+		return "member/signup";
+	}
+	
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public String signupPost() {
+		
 		return "member/signup";
 	}
 }

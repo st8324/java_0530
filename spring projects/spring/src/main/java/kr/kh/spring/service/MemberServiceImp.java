@@ -11,9 +11,5 @@ public class MemberServiceImp implements MemberService {
 	@Autowired
 	private MemberDAO memberDao;
 
-	@Override
-	public int count() {
-		return memberDao.selectMember();
-	}
-
+	
 }
