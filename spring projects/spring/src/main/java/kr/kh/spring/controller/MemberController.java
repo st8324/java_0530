@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.util.Message;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
@@ -28,32 +29,28 @@ public class MemberController {
 	
 	@RequestMapping(value="/member/signup", method=RequestMethod.POST)
 	public String signupPost(MemberVO member, Model model) {
-		String msg = "회원 가입에 실패했습니다.";
-		String url = "/member/signup";
+		Message msg = new Message("/member/signup", "회원 가입에 실패했습니다.");
 		
 		if(memberService.signup(member)) {
-			msg = "회원 가입에 성공했습니다.";
-			url = "/";
+			msg = new Message("/", "회원 가입에 성공했습니다.");
 		}
 		model.addAttribute("msg", msg);
-		model.addAttribute("url", url);
 		return "message";
 	}
+	
 	@GetMapping(value="/member/login")
 	public String memberLogin() {
 		return "member/login";
 	}
 	@PostMapping(value="/member/login")
 	public String memberLoginPost(MemberVO member, Model model) {
-		String msg = "로그인에 실패했습니다.";
-		String url = "/member/login";
+		Message msg = new Message("/member/login", "로그인에 실패했습니다.");
+
 		MemberVO user = memberService.login(member); 
 		if(user != null) {
-			msg = "로그인에 성공했습니다.";
-			url = "/";
+			msg = new Message("/", "로그인에 성공했습니다.");
 		}
 		model.addAttribute("user", user);
-		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
 		return "message";
 	}
@@ -61,13 +58,11 @@ public class MemberController {
 	public String memberLogout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		String msg = null;
-		String url = "/";
+		Message msg = new Message("/", null);
 		if(user != null) {
 			session.removeAttribute("user");
-			msg = "로그아웃에 성공했습니다.";
+			msg.setMsg("로그아웃에 성공했습니다.");
 		}
-		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
 		return "message";
 	}
