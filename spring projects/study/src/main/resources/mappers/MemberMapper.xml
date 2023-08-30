@@ -3,7 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.study.dao.MemberDAO">
-	<select id="selectCountMember" resultType="int">
-		select count(*) from member
+	<select id="selectMember" resultType="kr.kh.study.vo.MemberVO">
+		select * from member where me_id = #{me_id}
 	</select>
+	
+	<insert id="insertMember">
+		insert into member(me_id, me_pw, me_email) values(#{m.me_id}, #{m.me_pw}, #{m.me_email})
+	</insert>
 </mapper>

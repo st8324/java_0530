@@ -7,6 +7,9 @@
 	<title>스프링</title>
 </head>
 <body>
-	<a href="<c:url value='/member/signup'/>">회원가입</a>
+	<script type="text/javascript">
+		alert('${msg}');
+		location.href= '<c:url value="${url}"/>';
+	</script>
 </body>
 </html>
