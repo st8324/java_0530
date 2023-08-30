@@ -47,5 +47,24 @@ public class MemberServiceImp implements MemberService{
 		return true;
 	}
 
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null) {
+			return null;
+		}
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		if(user == null) {
+			return null;
+		}
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
+			return user;
+		}
+		return null;
+	}
+
 	
 }
+
+
+
+

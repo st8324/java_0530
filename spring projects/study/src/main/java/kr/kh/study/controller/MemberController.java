@@ -39,6 +39,23 @@ public class MemberController {
 	public String memberLogin() {
 		return "/member/login";
 	}
+	@PostMapping("/member/login")
+	public String memberLoginPost(Model model, MemberVO member) {
+		String msg , url;
+		MemberVO user = memberService.login(member);
+		
+		if(user != null) {
+			msg = "로그인 성공!";
+			url = "/";
+		}else {
+			msg = "로그인 실패!";
+			url = "/member/login"; 
+		}
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		model.addAttribute("user", user);
+		return "util/message";
+	}
 }
 
 

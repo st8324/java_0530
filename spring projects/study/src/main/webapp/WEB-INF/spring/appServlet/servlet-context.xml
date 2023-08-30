@@ -23,6 +23,13 @@
 	
 	<context:component-scan base-package="kr.kh.study.*" />
 	
+	<beans:bean id="loginInterceptor" class="kr.kh.study.interceptor.LoginInterceptor"/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
