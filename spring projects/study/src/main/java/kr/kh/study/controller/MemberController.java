@@ -35,4 +35,14 @@ public class MemberController {
 		model.addAttribute("msg", msg);
 		return "util/message";
 	}
+	@GetMapping("/member/login")
+	public String memberLogin() {
+		return "/member/login";
+	}
 }
+
+
+
+
+
+
