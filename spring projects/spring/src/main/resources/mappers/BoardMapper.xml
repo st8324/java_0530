@@ -19,6 +19,12 @@
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from board
 	</select>
+	<select id="selectBoard" resultType="kr.kh.spring.vo.BoardVO">
+		select * from board where bo_num = #{bo_num}
+	</select>
+	<update id="updateBoardViews">
+		update board set bo_views = bo_views+1 where bo_num = #{bo_num}
+	</update>
 </mapper>
 
 
