@@ -11,4 +11,9 @@
 		from 
 			board
 	</insert>
+	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
+		select * from board
+		order by bo_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
 </mapper>
