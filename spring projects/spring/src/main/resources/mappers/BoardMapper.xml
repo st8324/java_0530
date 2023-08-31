@@ -16,4 +16,12 @@
 		order by bo_num desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
+	<select id="selectBoardCount" resultType="int">
+		select count(*) from board
+	</select>
 </mapper>
+
+
+
+
+

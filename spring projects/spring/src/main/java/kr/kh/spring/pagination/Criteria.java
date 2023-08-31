@@ -20,4 +20,10 @@ public class Criteria {
 	public int getPageStart() {
 		return (page - 1) * perPageNum;
 	}
+	public String getUrl(int page) {
+		return "?page=" + page;
+	}
+	public String getCurrentUrl() {
+		return "?page=" + page;
+	}
 }
