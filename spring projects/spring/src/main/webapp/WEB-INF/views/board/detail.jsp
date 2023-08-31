@@ -37,6 +37,6 @@
 		<label>내용</label>
 		<div class="form-control" style="min-height: 400px">${board.bo_contents}</div>
 	</div>
-	<a href="<c:url value='/board/list'/>" class="btn btn-outline-primary">목록으로</a>
+	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
 </body>
 </html>

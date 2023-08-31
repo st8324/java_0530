@@ -56,10 +56,11 @@ public class BoardController {
 		return "message";
 	}
 	@GetMapping("/detail")
-	public String detail(Model model, Integer bo_num) {
+	public String detail(Model model, Integer bo_num , Criteria cri) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
 		model.addAttribute("board", board);
+		model.addAttribute("cri", cri);
 		return "/board/detail";
 	}
 	

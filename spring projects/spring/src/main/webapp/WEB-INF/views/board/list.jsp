@@ -22,7 +22,7 @@
 	      <tr>
 	        <td>${board.bo_num}</td>
 	        <td>
-	        	<a href="<c:url value='/board/detail?bo_num=${board.bo_num}'/>">${board.bo_title}(${board.bo_comment })</a>
+	        	<a href="<c:url value='/board/detail${pm.cri.currentUrl}&bo_num=${board.bo_num}'/>">${board.bo_title}(${board.bo_comment })</a>
 	        </td>
 	        <td>${board.bo_me_id }</td>
 	        <td>${board.bo_views }</td>
