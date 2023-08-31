@@ -22,6 +22,8 @@
 	      <a class="nav-link" href="<c:url value='/member/logout'/>">로그아웃</a>
 	    </li>
     </c:if>
-    
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
+    </li>
   </ul>
 </nav>
