@@ -22,4 +22,10 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file")FileVO fileVo);
 
+	boolean updateBoard(@Param("board")BoardVO board);
+
+	FileVO selectFile(@Param("fi_num")Integer num);
+
+	void deleteFile(@Param("fi_num")Integer num);
+
 }

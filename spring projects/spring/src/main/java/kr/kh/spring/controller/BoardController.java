@@ -64,8 +64,34 @@ public class BoardController {
 		model.addAttribute("cri", cri);
 		return "/board/detail";
 	}
-	
+	@GetMapping("/update")
+	public String update(Model model,Integer bo_num) {
+		BoardVO board = boardService.getBoard(bo_num);
+		model.addAttribute("board", board);
+		return "/board/update";
+	}
+	@PostMapping("/update")
+	public String updatePost(Model model, BoardVO board, 
+			MultipartFile[] files, Integer[] delFiles, HttpSession session) {
+		Message msg;
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(boardService.updateBoard(board, files, delFiles,user)) {
+			msg = new Message("/board/detail?bo_num="+board.getBo_num(), "게시글을 수정했습니다.");
+		}else {
+			msg = new Message("/board/update?bo_num="+board.getBo_num(), "게시글을 수정하지 못했습니다."); 
+		}
+		model.addAttribute("msg", msg);
+		return "message";
+	}
 }
+
+
+
+
+
+
+
+
 
 
 

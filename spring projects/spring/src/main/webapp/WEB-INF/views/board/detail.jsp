@@ -52,5 +52,6 @@
 		</c:choose>
 	</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
+	<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
 </body>
 </html>

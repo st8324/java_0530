@@ -49,6 +49,21 @@
 	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
 		select * from file where fi_bo_num = #{bo_num}
 	</select>
+	<update id="updateBoard">
+		update board
+		set
+			bo_title = #{board.bo_title},
+			bo_contents = #{board.bo_contents},
+			bo_up_date = now()
+		where
+			bo_num = #{board.bo_num}
+	</update>
+	<select id="selectFile" resultType="kr.kh.spring.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
 </mapper>
 
 
