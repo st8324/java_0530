@@ -12,7 +12,7 @@ public class BoardVO {
 	private String bo_title, bo_me_id, bo_contents;
 	private Date bo_reg_date, bo_up_date;
 	
-	private List<FileVO> files;
+	private List<FileVO> fileVoList;
 
 	public String getBo_up_date_str() {
 		if(bo_up_date == null) {

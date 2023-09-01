@@ -40,9 +40,9 @@
 	
 	<div class="form-group">
 		<c:choose>
-			<c:when test="${board.files.size() != 0 }">
+			<c:when test="${board.fileVoList.size() != 0 }">
 				<label>첨부파일</label>
-				<c:forEach items="${board.files }" var="file">
+				<c:forEach items="${board.fileVoList }" var="file">
 					<a class="form-control" href="<c:url value='/download${file.fi_name}'/>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 				</c:forEach>
 			</c:when>

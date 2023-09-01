@@ -16,7 +16,7 @@
 		<result property="bo_contents" column="bo_contents"/>
 		<result property="bo_up_date" column="bo_up_date"/>
 		<result property="bo_reg_date" column="bo_reg_date"/>
-		<collection property="files" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
+		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 	</resultMap>
 
 
