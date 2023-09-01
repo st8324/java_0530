@@ -32,7 +32,7 @@ CREATE TABLE `file` (
   PRIMARY KEY (`fi_num`),
   KEY `FK_fi_bo_num_idx` (`fi_bo_num`),
   CONSTRAINT `FK_fi_bo_num` FOREIGN KEY (`fi_bo_num`) REFERENCES `board` (`bo_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
+INSERT INTO `file` VALUES (1,'/2023/09/01/40c4aec4-56da-45d8-a6f3-8e9fd3040389_01. Spring 기초.pptx','01. Spring 기초.pptx',9),(2,'/2023/09/01/4ba7fdf4-5efc-4c92-9e82-a5e25ff186d2_03. Spring AOP.pptx','03. Spring AOP.pptx',11),(3,'/2023/09/01/c0170b0a-2458-4d48-ad86-bf6316e1d6d4_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',12),(4,'/2023/09/01/4d0bfd69-2238-4312-b205-245e65e6008a_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',14);
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 16:45:20
+-- Dump completed on 2023-09-01 17:18:35

@@ -28,7 +28,7 @@ CREATE TABLE `board` (
   `bo_num` int NOT NULL AUTO_INCREMENT,
   `bo_title` varchar(50) NOT NULL,
   `bo_contents` longtext NOT NULL,
-  `bo_views` int NOT NULL,
+  `bo_views` int NOT NULL DEFAULT '0',
   `bo_reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `bo_up_date` datetime DEFAULT NULL,
   `bo_ori_num` int NOT NULL,
@@ -36,13 +36,13 @@ CREATE TABLE `board` (
   `bo_up` int NOT NULL DEFAULT '0',
   `bo_down` int NOT NULL DEFAULT '0',
   `bo_coment` int NOT NULL DEFAULT '0',
-  `bo_bt_num` int NOT NULL,
+  `bo_bt_num` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`bo_num`),
   KEY `FK_member_TO_board_1` (`bo_me_id`),
   KEY `FK_bo_bt_num_idx` (`bo_bt_num`),
   CONSTRAINT `FK_bo_bt_num` FOREIGN KEY (`bo_bt_num`) REFERENCES `board_type` (`bt_num`),
   CONSTRAINT `FK_member_TO_board_1` FOREIGN KEY (`bo_me_id`) REFERENCES `member` (`me_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +51,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` VALUES (1,'첫 게시글','<p><font color=\"#000000\" style=\"background-color: rgb(255, 255, 0);\">첫게시글</font></p>',20,'2023-08-31 12:06:49',NULL,1,'qwe123',0,0,0,1),(2,'두번째 게시글','<p><b>두번째 게시글</b><br></p>',0,'2023-08-31 12:08:21',NULL,2,'qwe123',0,0,0,1),(3,'세번째','<p>세번째<br></p>',3,'2023-08-31 12:11:42',NULL,3,'qwe123',0,0,0,1),(4,'네번째?','<p>네번째?</p>',1,'2023-08-31 12:14:01',NULL,4,'qwe123',0,0,0,1),(5,'자바','<p>자바<br></p>',2,'2023-08-31 15:19:03',NULL,5,'qwe123',0,0,0,1),(6,'HTML','<p>HTML</p>',0,'2023-08-31 15:19:33',NULL,6,'qwe123',0,0,0,1),(7,'123','<p>123</p>',0,'2023-08-31 15:19:38',NULL,7,'qwe123',0,0,0,1),(8,'첨부파일 테스트','<p>테스트</p>',0,'2023-09-01 09:36:54',NULL,8,'qwe123',0,0,0,1),(9,'첨부파일 테스트 중 ','<p>첨부파일 테스트 중&nbsp;<br></p>',14,'2023-09-01 10:47:41',NULL,9,'qwe123',0,0,0,1),(10,'123','<p>123</p>',0,'2023-09-01 12:41:11',NULL,10,'qwe123',0,0,0,1),(11,'123','<p>123</p>',0,'2023-09-01 13:10:19',NULL,11,'qwe123',0,0,0,1),(12,'첨부','<p>123</p>',1,'2023-09-01 13:13:33',NULL,12,'qwe123',0,0,0,1),(13,'456','<p>456</p>',0,'2023-09-01 14:04:44',NULL,13,'qwe123',0,0,0,1),(14,'789','<p>789</p>',3,'2023-09-01 14:04:59',NULL,14,'qwe123',0,0,0,1);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 16:45:19
+-- Dump completed on 2023-09-01 17:18:35
