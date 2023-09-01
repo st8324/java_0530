@@ -65,8 +65,14 @@ public class BoardController {
 		return "/board/detail";
 	}
 	@GetMapping("/update")
-	public String update(Model model,Integer bo_num) {
+	public String update(Model model,Integer bo_num, HttpSession session) {
 		BoardVO board = boardService.getBoard(bo_num);
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null || board == null || !user.getMe_id().equals(board.getBo_me_id())) {
+			Message msg = new Message("/board/list", "잘못된 접근입니다.");
+			model.addAttribute("msg", msg);
+			return "message";
+		}
 		model.addAttribute("board", board);
 		return "/board/update";
 	}
