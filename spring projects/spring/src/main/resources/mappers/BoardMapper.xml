@@ -3,6 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
+	<resultMap type="kr.kh.spring.vo.BoardVO" id="BoardVO">
+		<id property="bo_num" column="bo_num"/>
+		<result property="bo_ori_num" column="bo_ori_num"/>
+		<result property="bo_views" column="bo_views"/>
+		<result property="bo_up" column="bo_up"/>
+		<result property="bo_down" column="bo_down"/>
+		<result property="bo_bt_num" column="bo_bt_num"/>
+		<result property="bo_comment" column="bo_comment"/>
+		<result property="bo_title" column="bo_title"/>
+		<result property="bo_me_id" column="bo_me_id"/>
+		<result property="bo_contents" column="bo_contents"/>
+		<result property="bo_up_date" column="bo_up_date"/>
+		<result property="bo_reg_date" column="bo_reg_date"/>
+		<collection property="files" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
+	</resultMap>
+
+
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
 		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
 		select 
@@ -19,7 +36,7 @@
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from board
 	</select>
-	<select id="selectBoard" resultType="kr.kh.spring.vo.BoardVO">
+	<select id="selectBoard" resultMap="BoardVO">
 		select * from board where bo_num = #{bo_num}
 	</select>
 	<update id="updateBoardViews">
@@ -29,6 +46,9 @@
 		insert file(fi_name, fi_ori_name, fi_bo_num) 
 		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_bo_num})
 	</insert>
+	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
+	</select>
 </mapper>
 
 

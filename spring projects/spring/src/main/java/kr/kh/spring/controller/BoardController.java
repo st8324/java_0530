@@ -59,6 +59,7 @@ public class BoardController {
 	public String detail(Model model, Integer bo_num , Criteria cri) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
+		//List<FileVO> fileList = boardService.getFileList(bo_num)
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);
 		return "/board/detail";
