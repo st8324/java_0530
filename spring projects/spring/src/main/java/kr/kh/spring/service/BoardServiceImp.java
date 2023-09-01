@@ -153,6 +153,7 @@ public class BoardServiceImp implements BoardService{
 		List<FileVO> fileList = board.getFileVoList();
 		deleteFile(fileList);
 		//게시글 삭제 
+		boardDao.deleteBoard(bo_num);
 		return true;
 	}
 

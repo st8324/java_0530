@@ -64,6 +64,9 @@
 	<delete id="deleteFile">
 		delete from file where fi_num = #{fi_num}
 	</delete>
+	<delete id="deleteBoard">
+		delete from board where bo_num = #{bo_num}
+	</delete>
 </mapper>
 
 
