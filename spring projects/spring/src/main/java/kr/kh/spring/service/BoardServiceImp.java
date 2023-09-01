@@ -1,5 +1,6 @@
 package kr.kh.spring.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.dao.BoardDAO;
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.util.UploadFileUtils;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Service
@@ -16,6 +19,8 @@ public class BoardServiceImp implements BoardService{
 
 	@Autowired
 	BoardDAO boardDao;
+	
+	String uploadPath = "D:\\uploadfiles";
 
 	@Override
 	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
@@ -34,12 +39,24 @@ public class BoardServiceImp implements BoardService{
 			return true;
 		}
 		for(MultipartFile file : files) {
-			//uploadFileAndInsert(file);
-			if(file != null) {
-				System.out.println(file.getOriginalFilename());
-			}
+			//첨부파일을 서버에 업로드 하고, DB에 저장
+			uploadFileAndInsert(file, board.getBo_num());
 		}
 		return true;
+	}
+
+	private void uploadFileAndInsert(MultipartFile file, int bo_num) {
+		if(file == null || file.getOriginalFilename().length() == 0) {
+			return;
+		}
+		try {
+			String fi_name = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+			FileVO fileVo = new FileVO(bo_num, fi_name, file.getOriginalFilename());
+			boardDao.insertFile(fileVo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

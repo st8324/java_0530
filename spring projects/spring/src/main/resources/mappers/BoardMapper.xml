@@ -25,6 +25,10 @@
 	<update id="updateBoardViews">
 		update board set bo_views = bo_views+1 where bo_num = #{bo_num}
 	</update>
+	<insert id="insertFile">
+		insert file(fi_name, fi_ori_name, fi_bo_num) 
+		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_bo_num})
+	</insert>
 </mapper>
 
 
