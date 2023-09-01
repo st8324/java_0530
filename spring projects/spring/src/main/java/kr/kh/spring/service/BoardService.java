@@ -22,4 +22,6 @@ public interface BoardService {
 
 	boolean updateBoard(BoardVO board, MultipartFile[] files, Integer[] delFiles, MemberVO user);
 
+	boolean deleteBoard(Integer bo_num, MemberVO user);
+
 }
