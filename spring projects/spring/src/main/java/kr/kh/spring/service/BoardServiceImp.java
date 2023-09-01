@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.dao.BoardDAO;
 import kr.kh.spring.pagination.Criteria;
@@ -17,7 +18,7 @@ public class BoardServiceImp implements BoardService{
 	BoardDAO boardDao;
 
 	@Override
-	public boolean insertBoard(BoardVO board, MemberVO user) {
+	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
 		if(user == null || user.getMe_id() == null) {
 			return false;
 		}
@@ -25,7 +26,20 @@ public class BoardServiceImp implements BoardService{
 			return false;
 		}
 		board.setBo_me_id(user.getMe_id());
-		return boardDao.insertBoard(board);
+		if(!boardDao.insertBoard(board)) {
+			return false;
+		}
+		//첨부파일을 업로드
+		if(files == null || files.length == 0) {
+			return true;
+		}
+		for(MultipartFile file : files) {
+			//uploadFileAndInsert(file);
+			if(file != null) {
+				System.out.println(file.getOriginalFilename());
+			}
+		}
+		return true;
 	}
 
 	@Override
