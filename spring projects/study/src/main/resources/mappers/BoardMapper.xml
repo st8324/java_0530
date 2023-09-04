@@ -24,6 +24,9 @@
 		where
 			bo_num = #{board.bo_num}
 	</update>
+	<delete id="deleteBoard">
+		delete from board where bo_num = #{bo_num}
+	</delete>
 </mapper>
 
 
