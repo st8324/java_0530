@@ -31,5 +31,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<a href="<c:url value='/board/insert'/>"><button>글쓰기</button></a>
 </body>
 </html>
