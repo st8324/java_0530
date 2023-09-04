@@ -16,4 +16,6 @@ public interface BoardDAO {
 
 	boolean insertBoard(@Param("board")BoardVO board);
 
+	boolean updateBoard(@Param("board")BoardVO board);
+
 }

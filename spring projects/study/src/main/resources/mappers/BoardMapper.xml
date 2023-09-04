@@ -18,4 +18,14 @@
 				#{board.bo_contents}, #{board.bo_me_id}
 			from board
 	</insert>
+	<update id="updateBoard">
+		update board set 
+			bo_title = #{board.bo_title}, bo_contents = #{board.bo_contents}, bo_up_date = now()
+		where
+			bo_num = #{board.bo_num}
+	</update>
 </mapper>
+
+
+
+

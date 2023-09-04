@@ -15,4 +15,6 @@ public interface BoardService {
 
 	boolean insertBoard(BoardVO board, MemberVO user);
 
+	boolean update(BoardVO board, MemberVO user);
+
 }
