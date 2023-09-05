@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.kh.study.pagination.Criteria;
+import kr.kh.study.pagination.PageMaker;
 import kr.kh.study.service.BoardService;
 import kr.kh.study.vo.BoardVO;
 import kr.kh.study.vo.FileVO;
@@ -23,11 +25,16 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping("/board/list")
-	public String boardList(Model model) {
+	public String boardList(Model model, Criteria cri) {
+		cri.setPerPageNum(2);
 		//서비스에게 게시글 리스트를 가져오라고 시킴 
-		List<BoardVO> list = boardService.getBoardList();
+		List<BoardVO> list = boardService.getBoardList(cri);
+		int totalCount = boardService.getBoardTotalCount();
+
+		PageMaker pm = new PageMaker(3, cri, totalCount);
 		//가져온 리스트를 화면에 전송 
 		model.addAttribute("list", list);
+		model.addAttribute("pm", pm);
 		return "/board/list";
 	}
 	@GetMapping("/board/detail")

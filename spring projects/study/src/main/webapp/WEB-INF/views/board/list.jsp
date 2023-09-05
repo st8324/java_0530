@@ -31,6 +31,17 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<div>
+		<c:if test="${pm.prev}">
+			<a href="<c:url value='/board/list${pm.cri.getUrl(pm.startPage-1) }'/>">이전</a>
+		</c:if>
+		<c:forEach begin="${pm.startPage }" end="${pm.endPage}" var="i">
+			<a href="<c:url value='/board/list${pm.cri.getUrl(i) }'/>">${i}</a>
+		</c:forEach>
+		<c:if test="${pm.next}">
+			<a href="<c:url value='/board/list${pm.cri.getUrl(pm.endPage+1) }'/>">다음</a>
+		</c:if>
+	</div>
 	<a href="<c:url value='/board/insert'/>"><button>글쓰기</button></a>
 </body>
 </html>

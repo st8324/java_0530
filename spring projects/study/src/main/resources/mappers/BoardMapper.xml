@@ -5,6 +5,7 @@
 <mapper namespace="kr.kh.study.dao.BoardDAO">
 	<select id="selectBoardList" resultType="kr.kh.study.vo.BoardVO">
 		select * from board order by bo_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoard" resultType="kr.kh.study.vo.BoardVO">
 		select * from board where bo_num = #{bo_num}
@@ -39,6 +40,9 @@
 	</delete>
 	<select id="selectFile" resultType="kr.kh.study.vo.FileVO">
 		select * from file where fi_num = #{fi_num}
+	</select>
+	<select id="selectBoardTotalCount" resultType="int">
+		select count(*) from board
 	</select>
 </mapper>
 

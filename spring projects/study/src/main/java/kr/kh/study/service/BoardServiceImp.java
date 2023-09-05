@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.study.dao.BoardDAO;
+import kr.kh.study.pagination.Criteria;
 import kr.kh.study.util.UploadFileUtils;
 import kr.kh.study.vo.BoardVO;
 import kr.kh.study.vo.FileVO;
@@ -24,10 +25,13 @@ public class BoardServiceImp implements BoardService{
 	String uploadPath = "D:\\uploadfiles";
 
 	@Override
-	public List<BoardVO> getBoardList() {
-		//매개변수체크(생략)
+	public List<BoardVO> getBoardList(Criteria cri) {
+		//매개변수체크
+		if(cri == null) {
+			cri = new Criteria();
+		}
 		//다오에게 게시글 리스트를 가져오라고 시키고
-		List<BoardVO> list = boardDao.selectBoardList();
+		List<BoardVO> list = boardDao.selectBoardList(cri);
 		//가져오면 반환
 		return list;
 	}
@@ -166,6 +170,11 @@ public class BoardServiceImp implements BoardService{
 			return null;
 		}
 		return boardDao.selectFileList(bo_num);
+	}
+
+	@Override
+	public int getBoardTotalCount() {
+		return boardDao.selectBoardTotalCount();
 	}
 	
 	
