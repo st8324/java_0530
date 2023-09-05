@@ -2,6 +2,7 @@ package kr.kh.study.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +95,7 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public boolean update(BoardVO board, MemberVO user) {
+	public boolean update(BoardVO board, MemberVO user, MultipartFile[] files, int[] delNums) {
 		if(user == null || user.getMe_id() == null) {
 			return false;
 		}
@@ -105,8 +106,24 @@ public class BoardServiceImp implements BoardService{
 		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
 			return false;
 		}
+		//추가된 첨부파일 업로드 및 DB 추가
+		uploadFiles(files, board.getBo_num());
+		//삭제된 첨부파일 삭제 및 DB 제거
+		deleteFiles(delNums);
 		boolean res = boardDao.updateBoard(board);
 		return res;
+	}
+
+	private void deleteFiles(int[] delNums) {
+		if(delNums == null || delNums.length == 0) {
+			return ;
+		}
+		List<FileVO> fileList = new ArrayList<FileVO>();
+		for(int fi_num : delNums) {
+			FileVO fileVo = boardDao.selectFile(fi_num);
+			fileList.add(fileVo);
+		}
+		deleteFiles(fileList);
 	}
 
 	@Override

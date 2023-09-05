@@ -37,6 +37,9 @@
 	<delete id="deleteFile">
 		delete from file where fi_num = #{fi_num}
 	</delete>
+	<select id="selectFile" resultType="kr.kh.study.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
 </mapper>
 
 

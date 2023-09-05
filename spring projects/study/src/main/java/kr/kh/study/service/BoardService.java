@@ -18,7 +18,7 @@ public interface BoardService {
 
 	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
 
-	boolean update(BoardVO board, MemberVO user);
+	boolean update(BoardVO board, MemberVO user, MultipartFile[] files, int[] delNums);
 
 	boolean deleteBoard(Integer bo_num, MemberVO user);
 
