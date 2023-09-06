@@ -64,26 +64,41 @@
 				li_bo_num: '${board.bo_num}',
 				li_state : 1
 			};
-			$.ajax({
-				async : false, /*비동기 : false => 동기화*/
-				type : 'post', /*전송 방식 : get/post*/
-				url : '<c:url value="/board/like"/>', /*데이터를 보낼 url*/
-				data : JSON.stringify(data), /*보낼 데이터, 보통 객체나 json으로 보냄*/
-				contentType : "application/json; charset=UTF-8", /*서버로 보낼 데이터의 타입 */
-				dataType : "json", /* 서버에서 화면으로 보낸 데이터의 타입 */
-				success : function(data){ /* ajax가 성공하면 실행될 메서드로 서버에서 보낸 데이터를 매개변수에 저장 */
-					if(data.res){
-						alert('추천했습니다.');		
-					}else{
-						alert('비추천했습니다.');
-					}
+			ajaxJsonToJson(false, 'post', '/board/like', data, (data)=>{
+				if(data.res){
+					alert('추천했습니다.');		
+				}else{
+					alert('추천을 취소했습니다.');
 				}
-			});
+			})
 		})
 		//비추천 버튼을 클릭했을 때 콘솔창에 비추천이라고 출력
 		$('.btn-down').click(()=>{
-			console.log('비추천')
+			let data = {
+				li_me_id : '${user.me_id}',
+				li_bo_num: '${board.bo_num}',
+				li_state : -1
+			};
+			ajaxJsonToJson(false, 'post', '/board/like', data, (data)=>{
+				if(data.res == -1){
+					alert('비추천했습니다.');		
+				}else{
+					alert('비추천을 취소했습니다.');
+				}
+			})
 		})
+		
+		function ajaxJsonToJson(async, type, url, sendObject, successFunc){
+			$.ajax({
+				async : async, 
+				type : type, 
+				url : '<c:url value="/"/>'+url, 
+				data : JSON.stringify(sendObject), 
+				contentType : "application/json; charset=UTF-8", 
+				dataType : "json",
+				success : successFunc
+			});
+		}
 	</script>
 </body>
 </html>

@@ -85,6 +85,17 @@
 	<delete id="deleteBoard">
 		delete from board where bo_num = #{bo_num}
 	</delete>
+	<select id="selectLike" resultType="kr.kh.spring.vo.LikeVO">
+		select * from `like` where li_bo_num = #{li_bo_num} and li_me_id = #{li_me_id}
+	</select>
+	<insert id="insertLike">
+		insert into `like`(li_bo_num, li_me_id, li_state) 
+		values(#{like.li_bo_num},#{like.li_me_id},#{like.li_state})
+	</insert>
+	<update id="updateLike">
+		update `like` set li_state = #{like.li_state} 
+			where li_bo_num = #{like.li_bo_num} and li_me_id = #{like.li_me_id}
+	</update>
 </mapper>
 
 
