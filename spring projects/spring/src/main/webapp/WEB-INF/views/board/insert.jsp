@@ -10,6 +10,7 @@
 <body>
 	<h1>게시글 등록</h1>
 	<form action="<c:url value='/board/insert'/>" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="bo_ori_num" value="${bo_ori_num}">
 		<div class="form-group">
 			<label>제목</label>
 			<input type="text" class="form-control" name="bo_title">
