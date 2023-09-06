@@ -41,11 +41,24 @@
 	<context:component-scan base-package="kr.kh.spring.*" />
 	
 	<beans:bean id="loginInterceptor" class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="memberInterceptor" class="kr.kh.spring.interceptor.MemberInterceptor"></beans:bean>
+	<beans:bean id="guestInterceptor" class="kr.kh.spring.interceptor.GuestInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/login"/>
 			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/insert"/>
+			<mapping path="/board/update"/>
+			<mapping path="/board/delete"/>
+			<beans:ref bean="memberInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/login"/>
+			<mapping path="/member/signup"/>
+			<beans:ref bean="guestInterceptor" />
 		</interceptor>
 	</interceptors>
 	
@@ -53,6 +66,7 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 </beans:beans>
+
 
 
 
