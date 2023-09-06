@@ -143,13 +143,22 @@
 				return;
 			}
 			let co_contents = $('[name=co_contents]').val();
+			if(co_contents == ''){
+				alert('내용을 입력하세요.');
+				return;
+			}
 			let comment = {
 					co_contents : co_contents,
 					co_bo_num : '${board.bo_num}',
 					co_me_id : '${user.me_id}'
 			}
 			ajaxJsonToJson(false,'post','/comment/insert', comment,(data)=>{
-				console.log(data);	
+				if(data.res){
+					alert('댓글을 등록했습니다.');
+					$('[name=co_contents]').val('');
+				}else{
+					alert('댓글을 등록하지 못했습니다.');
+				}
 			});
 		});
 	</script>
