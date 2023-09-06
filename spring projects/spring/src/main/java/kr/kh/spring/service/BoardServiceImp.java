@@ -12,6 +12,7 @@ import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.util.UploadFileUtils;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
+import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Service
@@ -167,6 +168,30 @@ public class BoardServiceImp implements BoardService{
 			nums[i] = fileList.get(i).getFi_num();
 		}
 		deleteFile(nums);
+	}
+
+	@Override
+	public int like(LikeVO likeVo) {
+		if(likeVo == null || likeVo.getLi_me_id() == null) {
+			return -100;
+		}
+		//기존 추천 정보를 가져옴(게시글 번호와 아이디)
+		LikeVO dbLikeVo = boardDao.selectLike(likeVo.getLi_bo_num(), likeVo.getLi_me_id());
+		
+		//기존 추천 정보가 없으면
+		if(dbLikeVo == null) {
+			//추가
+			boardDao.insertLike(likeVo);
+		}
+		else {//있으면
+			//db에 있는 추천 상태와 화면에 누른 추천 상태가 같으면 => 취소 
+			if(dbLikeVo.getLi_state() == likeVo.getLi_state()) {
+				likeVo.setLi_state(0);
+			}
+			//업데이트
+			boardDao.updateLike(likeVo);
+		}
+		return likeVo.getLi_state();
 	}
 }
 

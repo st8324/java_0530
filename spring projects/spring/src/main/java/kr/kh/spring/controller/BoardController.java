@@ -1,6 +1,8 @@
 package kr.kh.spring.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.pagination.Criteria;
@@ -17,6 +21,7 @@ import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.util.Message;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
@@ -100,6 +105,15 @@ public class BoardController {
 		}
 		model.addAttribute("msg", msg);
 		return "message";
+	}
+	
+	@ResponseBody
+	@PostMapping("/like")
+	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(likeVo);
+		map.put("res", 1);
+		return map;
 	}
 }
 
