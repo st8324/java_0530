@@ -7,6 +7,19 @@
 </head>
 <body>
 	<h1>게시판</h1>
+	<form>
+	  <div class="input-group mb-3">
+	  	<div class="input-group-prepend">
+		    <select class="form-control">
+		      <option>전체</option>
+		      <option>제목</option>
+		      <option>내용</option>
+		    </select>
+	    </div>
+	    <input type="text" class="form-control">
+	    <button class="btn btn-outline-success">검색</button>
+	  </div>
+	</form>
 	<table class="table table-hover">
     <thead>
       <tr>
