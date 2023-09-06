@@ -10,6 +10,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript">
+	function ajaxJsonToJson(async, type, url, sendObject, successFunc){
+		$.ajax({
+			async : async, 
+			type : type, 
+			url : '<c:url value="/"/>'+url, 
+			data : JSON.stringify(sendObject), 
+			contentType : "application/json; charset=UTF-8", 
+			dataType : "json",
+			success : successFunc
+		});
+	}
+	</script>
 	<title>스프링</title>
 </head>
 <body>

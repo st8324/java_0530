@@ -27,4 +27,6 @@ public interface BoardService {
 
 	int like(LikeVO likeVo);
 
+	LikeVO getBoardLike(Integer bo_num, MemberVO user);
+
 }

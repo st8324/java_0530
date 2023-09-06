@@ -96,6 +96,13 @@
 		update `like` set li_state = #{like.li_state} 
 			where li_bo_num = #{like.li_bo_num} and li_me_id = #{like.li_me_id}
 	</update>
+	<update id="updateBoardLike">
+		update board set
+			bo_up = (select count(*) from `like` where li_bo_num = #{bo_num} and li_state = 1),
+			bo_down = (select count(*) from `like` where li_bo_num = #{bo_num} and li_state = -1)
+		where
+			bo_num = #{bo_num}
+	</update>
 </mapper>
 
 

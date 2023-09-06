@@ -191,7 +191,16 @@ public class BoardServiceImp implements BoardService{
 			//업데이트
 			boardDao.updateLike(likeVo);
 		}
+		boardDao.updateBoardLike(likeVo.getLi_bo_num());
 		return likeVo.getLi_state();
+	}
+
+	@Override
+	public LikeVO getBoardLike(Integer bo_num, MemberVO user) {
+		if(bo_num == null || user == null) {
+			return null;
+		}
+		return boardDao.selectLike(bo_num, user.getMe_id());
 	}
 }
 

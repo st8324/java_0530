@@ -30,8 +30,9 @@
 		</div>
 	</c:if>
 	<div class="form-group clearfix">
-		<button class="btn btn-outline-primary btn-up col-6 float-left">추천(${board.bo_up })</button>
-		<button class="btn btn-outline-danger btn-down col-6 float-right">비추천(${board.bo_down })</button>
+	
+		<button class="btn btn-like btn<c:if test="${like.li_state!=1 }">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
+		<button class="btn btn-like btn<c:if test="${like.li_state!=-1 }">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
 	</div>
 	<div class="form-group">
 		<label>내용</label>
@@ -58,47 +59,55 @@
 	</c:if>
 	<script type="text/javascript">
 		//추천 버튼을 클릭했을 때 콘솔창에 추천이라고 출력 
-		$('.btn-up').click(()=>{
+		$('.btn-like').click(function(){
+			if('${user.me_id}' == ''){
+				//alert('로그인한 회원만 이용이 가능합니다.');
+				if(confirm('로그인 화면으로 이동하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>'
+				}
+				return;
+			}
+			let li_state = $(this).hasClass('btn-up')? 1 : -1;
 			let data = {
 				li_me_id : '${user.me_id}',
 				li_bo_num: '${board.bo_num}',
-				li_state : 1
+				li_state : li_state
 			};
 			ajaxJsonToJson(false, 'post', '/board/like', data, (data)=>{
-				if(data.res){
+				if(data.res == 1){
 					alert('추천했습니다.');		
-				}else{
-					alert('추천을 취소했습니다.');
+				}else if(data.res == -1){
+					alert('비추천했습니다.');
+				}else if(data.res == 0){
+					if(li_state == 1){
+						alert('추천을 취소했습니다.');
+					}
+					else{
+						alert('비추천을 취소했습니다.');
+					}
 				}
-			})
-		})
-		//비추천 버튼을 클릭했을 때 콘솔창에 비추천이라고 출력
-		$('.btn-down').click(()=>{
-			let data = {
-				li_me_id : '${user.me_id}',
-				li_bo_num: '${board.bo_num}',
-				li_state : -1
-			};
-			ajaxJsonToJson(false, 'post', '/board/like', data, (data)=>{
-				if(data.res == -1){
-					alert('비추천했습니다.');		
-				}else{
-					alert('비추천을 취소했습니다.');
-				}
+				diplayLikeBtn(data.res);
+				$('.text-up').text(data.board.bo_up);
+				$('.text-down').text(data.board.bo_down);
 			})
 		})
 		
-		function ajaxJsonToJson(async, type, url, sendObject, successFunc){
-			$.ajax({
-				async : async, 
-				type : type, 
-				url : '<c:url value="/"/>'+url, 
-				data : JSON.stringify(sendObject), 
-				contentType : "application/json; charset=UTF-8", 
-				dataType : "json",
-				success : successFunc
-			});
+		
+		
+		function diplayLikeBtn(li_state){
+			let $upBtn = $('.btn-up');
+			let $downBtn = $('.btn-down');
+			
+			$upBtn.removeClass('btn-primary').addClass('btn-outline-primary');
+			$downBtn.removeClass('btn-danger').addClass('btn-outline-danger');
+			
+			if(li_state == 1){
+				$upBtn.addClass('btn-primary').removeClass('btn-outline-primary');	
+			}else if(li_state == -1){
+				$downBtn.addClass('btn-danger').removeClass('btn-outline-danger');
+			}
 		}
+		
 	</script>
 </body>
 </html>
