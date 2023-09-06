@@ -30,11 +30,29 @@
 	</insert>
 	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
 		select * from board
+		<choose>
+			<when test='cri.type.equals("0")'>
+				where bo_title like concat('%', #{cri.search}, '%') or 
+					bo_contents like concat('%', #{cri.search}, '%')
+			</when>
+			<otherwise>
+				where ${cri.type} like concat('%', #{cri.search}, '%')
+			</otherwise>
+		</choose>
 		order by bo_num desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from board
+		<choose>
+			<when test='cri.type.equals("0")'>
+				where bo_title like concat('%', #{cri.search}, '%') or 
+					bo_contents like concat('%', #{cri.search}, '%')
+			</when>
+			<otherwise>
+				where ${cri.type} like concat('%', #{cri.search}, '%')
+			</otherwise>
+		</choose>
 	</select>
 	<select id="selectBoard" resultMap="BoardVO">
 		select * from board where bo_num = #{bo_num}

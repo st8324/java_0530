@@ -48,7 +48,7 @@ public class MemberController {
 
 		MemberVO user = memberService.login(member); 
 		if(user != null) {
-			msg = new Message("/", "로그인에 성공했습니다.");
+			msg = new Message("", "로그인에 성공했습니다.");
 		}
 		model.addAttribute("user", user);
 		model.addAttribute("msg", msg);
