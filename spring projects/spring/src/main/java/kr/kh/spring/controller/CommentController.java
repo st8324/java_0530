@@ -45,5 +45,11 @@ public class CommentController {
 		map.put("res", res);
 		return map;
 	}
-	
+	@PostMapping("/comment/update")
+	public Map<String, Object> update(@RequestBody CommentVO comment){
+		Map<String, Object> map = new HashMap<String, Object>();
+		boolean res = commentService.updateComment(comment);
+		map.put("res", res);
+		return map;
+	}
 }

@@ -15,4 +15,6 @@ public interface CommentService {
 
 	boolean deleteComment(CommentVO comment);
 
+	boolean updateComment(CommentVO comment);
+
 }

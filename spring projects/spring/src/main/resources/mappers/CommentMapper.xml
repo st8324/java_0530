@@ -19,6 +19,13 @@
 	<delete id="deleteComment">
 		delete from comment where co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
 	</delete>
+	<update id="updateComment">
+		update comment 
+		set 
+			co_contents = #{comment.co_contents} 
+		where 
+			co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
+	</update>
 </mapper>
 
 
