@@ -37,4 +37,12 @@ public class CommentServiceImp implements CommentService {
 		return commentDao.selectCommentCount(bo_num);
 	}
 
+	@Override
+	public boolean deleteComment(CommentVO comment) {
+		if(comment == null || comment.getCo_me_id() == null) {
+			return false;
+		}
+		return commentDao.deleteComment(comment);
+	}
+
 }

@@ -16,6 +16,9 @@
 	<select id="selectCommentCount" resultType="int">
 		select count(*) from comment where co_bo_num = #{bo_num}
 	</select>
+	<delete id="deleteComment">
+		delete from comment where co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
+	</delete>
 </mapper>
 
 

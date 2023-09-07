@@ -197,13 +197,19 @@
 			getCommentList(cri);
 		});
 	});
+	
+	/*
+	$(document).on('click', '.btn-comment-delete', function(){
+		alert('삭제 버튼');
+	})
+	*/
+	
 	let cri = {
 			page : 1,
 			perPageNum : 2,
 	}
 	//게시글이 화면에 출력되고 이어서 댓글이 화면에 출력되어야 하기 때문에 이벤트 등록없이 바로 호출
 	getCommentList(cri);
-	
 	//현재 페이지 정보가 주어지면 현재 페이지에 맞는 댓글 리스트를 가져와서 화면에 출력하는 함수 
 	function getCommentList(cri){
 		ajaxJsonToJson(false,'post','/comment/list/${board.bo_num}', cri ,(data)=>{
@@ -238,6 +244,15 @@
 			str = '<div class="border rounded-sm border-danger p-3 mt-3">등록된 댓글이 없습니다.</div>';
 		}
 		for(comment of commentList){
+			let btnStr = '';
+			if('${user.me_id}' == comment.co_me_id){
+				btnStr = `
+				<div>
+					<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.co_num}">수정</button>
+					<button class="btn btn-outline-danger btn-comment-delete" onclick="deleteComment(\${comment.co_num})">삭제</button>
+				</div>
+				`;
+			}
 			str += `
 				<div class="border rounded-sm border-danger p-3 mt-3">
 					<div class="">\${comment.co_me_id}</div>
@@ -249,9 +264,26 @@
 					    	작성일
 					    </div>
 					</div>
+					\${btnStr}
 				</div>`;
 		}
 		$(target).html(str);
+	}
+	//댓글을 삭제하는 함수
+	function deleteComment(co_num){
+		let comment = { 
+				co_num : co_num,
+				co_me_id : '${user.me_id}'
+		}
+		ajaxJsonToJson(false,'post','/comment/delete', comment ,(data)=>{
+			if(data.res){
+				alert('댓글을 삭제했습니다.')
+			}else{
+				alert('댓글을 삭제하지 못했습니다.')
+			}
+			cri.page = 1;
+			getCommentList(cri);
+		});
 	}
 </script>
 </body>
