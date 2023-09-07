@@ -9,6 +9,6 @@ public interface CommentService {
 
 	boolean insertComment(CommentVO comment);
 
-	List<CommentVO> getCommentList(Criteria cri);
+	List<CommentVO> getCommentList(Criteria cri, int bo_num);
 
 }

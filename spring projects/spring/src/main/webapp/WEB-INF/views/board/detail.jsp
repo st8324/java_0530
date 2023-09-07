@@ -193,15 +193,18 @@
 	});
 	let cri = {
 			page : 1,
-			perPageNum : 2
+			perPageNum : 2,
 	}
 	//게시글이 화면에 출력되고 이어서 댓글이 화면에 출력되어야 하기 때문에 이벤트 등록없이 바로 호출
 	getCommentList(cri);
 	
 	//현재 페이지 정보가 주어지면 현재 페이지에 맞는 댓글 리스트를 가져와서 화면에 출력하는 함수 
 	function getCommentList(cri){
-		ajaxJsonToJson(false,'post','/comment/list', cri ,(data)=>{
+		ajaxJsonToJson(false,'post','/comment/list/${board.bo_num}', cri ,(data)=>{
 			let str = '';
+			if(data.list.length == 0){
+				str = '<div class="border rounded-sm border-danger p-3 mt-3">등록된 댓글이 없습니다.</div>';
+			}
 			for(comment of data.list){
 				str += `
 					<div class="border rounded-sm border-danger p-3 mt-3">

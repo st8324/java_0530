@@ -9,6 +9,7 @@
 	</insert>
 	<select id="selectCommentList" resultType="kr.kh.spring.vo.CommentVO">
 		select * from comment 
+			where co_bo_num = #{bo_num}
 			order by co_num desc 
 			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
