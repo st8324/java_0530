@@ -13,6 +13,9 @@
 			order by co_num desc 
 			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
+	<select id="selectCommentCount" resultType="int">
+		select count(*) from comment where co_bo_num = #{bo_num}
+	</select>
 </mapper>
 
 

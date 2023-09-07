@@ -32,4 +32,9 @@ public class CommentServiceImp implements CommentService {
 		return commentDao.selectCommentList(cri, bo_num);
 	}
 
+	@Override
+	public int getTotalCount(int bo_num) {
+		return commentDao.selectCommentCount(bo_num);
+	}
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.CommentService;
 import kr.kh.spring.vo.CommentVO;
 
@@ -31,7 +32,10 @@ public class CommentController {
 	public Map<String, Object> list(@RequestBody Criteria cri, @PathVariable("bo_num")int bo_num){
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<CommentVO> list = commentService.getCommentList(cri, bo_num);
+		int totalCount = commentService.getTotalCount(bo_num);
+		PageMaker pm = new PageMaker(3, cri, totalCount);
 		map.put("list", list);
+		map.put("pm", pm);
 		return map;
 	}
 	
