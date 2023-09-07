@@ -273,7 +273,8 @@
 	function deleteComment(co_num){
 		let comment = { 
 				co_num : co_num,
-				co_me_id : '${user.me_id}'
+				co_me_id : '${user.me_id}',
+				co_bo_num : '${board.bo_num}'
 		}
 		ajaxJsonToJson(false,'post','/comment/delete', comment ,(data)=>{
 			if(data.res){

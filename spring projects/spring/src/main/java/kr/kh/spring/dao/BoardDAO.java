@@ -39,4 +39,6 @@ public interface BoardDAO {
 
 	void updateBoardLike(@Param("bo_num")int li_bo_num);
 
+	void updateBoardComment(@Param("bo_num")int co_bo_num);
+
 }
