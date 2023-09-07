@@ -7,6 +7,11 @@
 		insert into comment(co_bo_num, co_me_id, co_contents)
 		values(#{comment.co_bo_num},#{comment.co_me_id},#{comment.co_contents})
 	</insert>
+	<select id="selectCommentList" resultType="kr.kh.spring.vo.CommentVO">
+		select * from comment 
+			order by co_num desc 
+			limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
 </mapper>
 
 

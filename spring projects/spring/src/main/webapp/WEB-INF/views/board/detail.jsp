@@ -63,11 +63,34 @@
 		<div class="input-group mb-3">
 			<textarea class="form-control" placeholder="댓글" name="co_contents"></textarea>
 		    <div class="input-group-append">
-		      <button class="btn btn-outline-success btn-comment-insert">등록</button>
+		        <button class="btn btn-outline-success btn-comment-insert">등록</button>
 		    </div>
-		  </div>
+		</div>
 		<!-- 댓글 목록창 -->
-		
+		<div class="comment-list">
+			<div class="border rounded-sm border-danger p-3 mt-3">
+				<div class="">작성자아이디</div>
+				<div class="input-group mb-3">
+				    <div class="col-9">
+				        댓글 내용
+				    </div>
+				    <div class="col-3">
+				    	작성일
+				    </div>
+				</div>
+			</div>
+			<div class="border rounded-sm border-danger p-3 mt-3">
+				<div class="">작성자아이디</div>
+				<div class="input-group mb-3">
+				    <div class="col-9">
+				        댓글 내용
+				    </div>
+				    <div class="col-3">
+				    	작성일
+				    </div>
+				</div>
+			</div>
+		</div>
 		<!-- 댓글 페이지네이션 -->
 	</div>
 	<!-- 추천 기능 자바스크립트 -->
@@ -124,43 +147,78 @@
 		
 	</script>
 
-	<!-- 댓글 기능 자바스크립트 -->
-	<script type="text/javascript">
-		$('[name=co_contents]').focus(function(){
-			if('${user.me_id}' == ''){
-				if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
-					location.href = '<c:url value="/member/login"/>';
-				}
-				$(this).blur();
-				return;
+<!-- 댓글 기능 자바스크립트 -->
+<script type="text/javascript">
+	//로그인하지 않고 댓글 창을 활성화했을 때 처리하기 위한 코드 
+	$('[name=co_contents]').focus(function(){
+		if('${user.me_id}' == ''){
+			if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
+				location.href = '<c:url value="/member/login"/>';
 			}
+			$(this).blur();
+			return;
+		}
+	});
+	//댓글 등록버튼을 클릭했을 때
+	$('.btn-comment-insert').click(()=>{
+		//로그인 확인
+		if('${user.me_id}' == ''){
+			if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
+				location.href = '<c:url value="/member/login"/>';
+			}
+			return;
+		}
+		let co_contents = $('[name=co_contents]').val();
+		//댓글 내용 확인  
+		if(co_contents == ''){
+			alert('내용을 입력하세요.');
+			return;
+		}
+		let comment = {
+				co_contents : co_contents,
+				co_bo_num : '${board.bo_num}',
+				co_me_id : '${user.me_id}'
+		}
+		//댓글을 등록
+		ajaxJsonToJson(false,'post','/comment/insert', comment,(data)=>{
+			if(data.res){
+				alert('댓글을 등록했습니다.');
+				$('[name=co_contents]').val('');
+			}else{
+				alert('댓글을 등록하지 못했습니다.');
+			}
+			cri.page = 1;
+			getCommentList(cri);
 		});
-		$('.btn-comment-insert').click(()=>{
-			if('${user.me_id}' == ''){
-				if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
-					location.href = '<c:url value="/member/login"/>';
-				}
-				return;
+	});
+	let cri = {
+			page : 1,
+			perPageNum : 2
+	}
+	//게시글이 화면에 출력되고 이어서 댓글이 화면에 출력되어야 하기 때문에 이벤트 등록없이 바로 호출
+	getCommentList(cri);
+	
+	//현재 페이지 정보가 주어지면 현재 페이지에 맞는 댓글 리스트를 가져와서 화면에 출력하는 함수 
+	function getCommentList(cri){
+		ajaxJsonToJson(false,'post','/comment/list', cri ,(data)=>{
+			let str = '';
+			for(comment of data.list){
+				str += `
+					<div class="border rounded-sm border-danger p-3 mt-3">
+						<div class="">\${comment.co_me_id}</div>
+						<div class="input-group mb-3">
+						    <div class="col-9">
+						        \${comment.co_contents}
+						    </div>
+						    <div class="col-3">
+						    	작성일
+						    </div>
+						</div>
+					</div>`;
 			}
-			let co_contents = $('[name=co_contents]').val();
-			if(co_contents == ''){
-				alert('내용을 입력하세요.');
-				return;
-			}
-			let comment = {
-					co_contents : co_contents,
-					co_bo_num : '${board.bo_num}',
-					co_me_id : '${user.me_id}'
-			}
-			ajaxJsonToJson(false,'post','/comment/insert', comment,(data)=>{
-				if(data.res){
-					alert('댓글을 등록했습니다.');
-					$('[name=co_contents]').val('');
-				}else{
-					alert('댓글을 등록하지 못했습니다.');
-				}
-			});
+			$('.comment-list').html(str);
 		});
-	</script>
+	}
+</script>
 </body>
 </html>
