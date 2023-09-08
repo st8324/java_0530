@@ -40,7 +40,7 @@
 	        </td>
 	        <td>
 	        	<button class="btn btn-outline-success">수정</button>
-	        	<button class="btn btn-outline-warning">삭제</button>
+	        	<button class="btn btn-outline-warning" onclick="deleteBoardType(${bt.bt_num})">삭제</button>
 			</td>
 	      </tr>
       	</c:forEach>
@@ -65,12 +65,25 @@
   		ajaxJsonToJson(false, "post", "/admin/board/type/insert", boardType, (data)=>{
   			if(data.res){
   				alert('게시판 종류를 추가했습니다.')
+	  			location.reload();
   			}else{
   				alert('게시판 종류를 추가하지 못했습니다.')
   			}
-  			location.reload();
   		});
   	});
+  	function deleteBoardType(bt_num){
+  		let bt = {
+  				bt_num : bt_num
+  		}
+  		ajaxJsonToJson(false, "post", "/admin/board/type/delete", bt, (data)=>{
+  			if(data.res){
+  				alert('게시판 종류를 삭제했습니다.')
+	  			location.reload();
+  			}else{
+  				alert('게시판 종류를 삭제하지 못했습니다.')
+  			}
+  		});
+  	}
   </script>
 </body>
 </html>

@@ -36,6 +36,14 @@ public class AdminController {
 		map.put("res", res);
 		return map;
 	}
+	@ResponseBody
+	@PostMapping("/admin/board/type/delete")
+	public Map<String, Object> boardTypeDelete(@RequestBody BoardTypeVO boardType){
+		Map<String, Object> map = new HashMap<String, Object>();
+		boolean res = boardService.deleteBoardType(boardType);
+		map.put("res", res);
+		return map;
+	}
 }
 
 
