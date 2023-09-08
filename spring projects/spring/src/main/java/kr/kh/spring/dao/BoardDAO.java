@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.LikeVO;
@@ -40,5 +41,7 @@ public interface BoardDAO {
 	void updateBoardLike(@Param("bo_num")int li_bo_num);
 
 	void updateBoardComment(@Param("bo_num")int co_bo_num);
+
+	List<BoardTypeVO> selectBoardTypeList();
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
@@ -28,5 +29,9 @@ public interface BoardService {
 	int like(LikeVO likeVo);
 
 	LikeVO getBoardLike(Integer bo_num, MemberVO user);
+
+	List<BoardTypeVO> getBoardTypeList();
+
+	boolean insertBoardType(BoardTypeVO boardType);
 
 }
