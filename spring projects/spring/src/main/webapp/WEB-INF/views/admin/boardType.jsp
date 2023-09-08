@@ -54,7 +54,7 @@
   			alert('작성 권한을 선택하세요.');
   			return;
   		}
-  		if(bt_title.trim().lenth == 0){
+  		if(bt_title.trim().length == 0){
   			alert('게시판명을 입력하세요.');
   			return;
   		}
@@ -62,8 +62,13 @@
   				bt_title : bt_title,
   				bt_authority : bt_authority
   		};
-  		ajaxJsonToJson(false, post, "/admin/board/type/insert", boardType, (data)=>{
-  			console.log(data);
+  		ajaxJsonToJson(false, "post", "/admin/board/type/insert", boardType, (data)=>{
+  			if(data.res){
+  				alert('게시판 종류를 추가했습니다.')
+  			}else{
+  				alert('게시판 종류를 추가하지 못했습니다.')
+  			}
+  			location.reload();
   		});
   	});
   </script>

@@ -214,7 +214,15 @@ public class BoardServiceImp implements BoardService{
 		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
 			return false;
 		}
-		boardDao.insertBoardType(boardType);
+		//게시판명이 중복되는걸 방지하기 위해
+		try {
+			boolean res = boardDao.insertBoardType(boardType);
+			if(!res) {
+				return false;
+			}
+		}catch(Exception e) {
+			return false;
+		}
 		switch (boardType.getBt_authority()) {
 		case "USER":
 			boardDao.insertBoardAuthority(boardType.getBt_num(), "USER");
@@ -222,7 +230,7 @@ public class BoardServiceImp implements BoardService{
 			boardDao.insertBoardAuthority(boardType.getBt_num(), "ADMIN");
 			break;
 		}
-		return false;
+		return true;
 	}
 }
 

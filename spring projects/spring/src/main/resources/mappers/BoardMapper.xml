@@ -133,6 +133,13 @@
 	<select id="selectBoardAuthorityList" resultType="kr.kh.spring.vo.BoardAuthorityVO">
 		select * from board_authority where ba_bt_num = #{bt_num}
 	</select>
+	<insert id="insertBoardType" useGeneratedKeys="true" keyProperty="bt.bt_num">
+		insert into board_type(bt_title) values(#{bt.bt_title})
+	</insert>
+	<insert id="insertBoardAuthority">
+		insert into board_authority(ba_bt_num, ba_authority)
+		values(#{ba_bt_num},#{ba_authority})
+	</insert>
 </mapper>
 
 

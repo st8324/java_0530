@@ -44,4 +44,8 @@ public interface BoardDAO {
 
 	List<BoardTypeVO> selectBoardTypeList();
 
+	boolean insertBoardType(@Param("bt")BoardTypeVO boardType);
+
+	void insertBoardAuthority(@Param("ba_bt_num")int bt_num, @Param("ba_authority")String authority);
+
 }
