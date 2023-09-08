@@ -36,4 +36,6 @@ public interface BoardService {
 
 	boolean deleteBoardType(BoardTypeVO boardType);
 
+	boolean updateBoardType(BoardTypeVO boardType);
+
 }

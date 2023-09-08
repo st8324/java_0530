@@ -149,6 +149,13 @@
 	<delete id="deleteBoardType">
 		delete from board_type where bt_num = #{bt_num}
 	</delete>
+	<update id="updateBoardType">
+		update board_type
+		set
+			bt_title = #{bt.bt_title}
+		where
+			bt_num = #{bt.bt_num}
+	</update>
 </mapper>
 
 

@@ -254,6 +254,18 @@ public class BoardServiceImp implements BoardService{
 		//게시판 타입을 삭제
 		return boardDao.deleteBoardType(boardType.getBt_num());
 	}
+
+	@Override
+	public boolean updateBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null) {
+			return false;
+		}
+		try {
+			return boardDao.updateBoardType(boardType);
+		}catch(Exception e) {
+			return false;
+		}
+	}
 }
 
 
