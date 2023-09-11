@@ -26,9 +26,10 @@ DROP TABLE IF EXISTS `board_type`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board_type` (
   `bt_num` int NOT NULL AUTO_INCREMENT,
-  `bt_title` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`bt_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `bt_title` varchar(20) NOT NULL,
+  PRIMARY KEY (`bt_num`),
+  UNIQUE KEY `bt_title_UNIQUE` (`bt_title`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE `board_type` (
 
 LOCK TABLES `board_type` WRITE;
 /*!40000 ALTER TABLE `board_type` DISABLE KEYS */;
-INSERT INTO `board_type` VALUES (1,'일반');
+INSERT INTO `board_type` VALUES (6,'공지사항1'),(1,'일반');
 /*!40000 ALTER TABLE `board_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-01 17:18:35
+-- Dump completed on 2023-09-11 10:53:19

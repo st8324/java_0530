@@ -18,33 +18,30 @@ USE `spring`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `like`
+-- Table structure for table `board_authority`
 --
 
-DROP TABLE IF EXISTS `like`;
+DROP TABLE IF EXISTS `board_authority`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `like` (
-  `li_num` int NOT NULL AUTO_INCREMENT,
-  `li_state` int DEFAULT NULL,
-  `li_me_id` varchar(15) NOT NULL,
-  `li_bo_num` int NOT NULL,
-  PRIMARY KEY (`li_num`),
-  KEY `FK_member_TO_like_1` (`li_me_id`),
-  KEY `FK_li_bo_num_idx` (`li_bo_num`),
-  CONSTRAINT `FK_li_bo_num` FOREIGN KEY (`li_bo_num`) REFERENCES `board` (`bo_num`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_member_TO_like_1` FOREIGN KEY (`li_me_id`) REFERENCES `member` (`me_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `board_authority` (
+  `ba_num` int NOT NULL AUTO_INCREMENT,
+  `ba_bt_num` int NOT NULL,
+  `ba_authority` varchar(10) NOT NULL,
+  PRIMARY KEY (`ba_num`),
+  KEY `ba_bo_num_idx` (`ba_bt_num`),
+  CONSTRAINT `ba_bt_num` FOREIGN KEY (`ba_bt_num`) REFERENCES `board_type` (`bt_num`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `like`
+-- Dumping data for table `board_authority`
 --
 
-LOCK TABLES `like` WRITE;
-/*!40000 ALTER TABLE `like` DISABLE KEYS */;
-INSERT INTO `like` VALUES (1,-1,'qwe123',16);
-/*!40000 ALTER TABLE `like` ENABLE KEYS */;
+LOCK TABLES `board_authority` WRITE;
+/*!40000 ALTER TABLE `board_authority` DISABLE KEYS */;
+INSERT INTO `board_authority` VALUES (1,1,'USER'),(2,1,'ADMIN'),(5,6,'ADMIN');
+/*!40000 ALTER TABLE `board_authority` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-11 10:53:19
+-- Dump completed on 2023-09-11 10:53:20

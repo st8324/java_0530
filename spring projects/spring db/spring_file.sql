@@ -32,7 +32,7 @@ CREATE TABLE `file` (
   PRIMARY KEY (`fi_num`),
   KEY `FK_fi_bo_num_idx` (`fi_bo_num`),
   CONSTRAINT `FK_fi_bo_num` FOREIGN KEY (`fi_bo_num`) REFERENCES `board` (`bo_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
-INSERT INTO `file` VALUES (1,'/2023/09/01/40c4aec4-56da-45d8-a6f3-8e9fd3040389_01. Spring 기초.pptx','01. Spring 기초.pptx',9),(2,'/2023/09/01/4ba7fdf4-5efc-4c92-9e82-a5e25ff186d2_03. Spring AOP.pptx','03. Spring AOP.pptx',11),(3,'/2023/09/01/c0170b0a-2458-4d48-ad86-bf6316e1d6d4_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',12),(4,'/2023/09/01/4d0bfd69-2238-4312-b205-245e65e6008a_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',14);
+INSERT INTO `file` VALUES (1,'/2023/09/01/40c4aec4-56da-45d8-a6f3-8e9fd3040389_01. Spring 기초.pptx','01. Spring 기초.pptx',9),(2,'/2023/09/01/4ba7fdf4-5efc-4c92-9e82-a5e25ff186d2_03. Spring AOP.pptx','03. Spring AOP.pptx',11),(3,'/2023/09/01/c0170b0a-2458-4d48-ad86-bf6316e1d6d4_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',12),(4,'/2023/09/01/4d0bfd69-2238-4312-b205-245e65e6008a_01. Spring 기초 (1).pptx','01. Spring 기초 (1).pptx',14),(10,'/2023/09/05/3893876c-3618-4637-9206-05d605d4d0ed_스프링 처리.png','스프링 처리.png',16),(11,'/2023/09/06/2b8762f6-9f30-4abc-8f7c-7b7dddf361c2_스프링 처리.png','스프링 처리.png',17),(12,'/2023/09/06/5dc2f91a-2f28-4b20-bb8d-18415702b1bf_게시글 복습 정리.txt','게시글 복습 정리.txt',18),(13,'/2023/09/06/b7fac6ab-42c5-41eb-ac0e-b5e491b18545_게시글 복습 정리.txt','게시글 복습 정리.txt',19),(14,'/2023/09/11/ecfc789c-64f8-4d44-ae34-31dd810d355e_recording.conf','recording.conf',20);
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-01 17:18:35
+-- Dump completed on 2023-09-11 10:53:19

@@ -26,9 +26,11 @@ DROP TABLE IF EXISTS `member`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `member` (
   `me_id` varchar(15) NOT NULL,
-  `me_pw` varchar(255) DEFAULT NULL,
-  `me_email` varchar(50) DEFAULT NULL,
-  `me_role` varchar(10) DEFAULT NULL,
+  `me_pw` varchar(255) NOT NULL,
+  `me_email` varchar(50) NOT NULL,
+  `me_role` varchar(10) NOT NULL DEFAULT 'USER',
+  `me_session_id` varchar(255) DEFAULT NULL,
+  `me_session_limit` datetime DEFAULT NULL,
   PRIMARY KEY (`me_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +41,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('admin','admin','ad@naver.com','ADMIN'),('qwe123','$2a$10$4fUjlyrEhHDOjkiVkcVw3eUUuBP2cdelI1019q0WqpoNizUBsWuom','stajun@naver.com',NULL);
+INSERT INTO `member` VALUES ('admin123','$2a$10$ZYkgynwixs1Anc/qwkrFAOoSr96EkVhRif.w8k0dMirEQg0lH40HC','stajun@naver.com','ADMIN','E66A763F9E2EB77C9042CF9D3DCB9462','2023-09-15 09:33:02'),('qwe123','$2a$10$4fUjlyrEhHDOjkiVkcVw3eUUuBP2cdelI1019q0WqpoNizUBsWuom','stajun@naver.com','USER','57FC07A431559EE63E28FF83BDB8F87E',NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-01 17:18:35
+-- Dump completed on 2023-09-11 10:53:19

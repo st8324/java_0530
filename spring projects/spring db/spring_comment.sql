@@ -34,7 +34,7 @@ CREATE TABLE `comment` (
   KEY `FK_co_bo_num_idx` (`co_bo_num`),
   CONSTRAINT `FK_co_bo_num` FOREIGN KEY (`co_bo_num`) REFERENCES `board` (`bo_num`),
   CONSTRAINT `FK_member_TO_comment_1` FOREIGN KEY (`co_me_id`) REFERENCES `member` (`me_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,'댓글1',19,'qwe123'),(2,'새 댓글',19,'qwe123'),(3,'댓글 테스트\n',19,'qwe123'),(4,'123',17,'qwe123'),(5,'1',19,'qwe123'),(6,'2',19,'qwe123'),(9,'3',19,'qwe123'),(10,'4',19,'qwe123'),(11,'5(수정)',19,'qwe123'),(13,'123(수정)',19,'qwe123'),(15,'23',17,'qwe123');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-01 17:18:35
+-- Dump completed on 2023-09-11 10:53:19

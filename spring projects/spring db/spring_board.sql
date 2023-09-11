@@ -35,14 +35,14 @@ CREATE TABLE `board` (
   `bo_me_id` varchar(15) NOT NULL,
   `bo_up` int NOT NULL DEFAULT '0',
   `bo_down` int NOT NULL DEFAULT '0',
-  `bo_coment` int NOT NULL DEFAULT '0',
+  `bo_comment` int NOT NULL DEFAULT '0',
   `bo_bt_num` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`bo_num`),
   KEY `FK_member_TO_board_1` (`bo_me_id`),
   KEY `FK_bo_bt_num_idx` (`bo_bt_num`),
   CONSTRAINT `FK_bo_bt_num` FOREIGN KEY (`bo_bt_num`) REFERENCES `board_type` (`bt_num`),
   CONSTRAINT `FK_member_TO_board_1` FOREIGN KEY (`bo_me_id`) REFERENCES `member` (`me_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,'첫 게시글','<p><font color=\"#000000\" style=\"background-color: rgb(255, 255, 0);\">첫게시글</font></p>',20,'2023-08-31 12:06:49',NULL,1,'qwe123',0,0,0,1),(2,'두번째 게시글','<p><b>두번째 게시글</b><br></p>',0,'2023-08-31 12:08:21',NULL,2,'qwe123',0,0,0,1),(3,'세번째','<p>세번째<br></p>',3,'2023-08-31 12:11:42',NULL,3,'qwe123',0,0,0,1),(4,'네번째?','<p>네번째?</p>',1,'2023-08-31 12:14:01',NULL,4,'qwe123',0,0,0,1),(5,'자바','<p>자바<br></p>',2,'2023-08-31 15:19:03',NULL,5,'qwe123',0,0,0,1),(6,'HTML','<p>HTML</p>',0,'2023-08-31 15:19:33',NULL,6,'qwe123',0,0,0,1),(7,'123','<p>123</p>',0,'2023-08-31 15:19:38',NULL,7,'qwe123',0,0,0,1),(8,'첨부파일 테스트','<p>테스트</p>',0,'2023-09-01 09:36:54',NULL,8,'qwe123',0,0,0,1),(9,'첨부파일 테스트 중 ','<p>첨부파일 테스트 중&nbsp;<br></p>',14,'2023-09-01 10:47:41',NULL,9,'qwe123',0,0,0,1),(10,'123','<p>123</p>',0,'2023-09-01 12:41:11',NULL,10,'qwe123',0,0,0,1),(11,'123','<p>123</p>',0,'2023-09-01 13:10:19',NULL,11,'qwe123',0,0,0,1),(12,'첨부','<p>123</p>',1,'2023-09-01 13:13:33',NULL,12,'qwe123',0,0,0,1),(13,'456','<p>456</p>',0,'2023-09-01 14:04:44',NULL,13,'qwe123',0,0,0,1),(14,'789','<p>789</p>',3,'2023-09-01 14:04:59',NULL,14,'qwe123',0,0,0,1);
+INSERT INTO `board` VALUES (1,'첫 게시글','<p><font color=\"#000000\" style=\"background-color: rgb(255, 255, 0);\">첫게시글</font></p>',20,'2023-08-31 12:06:49',NULL,1,'qwe123',0,0,0,1),(2,'두번째 게시글','<p><b>두번째 게시글</b><br></p>',0,'2023-08-31 12:08:21',NULL,2,'qwe123',0,0,0,1),(3,'세번째','<p>세번째<br></p>',3,'2023-08-31 12:11:42',NULL,3,'qwe123',0,0,0,1),(4,'네번째?','<p>네번째?</p>',1,'2023-08-31 12:14:01',NULL,4,'qwe123',0,0,0,1),(5,'자바','<p>자바<br></p>',2,'2023-08-31 15:19:03',NULL,5,'qwe123',0,0,0,1),(6,'HTML','<p>HTML</p>',0,'2023-08-31 15:19:33',NULL,6,'qwe123',0,0,0,1),(7,'123','<p>123</p>',0,'2023-08-31 15:19:38',NULL,7,'qwe123',0,0,0,1),(8,'첨부파일 테스트','<p>테스트</p>',0,'2023-09-01 09:36:54',NULL,8,'qwe123',0,0,0,1),(9,'첨부파일 테스트 중 ','<p>첨부파일 테스트 중&nbsp;<br></p>',18,'2023-09-01 10:47:41',NULL,9,'qwe123',0,0,0,1),(10,'123','<p>123</p>',0,'2023-09-01 12:41:11',NULL,10,'qwe123',0,0,0,1),(11,'123','<p>123</p>',0,'2023-09-01 13:10:19',NULL,11,'qwe123',0,0,0,1),(12,'첨부','<p>123</p>',1,'2023-09-01 13:13:33',NULL,12,'qwe123',0,0,0,1),(13,'456','<p>456</p>',1,'2023-09-01 14:04:44',NULL,13,'qwe123',0,0,0,1),(14,'789','<p>789</p>',7,'2023-09-01 14:04:59',NULL,14,'qwe123',0,0,0,1),(15,'스프링 복습(수정)','스프링 복습(수정)',6,'2023-09-04 15:19:46','2023-09-04 16:43:54',15,'qwe123',0,0,0,1),(16,'첨부','123',43,'2023-09-05 14:09:57','2023-09-05 15:17:36',16,'qwe123',0,1,0,1),(17,'글쓰기','<p>글쓰기<br></p>',15,'2023-09-06 15:32:12',NULL,17,'qwe123',0,0,2,1),(18,'답글입니다~','<p>글쓰기<br></p>',2,'2023-09-06 15:33:45',NULL,17,'qwe123',0,0,0,1),(19,'첨부 글쓰기','<p>첨부 글쓰기<br></p>',108,'2023-09-06 16:06:11',NULL,19,'qwe123',0,0,9,1),(20,'공지사항','<p>공지1</p>',0,'2023-09-11 09:49:53',NULL,20,'admin123',0,0,0,6);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-01 17:18:35
+-- Dump completed on 2023-09-11 10:53:19
