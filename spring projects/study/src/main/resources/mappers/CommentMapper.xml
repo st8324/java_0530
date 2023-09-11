@@ -7,6 +7,24 @@
 		insert into comment(co_me_id, co_bo_num, co_contents)
 		values(#{comment.co_me_id},#{comment.co_bo_num},#{comment.co_contents})
 	</insert>
+	<select id="selectCommentList" resultType="kr.kh.study.vo.CommentVO">
+		select 
+			* 
+		from 
+			comment
+		where
+			co_bo_num = #{bo_num}
+		order by co_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="selectCommentCount" resultType="int">
+		select 
+			count(*) 
+		from 
+			comment
+		where
+			co_bo_num = #{bo_num}
+	</select>
 </mapper>
 
 

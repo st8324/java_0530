@@ -27,6 +27,23 @@
 	<h2>댓글</h2>
 	<textarea rows="" cols="" placeholder="댓글 등록" id="inputComment"></textarea> 
 	<button id="btnCommentInsert">댓글 등록</button>
+	<div class="box-comment">
+		<ul class="comment-list">
+			<li class="comment-item">
+				<span class="comment-contents">댓길1</span>
+				<span class="comment-writer">[작성자]</span>
+				<button >수정</button>
+				<button >삭제</button>
+			</li>
+		</ul>
+		<div class="pagination">
+			<a href="#"> 이전</a>
+			<a href="#"> 1</a>
+			<a href="#"> 다음</a>
+		</div>
+	</div>
+	
+	
 	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
 		$('#btnCommentInsert').click(function(){
@@ -64,12 +81,42 @@
 					if(data.res){
 						alert('댓글 등록 성공');
 						$('#inputComment').val('');
+						cri.page = 1;
+						getCommentList(cri);
 					}else{
 						alert('댓글 등록 실패');
 					}
 				}
 			})
 		});
+		let cri = {
+				page : 1
+		}
+		getCommentList(cri);
+		
+		function getCommentList(cri){
+			$.ajax({
+				async : false,
+				method: 'post',
+				url : '<c:url value="/comment/list/"/>'+'${board.bo_num}',
+				data: JSON.stringify(cri),
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				success : function(data){
+					let str ='';
+					for(comment of data.list){
+						str += `
+						<li class="comment-item">
+							<span class="comment-contents">\${comment.co_contents}</span>
+							<span class="comment-writer">[\${comment.co_me_id}]</span>
+							<button >수정</button>
+							<button >삭제</button>
+						</li>`
+					}
+					$('.comment-list').html(str);
+				}
+			})
+		}
 	</script>
 </body>
 </html>
