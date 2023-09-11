@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.study.dao.CommentDAO">
+	<insert id="insertComment">
+		insert into comment(co_me_id, co_bo_num, co_contents)
+		values(#{comment.co_me_id},#{comment.co_bo_num},#{comment.co_contents})
+	</insert>
+</mapper>
+
+
+
+
