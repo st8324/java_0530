@@ -50,13 +50,16 @@
 		select * from board
 		<choose>
 			<when test='cri.type.equals("0")'>
-				where bo_title like concat('%', #{cri.search}, '%') or 
-					bo_contents like concat('%', #{cri.search}, '%')
+				where (bo_title like concat('%', #{cri.search}, '%') or 
+					bo_contents like concat('%', #{cri.search}, '%'))
 			</when>
 			<otherwise>
 				where ${cri.type} like concat('%', #{cri.search}, '%')
 			</otherwise>
 		</choose>
+		<if test="cri.bt_num != 0">
+			and bo_bt_num = #{cri.bt_num}
+		</if>
 		order by bo_ori_num desc, bo_num asc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
@@ -64,13 +67,16 @@
 		select count(*) from board
 		<choose>
 			<when test='cri.type.equals("0")'>
-				where bo_title like concat('%', #{cri.search}, '%') or 
-					bo_contents like concat('%', #{cri.search}, '%')
+				where (bo_title like concat('%', #{cri.search}, '%') or 
+					bo_contents like concat('%', #{cri.search}, '%'))
 			</when>
 			<otherwise>
 				where ${cri.type} like concat('%', #{cri.search}, '%')
 			</otherwise>
 		</choose>
+		<if test="cri.bt_num != 0">
+			and bo_bt_num = #{cri.bt_num}
+		</if>
 	</select>
 	<select id="selectBoard" resultMap="BoardVO">
 		select * from board where bo_num = #{bo_num}

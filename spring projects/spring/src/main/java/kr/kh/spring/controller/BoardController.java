@@ -40,8 +40,11 @@ public class BoardController {
 		int totalCount = boardService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(3, cri, totalCount);
 		
+		List<BoardTypeVO> typeList = boardService.getBoardTypeList();
+		
 		model.addAttribute("pm", pm);
 		model.addAttribute("list", list);
+		model.addAttribute("typeList", typeList);
 		return "/board/list";
 	}
 	

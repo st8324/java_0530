@@ -41,7 +41,11 @@
 	</form>
 	
 	<script>
-      $('#summernote').summernote({
+	if(${typeList.size()} == 0){
+		alert('작성 가능한 게시판이 없습니다.');
+		location.href = '<c:url value="/board/list"/>'
+	}
+	$('#summernote').summernote({
         placeholder: '내용을 입력하세요.',
         tabsize: 2,
         height: 400
