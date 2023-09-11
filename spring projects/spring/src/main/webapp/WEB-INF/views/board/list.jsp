@@ -81,7 +81,6 @@
   		location.href = '<c:url value="/board/list?bt_num="/>'+ bt_num;
   	});
   </script>
-  ${pm.cri}
 </body>
 </html>
 
