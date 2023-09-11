@@ -38,4 +38,6 @@ public interface BoardService {
 
 	boolean updateBoardType(BoardTypeVO boardType);
 
+	List<BoardTypeVO> getBoardTypeList(MemberVO user);
+
 }

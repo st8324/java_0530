@@ -20,6 +20,7 @@ import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.util.Message;
+import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
@@ -45,8 +46,15 @@ public class BoardController {
 	}
 	
 	@GetMapping("/insert")
-	public String insert(Model model, Integer bo_ori_num) {
+	public String insert(Model model, Integer bo_ori_num, HttpSession session) {
+		//로그인한 회원이 작성 가능한 게시판 타입을 가져와야 함.
+		//로그인한 회원 정보 
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		List<BoardTypeVO> typeList = boardService.getBoardTypeList(user);
+			
 		model.addAttribute("bo_ori_num", bo_ori_num == null ? 0 : bo_ori_num);
+		model.addAttribute("typeList", typeList);
 		return "/board/insert";
 	}
 	@PostMapping("/insert")

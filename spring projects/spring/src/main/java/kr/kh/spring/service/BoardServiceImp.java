@@ -266,6 +266,14 @@ public class BoardServiceImp implements BoardService{
 			return false;
 		}
 	}
+
+	@Override
+	public List<BoardTypeVO> getBoardTypeList(MemberVO user) {
+		if(user == null || user.getMe_role() == null) {
+			return null;
+		}
+		return boardDao.selectBoardTypeListByRole(user.getMe_role());
+	}
 }
 
 

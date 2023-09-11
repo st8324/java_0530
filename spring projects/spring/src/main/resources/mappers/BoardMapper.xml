@@ -29,7 +29,7 @@
 	</resultMap>
 
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
-		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
+		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id,bo_bt_num)
 		
 		select 
 			ifnull(max(bo_num),0)+1, 
@@ -42,7 +42,7 @@
 			</otherwise>
 		</choose>
 			#{board.bo_title}, #{board.bo_contents}
-			,#{board.bo_me_id}
+			,#{board.bo_me_id}, #{board.bo_bt_num}
 		from 
 			board
 	</insert>
@@ -156,6 +156,16 @@
 		where
 			bt_num = #{bt.bt_num}
 	</update>
+	<select id="selectBoardTypeListByRole" resultType="kr.kh.spring.vo.BoardTypeVO">
+		SELECT 
+		    *
+		FROM
+		    board_type
+		        JOIN
+		    board_authority ON bt_num = ba_bt_num
+		WHERE
+		    ba_authority = #{me_role}
+	</select>
 </mapper>
 
 
