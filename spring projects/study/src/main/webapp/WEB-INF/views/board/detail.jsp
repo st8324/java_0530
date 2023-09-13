@@ -115,6 +115,46 @@
 				}
 			});
 		})
+		$(document).on('click', '.btn-update', function(){
+			let item = $(this).parents('.comment-item'); 
+			item.find('.comment-contents').hide();
+			item.find('.comment-writer').hide();
+			item.find('.btn-update').hide();
+			item.find('.btn-del').hide();
+			
+			let co_num = $(this).data('num');
+			let co_contents = item.find('.comment-contents').text();
+			item.find('.comment-contents').after(`<textarea class="comment-update">\${co_contents}</textarea>`)
+			item.find('.btn-del').after(`<button class="btn-complete" data-num="\${co_num}">수정완료</button>`);
+		});
+		
+		$(document).on('click','.btn-complete',function(){
+			let co_num = $(this).data('num');
+			let co_contents = $(this).parents('.comment-item').find('.comment-update').val();
+			let comment = {
+					co_num : co_num,
+					co_contents: co_contents
+			}
+			
+			$.ajax({
+				async : false,
+				method: 'post',
+				url : '<c:url value="/comment/update"/>',
+				data: JSON.stringify(comment),
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				success : function(data){
+					console.log(data)
+					if(data.res){
+						alert('댓글 수정 성공!')
+						getCommentList(cri);
+					}else{
+						alert('댓글 수정 실패!');
+					}
+				}
+			});
+			
+		})
 		
 		let cri = {
 				page : 1
@@ -135,7 +175,7 @@
 						let btnStr = '';
 						if('${user.me_id}' == comment.co_me_id){
 							btnStr = `
-								<button >수정</button>
+								<button class="btn-update" data-num="\${comment.co_num}">수정</button>
 								<button class="btn-del" data-num="\${comment.co_num}">삭제</button>
 							`;
 						}

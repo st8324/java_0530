@@ -64,4 +64,22 @@ public class CommentServiceImp implements CommentService {
 		boardDao.updateBoardComment(dbComment.getCo_bo_num());
 		return res;
 	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if(user == null || user.getMe_id() == null) {
+			return false;
+		}
+		if(comment == null || comment.getCo_num() == 0 || 
+				comment.getCo_contents() == null ||
+				comment.getCo_contents().trim().length() == 0) {
+			return false;
+		}
+		//댓글 존재 확인 및 작성자 확인 
+		CommentVO dbComment = commentDao.selectComment(comment.getCo_num());
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		return commentDao.updateComment(comment);
+	}
 }

@@ -19,4 +19,6 @@ public interface CommentDAO {
 
 	boolean deleteComment(@Param("co_num")int co_num);
 
+	boolean updateComment(@Param("comment")CommentVO comment);
+
 }
