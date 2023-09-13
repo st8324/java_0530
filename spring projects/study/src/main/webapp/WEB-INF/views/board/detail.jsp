@@ -114,9 +114,30 @@
 						</li>`
 					}
 					$('.comment-list').html(str);
+					
+					let pm = data.pm;
+					str = '';
+					//이전버튼을 배치
+					if(pm.prev){
+						str += `<a href="javascript:void(0);" onclick="changePage(\${pm.startPage-1})"> 이전</a>`;
+					}
+					//숫자버튼을 배치
+					for(i = pm.startPage; i<=pm.endPage; i++){
+						str += `<a href="javascript:void(0);" onclick="changePage(\${i})"> \${i}</a>`
+					}
+					//다음버튼을 배치
+					if(pm.next){
+						str += `<a href="javascript:void(0);" onclick="changePage(\${pm.endPage+1})"> 다음</a>`
+					}
+					$('.pagination').html(str);
 				}
-			})
+			});
+		}
+		function changePage(page){
+			cri.page = page;
+			getCommentList(cri);
 		}
 	</script>
 </body>
 </html>
+
