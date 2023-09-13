@@ -89,6 +89,33 @@
 				}
 			})
 		});
+		
+		
+		$(document).on('click', '.btn-del', function(){
+			
+			let comment = {
+					co_num : $(this).data('num')
+			}
+			
+			//ajax로 서버에 전송
+			$.ajax({
+				async : false,
+				method: 'post',
+				url : '<c:url value="/comment/delete"/>',
+				data: JSON.stringify(comment),
+				contentType : 'application/json; charset=utf-8',
+				dataType : 'json',
+				success : function(data){
+					if(data.res){
+						alert('댓글 삭제 성공!')
+						getCommentList(cri);
+					}else{
+						alert('댓글 삭제 실패!');
+					}
+				}
+			});
+		})
+		
 		let cri = {
 				page : 1
 		}
@@ -110,7 +137,7 @@
 							<span class="comment-contents">\${comment.co_contents}</span>
 							<span class="comment-writer">[\${comment.co_me_id}]</span>
 							<button >수정</button>
-							<button >삭제</button>
+							<button class="btn-del" data-num="\${comment.co_num}">삭제</button>
 						</li>`
 					}
 					$('.comment-list').html(str);

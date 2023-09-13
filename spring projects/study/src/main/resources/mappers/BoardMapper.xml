@@ -44,6 +44,13 @@
 	<select id="selectBoardTotalCount" resultType="int">
 		select count(*) from board
 	</select>
+	<update id="updateBoardComment">
+		update board
+		set
+			bo_comment = (select count(*) from comment where co_bo_num = #{bo_num})
+		where
+			bo_num = #{bo_num}
+	</update>
 </mapper>
 
 
