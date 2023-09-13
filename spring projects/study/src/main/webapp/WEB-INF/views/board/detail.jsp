@@ -132,12 +132,18 @@
 				success : function(data){
 					let str ='';
 					for(comment of data.list){
+						let btnStr = '';
+						if('${user.me_id}' == comment.co_me_id){
+							btnStr = `
+								<button >수정</button>
+								<button class="btn-del" data-num="\${comment.co_num}">삭제</button>
+							`;
+						}
 						str += `
 						<li class="comment-item">
 							<span class="comment-contents">\${comment.co_contents}</span>
 							<span class="comment-writer">[\${comment.co_me_id}]</span>
-							<button >수정</button>
-							<button class="btn-del" data-num="\${comment.co_num}">삭제</button>
+							\${btnStr}
 						</li>`
 					}
 					$('.comment-list').html(str);

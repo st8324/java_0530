@@ -62,6 +62,6 @@ public class CommentServiceImp implements CommentService {
 		}
 		boolean res = commentDao.deleteComment(comment.getCo_num());
 		boardDao.updateBoardComment(dbComment.getCo_bo_num());
-		return true;
+		return res;
 	}
 }
