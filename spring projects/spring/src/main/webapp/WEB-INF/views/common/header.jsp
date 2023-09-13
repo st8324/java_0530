@@ -36,5 +36,8 @@
 	      </div>
 	    </li>
     </c:if>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value='/mail'/>">메일 보내기 테스트</a>
+    </li>
   </ul>
 </nav>
