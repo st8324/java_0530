@@ -17,8 +17,8 @@
 	<form action="<c:url value='/member/signup'/>" method="post">
 		<div class="form-group">
 			<label>아이디</label>
+			<label id="check-id-error" class="error"></label>
 			<input type="text" class="form-control" name="me_id">
-			<label id="me_id-error" class="error" for="me_id"></label>
 		</div>
 		<div class="form-group">
 			<label>비번</label>
@@ -40,6 +40,7 @@
 			flag = false;
 			let id = $(this).val();
 			if(!/^[a-zA-Z]\w{5,19}$/.test(id)){
+				$('#check-id-error').text('');
 				return;
 			}
 			$.ajax({
@@ -49,10 +50,10 @@
 				data : { id : id}, 
 				success : function(data){
 					if(data){
-						$('#me_id-error').text('사용 가능한 아이디입니다.');
+						$('#check-id-error').text('사용 가능한 아이디입니다.');
 						flag = true;
 					}else{
-						$('#me_id-error').text('이미 사용중인 아이디입니다.');
+						$('#check-id-error').text('이미 사용중인 아이디입니다.');
 					}
 				}
 			});
