@@ -83,4 +83,4 @@ atlassian-ide-plugin.xml
 cached-antora-playbook.yml
 
 target/
-test/
+log4j.xml

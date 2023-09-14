@@ -3,29 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	
   <settings>
     <setting name="cacheEnabled" value="false"/>
 	<setting name="localCacheScope" value="STATEMENT"/>
   </settings>
-  <typeAliases>
-  		<typeAlias type="kr.kh.app.vo.BoardVO" alias="BoardVO"/>
-  	</typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ex1"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
       </dataSource>
     </environment>
   </environments>
-  
   <mappers>
-    <mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
-    <mapper resource="kr/kh/app/dao/BoardMapper.xml"/>
+    <mapper resource="edu/kh/test/board/model/dao/BoardMapper.xml"/>
   </mappers>
   
   
