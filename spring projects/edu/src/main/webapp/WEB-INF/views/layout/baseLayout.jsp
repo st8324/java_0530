@@ -7,7 +7,7 @@
 <head>
 	<title>
 		<c:choose>
-			<c:when test="${title}">${title}</c:when>
+			<c:when test="${title!= null}">${title}</c:when>
 			<c:otherwise>스프링</c:otherwise>
 		</c:choose>
 	</title>
