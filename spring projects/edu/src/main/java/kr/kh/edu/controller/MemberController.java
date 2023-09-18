@@ -1,5 +1,7 @@
 package kr.kh.edu.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,6 +65,15 @@ public class MemberController {
 			model.addAttribute("msg", "로그인 실패!");
 			model.addAttribute("url", "member/login");
 		}
+		return "/main/message";
+	}
+	@GetMapping("/member/logout")
+	public String logout(Model model, HttpSession session) {
+		
+		session.removeAttribute("user");
+		
+		model.addAttribute("msg", "로그아웃!");
+		model.addAttribute("url", "");
 		return "/main/message";
 	}
 }
