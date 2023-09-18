@@ -36,6 +36,12 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		
+		//아이디 중복 확인
+		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		if(dbMember != null) {
+			return false;
+		}
+		
 		//비밀번호 암호화
 		//화면에서 입력받은 비밀번호를 암호화
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
@@ -43,5 +49,10 @@ public class MemberServiceImp implements MemberService {
 		member.setMe_pw(encodedPassword);
 		
 		return memberDao.insertMember(member);
+	}
+
+	@Override
+	public boolean checkId(String id) {
+		return memberDao.selectMember(id) == null;
 	}
 }

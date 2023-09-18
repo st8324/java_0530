@@ -8,4 +8,7 @@
 			member(me_id, me_pw, me_email)
 			values(#{member.me_id},#{member.me_pw},#{member.me_email})
 	</insert>
+	<select id="selectMember" resultType="MemberVO">
+		select * from member where me_id = #{id}
+	</select>
 </mapper>
