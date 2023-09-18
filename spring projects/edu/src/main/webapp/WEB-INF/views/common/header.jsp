@@ -7,9 +7,14 @@
 	
 	<!-- Links -->
 	<ul class="navbar-nav">
-		<li class="nav-item">
-		  	<a class="nav-link" href="<c:url value='/member/signup'/>">회원가입</a>
-		</li>
+		<c:if test="${user == null }">
+			<li class="nav-item">
+			  	<a class="nav-link" href="<c:url value='/member/signup'/>">회원가입</a>
+			</li>
+			<li class="nav-item">
+			  	<a class="nav-link" href="<c:url value='/member/login'/>">로그인</a>
+			</li>
+		</c:if>
 		<li class="nav-item">
 		  	<a class="nav-link" href="<c:url value='/ajax/test'/>">ajax 테스트</a>
 		</li>

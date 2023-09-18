@@ -23,18 +23,11 @@ public class MemberServiceImp implements MemberService {
 		if(member == null ) {
 			return false;
 		}
-		//아이디 체크
-		//전체 6~20자, 영문으로 시작, 영문 숫자만 가능
-		String regexId = "^[a-zA-Z]\\w{5,19}$";
-		if(member.getMe_id() == null || !Pattern.matches(regexId, member.getMe_id())) {
+		//아이디 체크와 비번 체크
+		if(!checkIdRegex(member.getMe_id()) || !checkPwRegex(member.getMe_pw())) {
 			return false;
 		}
-		//비번 체크
-		//전체 6~2-자, 영문 숫자만 가능
-		String regexPw = "\\w{6,20}";
-		if(member.getMe_pw() == null || !Pattern.matches(regexPw, member.getMe_pw())) {
-			return false;
-		}
+
 		
 		//아이디 중복 확인
 		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
@@ -54,5 +47,35 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public boolean checkId(String id) {
 		return memberDao.selectMember(id) == null;
+	}
+
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(!checkIdRegex(member.getMe_id()) || !checkPwRegex(member.getMe_pw())) {
+			return null;
+		}
+		//아이디와 일치하는 회원 정보를 가져옴
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		
+		//아이디와 일치하는 회원 정보가 있고, 비번이 일치하면 
+		if(user != null && passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
+			return user;
+		}
+		return null;
+	}
+	private boolean checkIdRegex(String id) {
+		//전체 6~20자, 영문으로 시작, 영문 숫자만 가능
+		String regexId = "^[a-zA-Z]\\w{5,19}$";
+		if(id == null) {
+			return false;
+		}
+		return Pattern.matches(regexId, id);
+	}
+	private boolean checkPwRegex(String pw) {
+		String regexPw = "\\w{6,20}";
+		if(pw == null) {
+			return false;
+		}
+		return Pattern.matches(regexPw, pw);
 	}
 }

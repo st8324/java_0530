@@ -44,4 +44,25 @@ public class MemberController {
 	public boolean idCheck(@RequestParam("id") String id){
 		return memberService.checkId(id);
 	}
+	@GetMapping("/member/login")
+	public String login() {
+		return "/member/login";
+	}
+	@PostMapping("/member/login")
+	public String loginPost(Model model, MemberVO member) {
+		//화면에서 보내온 아이디와 비번을 가져와서 확인
+		System.out.println(member);
+		//입력받은 회원정보와 일치하는 회원 정보가 있으면 가져오라고 요청
+		MemberVO user = memberService.login(member);
+		//가져왔으면 => 로그인 성공하면 
+		if(user != null) {
+			model.addAttribute("user", user);
+			model.addAttribute("msg", "로그인 성공!");
+			model.addAttribute("url", "");
+		}else {
+			model.addAttribute("msg", "로그인 실패!");
+			model.addAttribute("url", "member/login");
+		}
+		return "/main/message";
+	}
 }

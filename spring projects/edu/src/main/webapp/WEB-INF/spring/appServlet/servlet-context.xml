@@ -37,7 +37,14 @@
 	    </beans:property>
 	</beans:bean>
 		
+	<beans:bean id="loginInterceptor" class="kr.kh.edu.interceptor.LoginInterceptor" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="kr.kh.edu.*" />
 	
