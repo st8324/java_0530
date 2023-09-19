@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.edu.dao.BoardDAO">
+	<select id="selectBoardList" resultType="BoardVO">
+		select * from board
+		<if test='cri.t == "all"'>
+		where 
+			bo_title like concat('%', #{cri.s}, '%')
+			or bo_contents like concat('%', #{cri.s}, '%')
+			or bo_me_id like concat('%', #{cri.s}, '%')
+		</if>
+		<if test='cri.t == "total"'>
+		where 
+			bo_title like concat('%', #{cri.s}, '%')
+			or bo_contents like concat('%', #{cri.s}, '%')
+		</if>
+		<if test='cri.t == "writer"'>
+		where  
+			bo_me_id like concat('%', #{cri.s}, '%')
+		</if>	
+		order by bo_ori_num desc, bo_num asc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="selectCountBoardList" resultType="int">
+		select count(*) from board
+		<if test='cri.t == "all"'>
+		where 
+			bo_title like concat('%', #{cri.s}, '%')
+			or bo_contents like concat('%', #{cri.s}, '%')
+			or bo_me_id like concat('%', #{cri.s}, '%')
+		</if>
+		<if test='cri.t == "total"'>
+		where 
+			bo_title like concat('%', #{cri.s}, '%')
+			or bo_contents like concat('%', #{cri.s}, '%')
+		</if>
+		<if test='cri.t == "writer"'>
+		where  
+			bo_me_id like concat('%', #{cri.s}, '%')
+		</if>
+	</select>
+</mapper>
