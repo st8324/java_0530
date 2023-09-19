@@ -2,6 +2,8 @@ package kr.kh.edu.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.kh.edu.pagination.Criteria;
 import kr.kh.edu.vo.BoardVO;
 import kr.kh.edu.vo.MemberVO;
@@ -12,6 +14,6 @@ public interface BoardService {
 
 	int getTotalCount(Criteria cri);
 
-	boolean insertBoard(BoardVO board, MemberVO user);
+	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] fileList);
 
 }

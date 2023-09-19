@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.edu.dao.BoardDAO;
 import kr.kh.edu.pagination.Criteria;
+import kr.kh.edu.util.UploadFileUtils;
 import kr.kh.edu.vo.BoardVO;
+import kr.kh.edu.vo.FileVO;
 import kr.kh.edu.vo.MemberVO;
 
 @Service
@@ -15,6 +18,8 @@ public class BoardServiceImp implements BoardService {
 
 	@Autowired
 	BoardDAO boardDao;
+	
+	String uploadPath = "D:\\uploadfiles";
 
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
@@ -33,7 +38,7 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public boolean insertBoard(BoardVO board, MemberVO user) {
+	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] fileList) {
 		if(board == null || 
 			board.getBo_title() == null || board.getBo_title().trim().length() == 0 ||
 			board.getBo_contents() == null) {
@@ -52,6 +57,26 @@ public class BoardServiceImp implements BoardService {
 			return false;
 		}
 		//첨부파일 등록
+		if(fileList == null || fileList.length == 0) {
+			return true;
+		}
+		
+		for(MultipartFile file : fileList) {
+			if(file == null || file.getOriginalFilename().length() == 0) {
+				continue;
+			}
+			try {
+				//원래 파일명
+				String fi_ori_name = file.getOriginalFilename();
+				//서버에 업로드 후 업로드된 경로와 uuid가 포함된 파일명
+				String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, file.getBytes());
+				//파일 객체
+				FileVO fileVo = new FileVO(board.getBo_num(), fi_name, fi_ori_name);
+				boardDao.insertFile(fileVo);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		return true;
 	}

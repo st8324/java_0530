@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.edu.pagination.Criteria;
 import kr.kh.edu.pagination.PageMaker;
@@ -44,9 +45,10 @@ public class BoardController {
 		return "/board/insert";
 	}
 	@PostMapping("/board/insert")
-	public String insertPost(Model model, BoardVO board, HttpSession session) {
+	public String insertPost(Model model, BoardVO board, HttpSession session, 
+			MultipartFile [] fileList) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		boolean res = boardService.insertBoard(board, user);
+		boolean res = boardService.insertBoard(board, user, fileList);
 		if(res) {
 			model.addAttribute("msg", "게시글 등록 성공!");
 			model.addAttribute("url", "board/list");
