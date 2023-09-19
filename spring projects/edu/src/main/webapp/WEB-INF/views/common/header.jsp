@@ -30,7 +30,7 @@
 			</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="<c:url value='/board/list'/>">게시글 조회</a>
-				<a class="dropdown-item" href="#">Link 2</a>
+				<a class="dropdown-item" href="<c:url value='/board/insert'/>">게시글 등록</a>
 				<a class="dropdown-item" href="#">Link 3</a>
 			</div>
 		</li>

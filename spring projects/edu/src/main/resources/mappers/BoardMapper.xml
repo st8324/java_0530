@@ -41,4 +41,18 @@
 			bo_me_id like concat('%', #{cri.s}, '%')
 		</if>
 	</select>
+	<insert id="insertBoard">
+		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
+		select 
+			ifnull(max(bo_num), 0)+1, 
+			ifnull(max(bo_num), 0)+1, 
+			#{board.bo_title},
+			#{board.bo_contents},
+			#{board.bo_me_id}
+		from board
+	</insert>
 </mapper>
+
+
+
+
