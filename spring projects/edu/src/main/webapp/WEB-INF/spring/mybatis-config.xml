@@ -6,6 +6,7 @@
   <typeAliases>
   	<typeAlias type="kr.kh.edu.vo.MemberVO" alias="MemberVO"/>
   	<typeAlias type="kr.kh.edu.vo.BoardVO" alias="BoardVO"/>
+  	<typeAlias type="kr.kh.edu.vo.FileVO" alias="FileVO"/>
   </typeAliases>
   
 </configuration>

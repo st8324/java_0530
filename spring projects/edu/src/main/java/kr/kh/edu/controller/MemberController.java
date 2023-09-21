@@ -52,8 +52,6 @@ public class MemberController {
 	}
 	@PostMapping("/member/login")
 	public String loginPost(Model model, MemberVO member) {
-		//화면에서 보내온 아이디와 비번을 가져와서 확인
-		System.out.println(member);
 		//입력받은 회원정보와 일치하는 회원 정보가 있으면 가져오라고 요청
 		MemberVO user = memberService.login(member);
 		//가져왔으면 => 로그인 성공하면 
@@ -61,6 +59,8 @@ public class MemberController {
 			model.addAttribute("user", user);
 			model.addAttribute("msg", "로그인 성공!");
 			model.addAttribute("url", "");
+			//화면에서 보낸 자동 로그인 체크 여부를 user에 적용
+			user.setAutoLogin(member.isAutoLogin());
 		}else {
 			model.addAttribute("msg", "로그인 실패!");
 			model.addAttribute("url", "member/login");
@@ -69,8 +69,13 @@ public class MemberController {
 	}
 	@GetMapping("/member/logout")
 	public String logout(Model model, HttpSession session) {
-		
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		session.removeAttribute("user");
+		
+		if(user != null) {
+			user.setMe_session_limit(null);
+			memberService.updateMemberSession(user);
+		}
 		
 		model.addAttribute("msg", "로그아웃!");
 		model.addAttribute("url", "");

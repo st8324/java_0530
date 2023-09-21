@@ -55,6 +55,22 @@
 		insert into file(fi_name, fi_ori_name, fi_bo_num)
 		values(#{file.fi_name},#{file.fi_ori_name},#{file.fi_bo_num})
 	</insert>
+	<select id="selectBoard" resultType="BoardVO">
+		select 
+			* 
+		from 
+			board
+		where
+			bo_num = #{num}
+	</select>
+	<select id="selectFileList" resultType="FileVO">
+		select
+			*
+		from
+			file
+		where
+			fi_bo_num = #{num}
+	</select>
 </mapper>
 
 

@@ -80,4 +80,14 @@ public class BoardServiceImp implements BoardService {
 		
 		return true;
 	}
+
+	@Override
+	public BoardVO getBoard(int num) {
+		return boardDao.selectBoard(num);
+	}
+
+	@Override
+	public List<FileVO> getFileList(int num) {
+		return boardDao.selectFileList(num);
+	}
 }

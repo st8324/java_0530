@@ -18,4 +18,8 @@ public interface BoardDAO {
 
 	void insertFile(@Param("file")FileVO fileVo);
 
+	BoardVO selectBoard(@Param("num")int num);
+
+	List<FileVO> selectFileList(@Param("num")int num);
+
 }
