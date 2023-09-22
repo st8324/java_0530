@@ -70,6 +70,13 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="D://uploadfiles"/>
+	    <!-- <beans:constructor-arg value="D://uploadfiles"/> -->
+	</beans:bean>
+	<beans:bean id="uploadImgPath" class="java.lang.String">
+	    <beans:constructor-arg value="D://img"/>
+	</beans:bean>
 </beans:beans>
 
 
