@@ -24,7 +24,9 @@ import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -34,6 +36,7 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public String list(Model model, Criteria cri) {
+		log.info("게시글 리스트");
 		cri.setPerPageNum(2);
 		//현재 페이지에 맞는 게시글을 가져와야함
 		List<BoardVO> list = boardService.getBoardList(cri);
