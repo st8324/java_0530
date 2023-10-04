@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>응용예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="container">
+	</div>
+	<script type="text/babel">
+		const container = document.getElementById('container');
+
+		function App(){
+			const initFruit = "과일을 선택하세요.";
+			let [fruit, setFruit] = React.useState(initFruit);
+			function onChange(event){
+				//setter를 이용해야 선택한 요소로 select 태그 값이 변경
+				setFruit(event.target.value);
+			}
+			return (
+				<div>
+					<h1>좋아하는 과일은?</h1>
+					<select onChange={onChange} value={fruit}>
+						<option value={initFruit}>선택</option>
+						<option value="사과를 선택했습니다.">사과</option>
+						<option value="오렌지를 선택했습니다.">오렌지</option>
+						<option value="바나나를 선택했습니다.">바나나</option>
+					</select>
+					<h1>{fruit}</h1>
+				</div>
+			);
+		}
+		ReactDOM.render(<App/>, container);
+	</script>
+</body>
+</html>
