@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSX 예제1</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<!-- 
+			<div>
+				<h1>클릭 수 : 0</h1>
+				<button>클릭</button> 
+			</div>
+		-->
+	</div>
+	<script type="text/babel">
+		//넣을 요소
+		const container = document.getElementById('container');
+		//요소 생성
+		function Elemnt(){
+			return (
+				<div>
+					<h1>클릭 수 : 0</h1>
+					<button>클릭</button>
+				</div>
+			);
+		}
+		function Htag(){
+			return <h1>클릭 수 : 0</h1>;
+		}
+		function Btn(){
+			return <button>클릭</button>;
+		}
+		function Elemnt2(){
+			return (
+				<div>
+					<Htag/>
+					<Btn/>
+				</div>
+			)
+		}
+		//요소 배치
+		ReactDOM.render(<Elemnt2/>, container);
+	</script>
+</body>
+</html>
