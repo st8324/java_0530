@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSX 기본</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<style>
+		#btn{ background-color: yellow;}
+	</style>
+</head>
+<body id="body">
+	<script type="text/babel">
+		const body = document.getElementById('body');
+		/*
+		- 함수로 요소를 생성
+		- 요소 생성시 함수명을 대문자로 시작 => 다른 요소에 배치할 수 있게하기 위해 
+		*/
+		function Btn(){
+			return (
+				<button 
+					id="btn"
+					onClick={()=>alert('버튼입니다.')}
+				>버튼</button>
+			);
+		}
+		ReactDOM.render(<Btn/>, body);
+	</script>
+</body>
+</html>
