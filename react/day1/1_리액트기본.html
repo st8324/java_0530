@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리액트 기본</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<style>
+		#btn{ background-color: yellow;}
+	</style>
+</head>
+<body id="body">
+	<!-- <button onclick="alert('버튼입니다.')" id="btn">버튼</button> -->
+	<script>
+		//const body = document.getElementsByTagName("body")[0];
+		const body = document.getElementById("body");
+		//JSX를 학습하면 사용하지 않을 방법
+		const btn = React.createElement("button", {
+			//속성들을 객체 형태로
+			id : "btn",
+			onClick : () => alert('버튼입니다.')
+		},"버튼");
+		ReactDOM.render(btn, body);
+	</script>
+</body>
+</html>
