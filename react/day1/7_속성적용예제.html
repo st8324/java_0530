@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성 적용 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<style>
+		.btn-down, .btn-up{
+			width: 30px; height: 30px; line-height: 26px; background-color: #fff;
+			border-radius: 5px; font-size: 20px; cursor: pointer; box-sizing: border-box;
+		}
+		.page{
+			line-height: 30px; display: inline-block;
+			margin: 0 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+	</div>
+	<script type="text/babel">
+
+		//넣을 요소
+		const container = 
+			document.getElementById('container');
+		//요소 생성
+		function Elemnt(){
+			let [counter, setCounter] = React.useState(1);
+			const maxCount = 13;
+			function onClickUp(){
+				setCounter(counter + 1 > maxCount ? 1 : counter + 1);
+				/*if(counter + 1 > maxCount){
+					setCounter(1);
+				}else{
+					setCounter(counter + 1);
+				}*/
+			}
+			function onClickDown(){
+				setCounter(counter - 1 < 1 ? maxCount : counter - 1);
+				/*if(counter - 1 < 1){
+					setCounter(maxCount);
+				}else{
+					setCounter(counter - 1);
+				}*/
+			}
+			return (
+				<div>
+					<button onClick={onClickDown} className="btn-down">&lt;</button>
+					<span className="page">{counter}/{maxCount} </span>
+					<button onClick={onClickUp} className="btn-up">&gt;</button>
+				</div>
+			);
+		}
+		//요소 배치
+		ReactDOM.render(<Elemnt/>, container);
+	</script>
+</body>
+</html>
