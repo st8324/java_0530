@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>input태그값 예제2</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+		const container = document.getElementById('container');
+		function App(){
+			let [counter, setCounter] = React.useState(0);
+			function onChange(event){
+				let value = 0;
+				
+				value = parseInt(event.target.value); 
+				if(isNaN(value)){
+					value = 0;
+				}
+				setCounter(value);
+			}
+			function onClick(){
+				setCounter(counter+1);
+			}
+			return (
+				<div>
+					<input type="text" onChange={onChange} value={counter}/>
+					<button onClick={onClick}>+</button>
+					<h1>{counter}</h1>
+				</div>
+			);
+		}
+		ReactDOM.render(<App/>, container);
+	</script>
+</body>
+</html>
