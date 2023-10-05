@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script type="text/babel">
+		const root = document.getElementById("root");
+	
+
+		function ConverterDistance(){
+			
+			let [amount, setAmount] = React.useState(0);
+			let [fliped, setFliped] = React.useState(false)
+			const onChange = (e)=>setAmount(e.target.value);
+			const reset = ()=>setAmount(0);
+			const convert = ()=>{
+				setAmount(0);
+				setFliped(!fliped)
+			};
+			return (
+				<div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount * 1000 : amount} disabled={fliped}/> m
+					</div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount : Math.floor(amount/100)/10} disabled={!fliped}/>	km
+					</div>
+					<button onClick={reset}>Reset</button>
+					<button onClick={convert}>Convert</button>
+				</div>
+			)
+		}
+
+		function ConverterTime(){
+			
+			let [amount, setAmount] = React.useState(0);
+			let [fliped, setFliped] = React.useState(false)
+			const onChange = (e)=>setAmount(e.target.value);
+			const reset = ()=>setAmount(0);
+			const convert = ()=>setFliped(!fliped);
+			return (
+				<div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount * 60 : amount} disabled={fliped}/> 분
+					</div>
+					<div>
+						<input type="number" onChange={onChange} value={fliped ? amount : Math.floor(amount/6)/10} disabled={!fliped}/>	시간
+					</div>
+					<button onClick={reset}>Reset</button>
+					<button onClick={convert}>Convert</button>
+				</div>
+			)
+		}
+		
+		function App(){
+			let [choice, setChoice] = React.useState("");
+			const onChange = (e) =>{
+				setChoice(e.target.value)
+			}
+			return (
+				<div>
+					<select onChange={onChange}>
+						<option value="">변환할 단위를 선택하세요.</option>
+						<option value="distance">m &lt;-&gt; km</option>
+						<option value="time">분 &lt;-&gt; 시</option>
+					</select>
+					{choice == '' ? <h1>변환할 단위를 선택하세요.</h1> : null}
+					{choice == 'distance' ? <ConverterDistance/> : null}
+					{choice == 'time' ? <ConverterTime/> : null}
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>
