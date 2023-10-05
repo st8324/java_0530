@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		/* 
+		input 태그를 이용하여 분을 입력받고,
+		입력받은 분을 시로 변환하는 코드를 작성
+		60 => 1
+		61 => 1
+		120 => 2
+		*/
+		function App(){
+			
+			let [minute, setMinute] = React.useState(0);
+
+			const onChange = (e)=>setMinute(e.target.value);
+
+			return (
+				<div>
+					<div>
+						<input type="number" onChange={onChange} value={minute}/>
+					</div>
+					<div>
+						<input type="number" value={Math.floor(minute/6)/10} disabled/>	
+					</div>
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>
