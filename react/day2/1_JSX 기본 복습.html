@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSX 기본 복습</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<style>
+		.btn{
+			background-color: tomato; border: 0; border-radius: 10px; padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="root"></div>
+	<button onclick="alert('태그버튼')" class="btn">태그버튼</button>
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		function alertBtn(){
+			alert('리액트 버튼');
+		}
+		/*
+		function Btn(){
+			return (
+				<button onClick={alertBtn} className="btn">리액트 버튼</button>
+			);
+		}
+		*/
+		const Btn = ()=>{
+			return (
+				<button onClick={alertBtn} className="btn">리액트 버튼</button>
+			);
+		}
+		function Div(){
+			return (
+				<div>
+					<Btn/>
+				</div>
+			)
+		}
+		ReactDOM.render(<Div/>, root);
+	</script>
+</body>
+</html>
