@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		/* 
+		Btn 컴포넌트를 생성한 후, Btn 컴포넌트를 이용하여 버튼1과 버튼2를 만들고
+		버튼1을 클릭하면 버튼2가 토글(보이면 안보이게, 안보이면 보이게)되도록 작성
+		*/
+		function Btn({text, click, show}){
+			return (
+				show ? <button onClick={click}>{text}</button> : null
+			);
+		}
+		
+		function App(){
+			let [show, setShow] = React.useState(true);
+			const clickFunc = ()=>{ 
+				setShow(!show);
+			};
+			return (
+				<div>
+					<Btn text="버튼1" click={clickFunc} show={true}/>
+					<Btn text="버튼2" show={show}/>
+				</div>
+			)
+		}
+		Btn.propTypes = {
+
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>

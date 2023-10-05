@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	<button style="color:red">1</button>
+	
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		
+		function Btn1(){
+			return (
+				<button>버튼1</button>
+			)
+		}
+		function Btn2(){
+			return (
+				<button>버튼2</button>
+			)
+		}
+		function Btn(props){
+			return (
+				<button style={props.css}>{props.text}</button>
+			)
+		}
+		function OtherBtn({text, style}){
+			return (
+				<button style={style}>{text}</button>
+			)
+		}
+		function App(){
+			
+			return (
+				<div>
+					<Btn1/>
+					<Btn2/>
+					<br/>
+					<OtherBtn text="버튼1" style={{color : 'red', fontSize : 20}}/>
+					<OtherBtn text="버튼2" style={{backgroundColor : 'tomato'}}/>
+					<br/>
+					<Btn text="버튼1" css={{color : 'red', fontSize : 20}}/>
+					<Btn text="버튼2" css={{backgroundColor : 'tomato'}}/>
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>
