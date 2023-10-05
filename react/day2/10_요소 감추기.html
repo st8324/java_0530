@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		/* 버튼1과 버튼2를 배치하고, 버튼1을 클릭하면 버튼2가 사라지도록 작성 */
+
+		function App(){
+			let [show, setShow] = React.useState(true);
+			const onClick = ()=>{
+				setShow(!show);
+			}
+			return (
+				<div>
+					<button onClick={onClick}>버튼1</button>
+					{show ? <button>버튼2</button> : null}
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>
