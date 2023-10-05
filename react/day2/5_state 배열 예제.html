@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 배열 예제</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		function App(){
+			let [arr, setArr] = React.useState([]);
+			let [input, setInput] = React.useState("");
+			const onChange = (event)=> setInput(event.target.value)
+			const onClick = () =>{
+				//현재 input태그에 있는 값을 배열 뒤에 추가
+				setArr((beforeArr)=>[...beforeArr, input]);
+				//input태그의 글자를 지워줌
+				setInput("");
+			};
+			return (
+				<div>
+					<input type="text" onChange={onChange} value={input}/>
+					<button onClick={onClick}>버튼</button>
+					<h1>[{arr.join(',')}]</h1>
+				</div>
+			)
+		}
+		ReactDOM.render(<App/>, root);
+	</script>
+</body>
+</html>
