@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.footer{
+  background-color: whitesmoke; height: 150px; padding: 30px;
+}
+
+.body{
+  min-height: calc(100vh - 56px - 210px);
+  padding: 50px; box-sizing: border-box;
+}
+.body::after{
+  clear: both; content: ''; display: block;
+}
+.left{
+  float: left; border: 3px solid red;
+  height: 400px; width: calc(50% - 25px);
+}
+.right{
+  float: right; border: 3px solid blue;
+  height: 400px; width: calc(50% - 25px);
+}
+.page-box{
+  text-align: center; margin-top: 10px;
+}
+.page-btn{
+  width: 30px; height: 30px; box-sizing: border-box;
+  display: inline-block; background-color: #fff; border: 1px solid black;
+  border-radius: 50%; text-decoration: none;
+}
+.page{
+  height: 30px; display: inline-block;
+  line-height: 30px; margin: 0 10px;
+}
+.contents{
+  height: 250px;
+}

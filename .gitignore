@@ -84,3 +84,7 @@ cached-antora-playbook.yml
 
 target/
 log4j.xml
+
+# react
+node_modules
+.DS_STORE

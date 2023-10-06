@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.menu-list{
+  list-style: none; padding: 0; margin: 0;
+  display: flex;
+}
+.menu-item{
+  width: 100%; border: 3px solid black;
+}
+.menu-item+.menu-item{
+  border-left: 0;
+}
+.menu-link{
+  display: block; text-align: center;
+  font-size: 30px; line-height: 50px; text-decoration: none; 
+  color : black
+}
+.menu-item:hover .menu-link{
+  background-color: aliceblue;
+}
