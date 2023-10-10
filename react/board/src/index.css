@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+.menu-list{
+  list-style: none;
+  margin: 0; padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+.menu-link{
+  color: black;
+}
+.menu-link:hover{
+  background-color: aliceblue;
+}
