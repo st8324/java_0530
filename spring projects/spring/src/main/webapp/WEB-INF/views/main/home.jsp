@@ -72,5 +72,29 @@
 		});
 	})
 	</script>
+	<script type="text/javascript">
+	const sse = new EventSource("<c:url value='/connect?room=1'></c:url>");
+	function sseF(){
+		sse.addEventListener('connect', (e) => {
+			const { data: receivedConnectData } = e;
+			console.log('connect event data: ',receivedConnectData);  // "connected!"
+			console.log(new Date())
+		});
+		sse.addEventListener('count', e => {  
+		    const { data: receivedCount } = e;  
+		    console.log("count event data",receivedCount);  
+		});
+		
+		
+	}
+	$(function(){
+		sseF();
+		
+	})
+	window.addEventListener("beforeunload", function() {
+	  //alert('브라우저');
+		sse.close();
+	});
+		</script>
 </body>
 </html>
